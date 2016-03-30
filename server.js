@@ -20,6 +20,7 @@ server.use(express.static(static_path))
 if (isDevelopment) {
   var config = require('./webpack.config');
   var WebpackDevServer = require('webpack-dev-server');
+  console.log(config.output.publicPath);
 
   new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,

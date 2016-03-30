@@ -10,12 +10,12 @@ module.exports = {
 
   output: {
     filename: "index_bundle.js",
-    path: __dirname + '/dist',
+    path: __dirname + 'dist',
     publicPath: '/dist/'
   },
 
   plugins: [HTMLWebpackPluginConfig],
-  
+
   module: {
     loaders: [
       {
