@@ -6,16 +6,14 @@ var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 });
 
 module.exports = {
+    // Tell webpack where the root component is located
   entry: './app/app.js',    
-
+  //Tell webpack where to render compiled components
   output: {
     filename: "index_bundle.js",
-    path: __dirname + '/dist',
-    publicPath: '/dist/'
+    path: __dirname + '/dist'
   },
-
   plugins: [HTMLWebpackPluginConfig],
-  
   module: {
     loaders: [
       {
