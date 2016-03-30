@@ -1,0 +1,31 @@
+{
+  "name": "dodiddone",
+  "version": "1.0.0",
+  "description": "Application to track work.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trussworks/DoDidDone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/trussworks/DoDidDone/issues"
+  },
+  "homepage": "https://github.com/trussworks/DoDidDone#readme",
+  "dependencies": {
+    "babel-preset-react": "^6.5.0",
+    "express": "^4.13.4",
+    "html-webpack-plugin": "^2.15.0",
+    "react": "^0.14.8",
+    "react-dom": "^0.14.8"
+  },
+  "devDependencies": {
+    "babel-core": "^6.7.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-react": "^6.5.0"
+  }
+}
