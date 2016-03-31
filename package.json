@@ -25,6 +25,7 @@
     "html-webpack-plugin": "^2.15.0",
     "path": "^0.12.7",
     "react": "^0.14.8",
+    "react-bootstrap": "^0.28.4",
     "react-dom": "^0.14.8",
     "webpack": "^1.12.14"
   },
