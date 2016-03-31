@@ -1,13 +1,17 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var Greeting = require('./components/Greeting');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import RaisedButton from 'material-ui/lib/raised-button';
 
-var App = React.createClass({
+const style = {
+  margin: 12,
+};
+
+const App = React.createClass({
   render: function(){
     return (
       <div>
-        <p>Hello Universe!!!!</p>
-        <Greeting />
+        <p>Hello Multiverse!!!!</p>
+        <RaisedButton label="Our Button" style={style} primary={true} />  
       </div>
     )
   }

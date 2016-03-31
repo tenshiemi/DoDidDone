@@ -1,11 +1,13 @@
-var React = require('react');
+import React from 'react';
+import RaisedButton from 'material-ui/lib/raised-button';
 
-var Greeting = React.createClass({
+const Greeting = React.createClass({
   render: function() {
     return (
       <h1>Hello</h1>
+      <RaisedButton label="Default" />
     )
   }
 });
 
-module.exports = Greeting;
+export default Greeting;
