@@ -21,7 +21,7 @@ module.exports = {
         loader: 'babel',
         query: {
           // presets are all the transformations from JSX to JS that Babel will do the code
-          presets: ['react', 'es2015-webpack']
+          presets: ['react', 'es2015']
         }
       }
     ]
