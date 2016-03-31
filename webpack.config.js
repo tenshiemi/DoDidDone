@@ -6,16 +6,14 @@ var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 });
 
 module.exports = {
+  devtool: 'eval',
   entry: './app/app.js',    
-
   output: {
     filename: "index_bundle.js",
     path: __dirname + 'dist',
     publicPath: '/dist/'
   },
-
   plugins: [HTMLWebpackPluginConfig],
-
   module: {
     loaders: [
       {
