@@ -19,10 +19,6 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel',
-        query: {
-          // presets are all the transformations from JSX to JS that Babel will do the code
-          presets: ['react']
-        }
       }
     ]
   }
