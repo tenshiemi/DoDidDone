@@ -6,7 +6,13 @@
   "scripts": {
     "postinstall": "webpack --config ./webpack-production.config.js --progress --colors",
     "start": "node server.js",
-    "lint": "eslint . --ext .js --ext .jsx"
+    "lint": "eslint . --ext .js --ext .jsx",
+    "heroku-off": "heroku ps:scale web=0 worker=0 builder=0",
+    "heroku-on": "heroku ps:scale web=1 builder=1 worker=1",
+    "heroku-push": "localbranch=$(git rev-parse --abbrev-ref HEAD) && git push --force heroku $localbranch:master",
+    "heroku-temp-push": "git commit -am 'temp for debugging' && npm run heroku-push && git reset --soft 'HEAD^' 2>&1",
+    "heroku-latest": "git ls-remote heroku | awk 'END{print $1}' | xargs git show",
+    "hlogs": "heroku logs -t"
   },
   "repository": {
     "type": "git",
@@ -23,6 +29,7 @@
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.6.0",
     "babel-preset-react": "^6.5.0",
+    "classnames": "^2.2.3",
     "express": "^4.13.4",
     "html-webpack-plugin": "^2.15.0",
     "material-ui": "^0.14.4",
@@ -37,6 +44,7 @@
     "eslint": "^2.5.3",
     "eslint-loader": "^1.3.0",
     "eslint-plugin-react": "^4.2.3",
+    "react-hot-loader": "^1.3.0",
     "webpack-dev-server": "^1.14.1"
   }
 }
