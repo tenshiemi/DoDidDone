@@ -9,7 +9,7 @@ module.exports = {
   devtool: 'eval',
   entry: './app/app.js',    
   output: {
-    filename: "index_bundle.js",
+    filename: 'index_bundle.js',
     path: __dirname + 'dist',
     publicPath: '/dist/'
   },
@@ -19,11 +19,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        loader: 'babel',
-        query: {
-          // presets are all the transformations from JSX to JS that Babel will do the code
-          presets: ['react', 'es2015']
-        }
+        loaders: ['babel', 'eslint-loader']
       }
     ]
   }
