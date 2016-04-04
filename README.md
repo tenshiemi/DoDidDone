@@ -5,7 +5,7 @@
 1. Fork and set up repo on your local machine
 1. Run `npm install`
 1. Install webpack and webpack-dev-server globally with: `npm install -g webpack` and `npm install -g webpack-dev-server`
-1. Add the heroku remote for production `heroku git:remote -a dodonedid.herokuapp.com`
+1. Add the heroku remote for production `git remote add heroku https://git.heroku.com/dodonedid.git`
 
 # Running server locally
 
