@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 var HTMLWebpackPlugin = require('html-webpack-plugin');
 var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
   template: __dirname + '/app/index.html', 
@@ -12,7 +13,11 @@ module.exports = {
     filename: "index_bundle.js",
     path: __dirname + '/dist'
   },
-  plugins: [HTMLWebpackPluginConfig],
+  plugins: [
+    HTMLWebpackPluginConfig,
+    new webpack.optimize.UglifyJsPlugin()
+  ],
+
   module: {
     loaders: [
       {
