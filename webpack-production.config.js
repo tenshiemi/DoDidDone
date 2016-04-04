@@ -15,7 +15,11 @@ module.exports = {
   },
   plugins: [
     HTMLWebpackPluginConfig,
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
   ],
 
   module: {

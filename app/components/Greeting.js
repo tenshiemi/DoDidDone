@@ -5,7 +5,7 @@ const Greeting = React.createClass({
   render: function() {
     return (
       <div>
-        <h1>Hello</h1>
+        <h1>Hellooo</h1>
         <RaisedButton label="Def" />
       </div>
     );
