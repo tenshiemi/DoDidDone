@@ -8,7 +8,7 @@ var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 
 module.exports = {
   devtool: 'source-map',
-  entry: './app/App.js',
+  entry: './app/app.js',
   output: {
     filename: "index_bundle.js",
     path: __dirname + '/dist'

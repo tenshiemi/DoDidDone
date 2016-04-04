@@ -12,7 +12,7 @@ module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000', // WebpackDevServer host and port
     'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-    './app/App',
+    './app/app',
   ],
   output: {
     filename: 'index_bundle.js',
