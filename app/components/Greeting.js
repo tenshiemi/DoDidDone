@@ -1,8 +1,8 @@
 import React from 'react';
 import RaisedButton from 'material-ui/lib/raised-button';
 
-const Greeting = React.createClass({
-  render: function() {
+class Greeting extends React.Component {
+  render() {
     return (
       <div>
         <h1>Hellooo</h1>
@@ -10,6 +10,6 @@ const Greeting = React.createClass({
       </div>
     );
   }
-});
+}
 
 export default Greeting;
