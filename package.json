@@ -8,12 +8,7 @@
     "start": "node server.js",
     "lint": "eslint . --ext .js --ext .jsx",
     "heroku-off": "heroku ps:scale web=0 worker=0 builder=0",
-    "heroku-on": "heroku ps:scale web=1 builder=1 worker=1",
-    "heroku-push": "localbranch=$(git rev-parse --abbrev-ref HEAD) && git push --force heroku $localbranch:master",
-    "heroku-temp-push": "git commit -am 'temp for debugging' && npm run heroku-push && git reset --soft 'HEAD^' 2>&1",
-    "heroku-latest": "git ls-remote heroku | awk 'END{print $1}' | xargs git show",
-    "hlogs": "heroku logs -t",
-    "test": "webpack --config ./webpack-production.config.js --progress --colors"
+    "heroku-on": "heroku ps:scale web=1 builder=1 worker=1"
   },
   "repository": {
     "type": "git",
