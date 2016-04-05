@@ -12,7 +12,8 @@
     "heroku-push": "localbranch=$(git rev-parse --abbrev-ref HEAD) && git push --force heroku $localbranch:master",
     "heroku-temp-push": "git commit -am 'temp for debugging' && npm run heroku-push && git reset --soft 'HEAD^' 2>&1",
     "heroku-latest": "git ls-remote heroku | awk 'END{print $1}' | xargs git show",
-    "hlogs": "heroku logs -t"
+    "hlogs": "heroku logs -t",
+    "test": "webpack --config ./webpack-production.config.js --progress --colors"
   },
   "repository": {
     "type": "git",
