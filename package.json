@@ -1,7 +1,7 @@
 {
   "name": "dodiddone",
   "version": "1.0.0",
-  "description": "Application to track work.",
+  "description": "Application to track work and tasks.",
   "main": "index.js",
   "scripts": {
     "postinstall": "webpack --config ./webpack-production.config.js --progress --colors",
