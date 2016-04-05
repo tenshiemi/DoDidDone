@@ -1,7 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
 var HTMLWebpackPlugin = require('html-webpack-plugin');
-var Promise = require('es6-promise').Promise;
 var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
   template: __dirname + '/app/index.html',
   filename: 'index.html',
