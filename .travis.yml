@@ -1,10 +1,12 @@
-language: node_js
+olanguage: node_js
 node_js:
   - "5"
 sudo: false
 cache:
   directories:
   - node_modules
-install:
+before_install:
   - npm install
+install:
+  - webpack --config ./webpack-production.config.js --progress --colors
 
