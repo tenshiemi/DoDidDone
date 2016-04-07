@@ -10,6 +10,8 @@ var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 module.exports = {
   devtool: 'eval',
   entry: [
+    // Set up an ES6-ish environment
+    'babel-polyfill',
     'webpack-dev-server/client?http://localhost:3000', // WebpackDevServer host and port
     'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
     './app/app',
