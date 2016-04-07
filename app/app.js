@@ -12,19 +12,24 @@ const style = {
   margin: 12
 };
 
-const addToDo = () => {
-  toDoList.push(input.value);
-};
-
-const App = React.createClass({
-  getInitialState: function() {
-    return {
-      toDoItems: toDoList
-    }
-  },
-  render: function() {
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      toDoItems: toDoList,
+      anotherProp: 'hello'
+    };
+    // this.addToDo = this.addToDo.bind(this);
+  }
+  addToDo(e) {
+    e.preventDefault();
+    this.setState({toDoItems: this.state.toDoItems.concat(input.value)});
+    // this.state = Object.assign({}, this.state, {
+    //   toDoItems: this.state.toDoItems.concat(input.value)
+    // });
+  }
+  render() {
     let listItems = this.state.toDoItems.map((toDoItem, index) => {
-      console.log(toDoItem);
       return <li key={index}> {toDoItem} </li>;
     });
 
@@ -35,10 +40,10 @@ const App = React.createClass({
         <input ref={node => {
           input = node;
         }} />
-        <RaisedButton label="Our Button" style={style} primary={true} onClick={addToDo} />
+        <RaisedButton label="Our Button" style={style} primary={true} onClick={(e) => this.addToDo(e)} />
       </div>
     );
   }
-});
+}
 
 ReactDOM.render(<App />, document.getElementById('app'));
