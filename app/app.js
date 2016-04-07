@@ -2,9 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import RaisedButton from 'material-ui/lib/raised-button';
 import Nav from './components/Nav';
+import toDos from './reducers/todoapp';
+import { createStore } from 'redux';
+import { addToDo } from './actions/todos';
+
+//imported addToDo and changed function name
 require('../styles/custom.scss');
 
-const toDoList = ['Some text.'];
+let store = createStore(toDos);
 
 let input;
 
@@ -15,18 +20,17 @@ const style = {
 class App extends React.Component {
   constructor(props) {
     super(props);
+    console.log(store.getState());
     this.state = {
-      toDoItems: toDoList,
+      toDoItems: store.getState(),
       anotherProp: 'hello'
     };
     // this.addToDo = this.addToDo.bind(this);
   }
-  addToDo(e) {
+  submitTodo(e) {
     e.preventDefault();
-    this.setState({ toDoItems: this.state.toDoItems.concat(input.value) });
-    // this.state = Object.assign({}, this.state, {
-    //   toDoItems: this.state.toDoItems.concat(input.value)
-    // });
+    this.setState({ toDoItems: [...this.state.toDoItems, input.value] });
+
   }
   render() {
     let listItems = this.state.toDoItems.map((toDoItem, index) => {
@@ -41,7 +45,7 @@ class App extends React.Component {
           input = node;
         }} />
         <RaisedButton label="Our Button" style={style} primary={true} onClick={
-          (e) => this.addToDo(e)
+          (e) => this.submitTodo(e)
         } />
       </div>
     );
