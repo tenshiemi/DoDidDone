@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import RaisedButton from 'material-ui/lib/raised-button';
@@ -23,7 +24,7 @@ class App extends React.Component {
   }
   addToDo(e) {
     e.preventDefault();
-    this.setState({toDoItems: this.state.toDoItems.concat(input.value)});
+    this.setState({ toDoItems: this.state.toDoItems.concat(input.value) });
     // this.state = Object.assign({}, this.state, {
     //   toDoItems: this.state.toDoItems.concat(input.value)
     // });
@@ -40,7 +41,9 @@ class App extends React.Component {
         <input ref={node => {
           input = node;
         }} />
-        <RaisedButton label="Our Button" style={style} primary={true} onClick={(e) => this.addToDo(e)} />
+        <RaisedButton label="Our Button" style={style} primary={true} onClick={
+          (e) => this.addToDo(e)
+        } />
       </div>
     );
   }
