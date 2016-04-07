@@ -8,7 +8,11 @@ var HTMLWebpackPluginConfig = new HTMLWebpackPlugin({
 
 module.exports = {
   devtool: 'source-map',
-  entry: './app/app.js',
+  entry: [
+    // Set up an ES6-ish environment
+    'babel-polyfill',
+    './app/app.js'
+  ],
   output: {
     filename: "index_bundle.js",
     path: __dirname + '/dist'
