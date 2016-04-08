@@ -38,5 +38,6 @@ module.exports = {
         loaders: ['style-loader', 'css', 'sass']
       }
     ]
-  }
+  },
+  watch: true
 };
