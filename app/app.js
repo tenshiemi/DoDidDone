@@ -21,6 +21,7 @@ class App extends React.Component {
         <Provider store={ store }>
           <TodoListApp />
         </Provider>
+        <Footer />
       </div>
     );
   }

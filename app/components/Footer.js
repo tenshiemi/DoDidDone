@@ -2,8 +2,6 @@ import React from 'react'
 
 const Footer = () => (
   <p>
-    Show:
-    {" "}
     <p>Copyright TrussWorks, 2016</p>
     <p>Onesies for Life (until something else sounds more fun)</p>
   </p>
