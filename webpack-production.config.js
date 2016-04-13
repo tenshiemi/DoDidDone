@@ -11,7 +11,7 @@ module.exports = {
   entry: [
     // Set up an ES6-ish environment
     'babel-polyfill',
-    './app/app.js'
+    './app/main.js'
   ],
   output: {
     filename: "index_bundle.js",
