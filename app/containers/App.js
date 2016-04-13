@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from '../components/Nav';
-import TodoList from '../components/TodoList';
+import TodoListApp from '../components/TodoList';
 import Footer from '../components/Footer';
 
 class App extends React.Component {
@@ -11,7 +11,7 @@ class App extends React.Component {
     return (
       <div>
         <Nav />
-        <TodoList />
+        <TodoListApp />
         <Footer />
       </div>
     );
