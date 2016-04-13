@@ -14,7 +14,7 @@ module.exports = {
     'babel-polyfill',
     'webpack-dev-server/client?http://localhost:3000', // WebpackDevServer host and port
     'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
-    './app/app',
+    './app/main',
   ],
   output: {
     filename: 'index_bundle.js',
