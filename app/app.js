@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Nav from './components/Nav';
 import TodoListApp from './components/TodoList';
 import todos from './reducers/appReducers';
-import Footers from './components/Footer';
+import Footer from './components/Footer';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 require('../styles/custom.scss');
