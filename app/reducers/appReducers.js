@@ -1,10 +1,9 @@
-const todos = (state = { todoList: ['first item'] }, action) => {
+const todos = (state = { todoItems: ['first item'] }, action) => {
   switch (action.type) {
     case 'ADD_TODO': {
-      console.log(state);
       return {
         ...state,
-        todoList: [...state.todoList, action.text]
+        todoItems: [...state.todoItems, action.text]
       };
     }
     default: {

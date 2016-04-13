@@ -18,7 +18,7 @@ class TodoList extends React.Component {
     this.props.addTodo(input.value);
   }
   render() {
-    let listItems = this.props.state.todoList.map((todoItem, index) => {
+    let listItems = this.props.todoItems.map((todoItem, index) => {
       return <li key={index}> {todoItem} </li>;
     });
 
@@ -37,8 +37,10 @@ class TodoList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  const { todoItems } = state;
+
   return {
-    state
+    todoItems
   };
 };
 
@@ -50,9 +52,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const TodoListApp = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(TodoList);
-
-export default TodoListApp;
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

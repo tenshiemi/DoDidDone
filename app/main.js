@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import App from './containers/App';
 import todos from './reducers/appReducers';
 import { createStore } from 'redux';
@@ -8,7 +8,7 @@ require('../styles/custom.scss');
 
 const store = createStore(todos);
 
-ReactDOM.render(
+render(
   <Provider store={ store }>
     <App />
   </Provider>,
