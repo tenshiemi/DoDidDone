@@ -23,7 +23,6 @@ const AddTodo = ({ dispatch }) => {
   );
 };
 
-
 AddTodo.propTypes = {
   dispatch: PropTypes.func.isRequired
 };
