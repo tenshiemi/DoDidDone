@@ -1,25 +1,16 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { removeTodo } from '../actions/todosAction';
+import TodoItem from './TodoItem';
 
-const TodoList = ({ todoItems, dispatch }) => (
+const TodoList = ({ todoItems }) => (
   <ul className="ToDoList">
     { todoItems.map((todoItem, index) =>
-      <li>
-        { todoItem }
-       <a onClick={ () => {
-          dispatch(removeTodo(index));
-        } } key={ index }>
-          <span> Delete</span>
-        </a>
-      </li>
+      <TodoItem key={ index } todoItem={ todoItem } index={ index } />
     )}
   </ul>
 );
 
 TodoList.propTypes = {
-  todoItems: PropTypes.array.isRequired,
-  dispatch: PropTypes.func.isRequired
+  todoItems: PropTypes.array.isRequired
 };
 
-export default connect()(TodoList);
+export default TodoList;
