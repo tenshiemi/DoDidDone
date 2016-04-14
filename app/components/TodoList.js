@@ -5,10 +5,13 @@ import { removeTodo } from '../actions/todosAction';
 const TodoList = ({ todoItems, dispatch }) => (
   <ul className="ToDoList">
     { todoItems.map((todoItem, index) =>
-      <li onClick={ () => {
-        dispatch(removeTodo(index));
-      } } key={ index }>
+      <li>
         { todoItem }
+       <a onClick={ () => {
+          dispatch(removeTodo(index));
+        } } key={ index }>
+          <span> Delete</span>
+        </a>
       </li>
     )}
   </ul>
