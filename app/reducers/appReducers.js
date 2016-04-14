@@ -1,6 +1,10 @@
 const todos = (state = { todoItems: ['first item'] }, action) => {
   switch (action.type) {
     case 'ADD_TODO': {
+      if (!action.text) {
+        return state;
+      }
+
       return {
         ...state,
         todoItems: [...state.todoItems, action.text]
