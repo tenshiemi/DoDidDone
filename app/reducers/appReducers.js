@@ -7,7 +7,7 @@ const todos = (state = { todoItems: [{ text: 'first item', completed: false }] }
 
       return {
         ...state,
-        todoItems: [...state.todoItems, action.text]
+        todoItems: [...state.todoItems, { text: action.text, completed: false }]
       };
     }
     case 'REMOVE_TODO': {
