@@ -20,11 +20,16 @@ const todos = (state = { todoItems: [{ text: 'first item', completed: false }] }
       };
     }
     case 'TOGGLE_TODO': {
+      const newToDoState = {
+        ...state.todoItems[action.index],
+        completed: !state.todoItems[action.index].completed
+      };
+
       return {
         ...state,
         todoItems: [
           ...state.todoItems.slice(0, action.index),
-          state.todoItems[action.index],
+          newToDoState,
           ...state.todoItems.slice(action.index + 1)
         ]
       };
