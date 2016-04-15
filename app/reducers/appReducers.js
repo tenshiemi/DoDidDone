@@ -19,6 +19,16 @@ const todos = (state = { todoItems: ['first item'] }, action) => {
         ]
       };
     }
+    case 'TOGGLE_TODO': {
+      return {
+        ...state,
+        todoItems: [
+          ...state.todoItems.slice(0, action.index),
+          state.todoItems[action.index],
+          ...state.todoItems.slice(action.index + 1)
+        ]
+      };
+    }
     default: {
       return state;
     }
