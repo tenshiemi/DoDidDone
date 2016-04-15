@@ -10,7 +10,7 @@ const TodoItem = ({ todoItem, index, dispatch }) => (
     <Toggle className="react-toggle" onClick={ () => {
       dispatch(toggleTodo(index));
     }}/>
-    { todoItem }
+    { todoItem.text }
     <a onClick={ () => {
       dispatch(removeTodo(index));
     }}>
@@ -20,7 +20,7 @@ const TodoItem = ({ todoItem, index, dispatch }) => (
 );
 
 TodoItem.propTypes = {
-  todoItem: PropTypes.string.isRequired,
+  todoItem: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired
 };

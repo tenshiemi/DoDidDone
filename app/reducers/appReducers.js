@@ -1,4 +1,4 @@
-const todos = (state = { todoItems: ['first item'] }, action) => {
+const todos = (state = { todoItems: [{ text: 'first item', completed: false }] }, action) => {
   switch (action.type) {
     case 'ADD_TODO': {
       if (!action.text) {
