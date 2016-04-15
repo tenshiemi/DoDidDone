@@ -6,7 +6,7 @@ import Toggle from 'react-toggle';
 
 const TodoItem = ({ todoItem, index, dispatch }) => (
   <li>
-    <Toggle />
+    <Toggle className="react-toggle"/>
     { todoItem }
     <a onClick={ () => {
       dispatch(removeTodo(index));
