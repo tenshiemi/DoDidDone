@@ -2,12 +2,11 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { removeTodo } from '../actions/todosAction';
 import { toggleTodo } from '../actions/todosAction';
-import Toggle from 'react-toggle';
-
+import Checkbox from 'material-ui/lib/checkbox';
 
 const TodoItem = ({ todoItem, index, dispatch }) => (
   <li>
-    <Toggle className="react-toggle" onClick={ () => {
+    <Checkbox className="react-toggle" checked={ todoItem.completed } onClick={ () => {
       dispatch(toggleTodo(index));
     }}/>
     { todoItem.text }
