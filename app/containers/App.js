@@ -1,16 +1,14 @@
 import React from 'react';
 import Nav from '../components/Nav';
-import TodoListContainer from '../containers/TodoListContainer';
 import Footer from '../components/Footer';
 
-const App = () => (
+const App = (props) => (
   <div>
     <Nav />
-    <TodoListContainer />
+    { props.children }
     <Footer />
   </div>
 );
-
 
 export default App;
 
