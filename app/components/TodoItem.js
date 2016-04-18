@@ -6,7 +6,7 @@ import Checkbox from 'material-ui/lib/checkbox';
 
 const TodoItem = ({ todoItem, index, dispatch }) => (
   <li>
-    <Checkbox className="react-toggle" checked={ todoItem.completed } onClick={ () => {
+    <Checkbox checked={ todoItem.completed } onClick={ () => {
       dispatch(toggleTodo(index));
     }}/>
     { todoItem.text }
