@@ -5,18 +5,13 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
-export default class DoDoneDidDropDownMenu extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { value: 1 };
-  }
+const DoDoneDidDropDownMenu = () => (
+  <div>
+    <DropDownMenu>
+      <MenuItem value={1} primaryText="User Profile" />
+      <MenuItem value={2} primaryText="Logout" />
+    </DropDownMenu>
+  </div>
+);
 
-  render() {
-    return (
-      <DropDownMenu value={this.state.value}>
-        <MenuItem value={1} primaryText="User Profile" />
-        <MenuItem value={2} primaryText="Logout" />
-      </DropDownMenu>
-    );
-  }
-}
+export default DoDoneDidDropDownMenu;
