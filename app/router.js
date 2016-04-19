@@ -6,10 +6,10 @@ import TodoListContainer from './containers/TodoListContainer';
 import About from './containers/About';
 
 export default (
-  <Router history={browserHistory}>
+  <Router history={ browserHistory }>
     <Route component={ App }>
       <Route path="/" component={ TodoListContainer } />
-        <Route path="about" component={ About } />
+      <Route path="about" component={ About } />
     </Route>
   </Router>
 );
