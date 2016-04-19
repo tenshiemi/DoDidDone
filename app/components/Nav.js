@@ -4,7 +4,7 @@ import DoDoneDidDropDownMenu from './DropDownMenu';
 
 const Nav = () => (
   <div>
-    <AppBar title="DoDoneDid" iconClassNameRight="muidocs-icon-navigation-expand-more">
+    <AppBar title="DoDoneDid">
       <DoDoneDidDropDownMenu />
     </AppBar>
   </div>
