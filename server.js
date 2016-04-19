@@ -8,7 +8,7 @@ var isDevelopment = (process.env.NODE_ENV !== 'production');
 var static_path = path.join(__dirname, 'dist');
 
 server.use(express.static(static_path))
-  .get('/', function (req, res) {
+  .get('*', function (req, res) {
     res.sendFile('dist/index.html', {
       root: static_path
     });
@@ -24,7 +24,8 @@ if (isDevelopment) {
 
   new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
-    hot: true
+    hot: true,
+    historyApiFallback: true,
   }).listen(3000, 'localhost', function (err, result) {
     if (err) { console.log(err) }
     console.log('Listening at localhost:3000');
