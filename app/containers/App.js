@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Nav from '../components/Nav';
-import TodoListContainer from '../containers/TodoListContainer';
 import Footer from '../components/Footer';
 
-const App = () => (
+const App = (props) => (
   <div>
     <Nav />
-    <TodoListContainer />
+    { props.children }
     <Footer />
   </div>
 );
 
+App.propTypes = {
+  children: PropTypes.object.isRequired
+};
 
 export default App;
 
