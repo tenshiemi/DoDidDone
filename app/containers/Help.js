@@ -1,7 +1,8 @@
 import React from 'react';
+import HelpTabs from '../components/HelpTab';
 
 const Help = () => (
-  <h1>Help</h1>
+  <HelpTabs />
 );
 
 export default Help;
