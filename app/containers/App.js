@@ -5,7 +5,9 @@ import Footer from '../components/Footer';
 const App = (props) => (
   <div>
     <Nav />
-    { props.children }
+    <div className="container">
+      { props.children }
+    </div>
     <Footer />
   </div>
 );
