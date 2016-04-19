@@ -1,11 +1,15 @@
 import React from 'react';
 import AppBar from 'material-ui/lib/app-bar';
+import DoDoneDidDropDownMenu from './DropDownMenu';
 
 const Nav = () => (
-  <AppBar
-    title="DoDoneDid"
-    iconClassNameRight="muidocs-icon-navigation-expand-more"
-  />
+  <div>
+    <AppBar title="DoDoneDid">
+      <DoDoneDidDropDownMenu />
+    </AppBar>
+  </div>
 );
 
 export default Nav;
+
+
