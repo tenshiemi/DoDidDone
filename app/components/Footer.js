@@ -5,7 +5,7 @@ const Footer = () => (
   <div>
     <p>Copyright TrussWorks, 2016</p>
     <p>Onesies for Life (until something else sounds more fun)</p>
-    <Link to={'about'}>Link to About</Link>
+    <Link to={ 'about' }>Link to About</Link>
   </div>
 );
 
