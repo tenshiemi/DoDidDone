@@ -12,11 +12,10 @@ const styles = {
   }
 };
 
-export default class HelpTabs extends Component {
+class HelpTabs extends Component {
   constructor(props) {
     super(props);
   }
-
   handleChange(e) {
     if (e.props.label === 'Contact') {
       browserHistory.push('/help/contact');
@@ -24,7 +23,6 @@ export default class HelpTabs extends Component {
       browserHistory.push('/help/faqs');
     }
   }
-
   render() {
     return (
       <Tabs styles={styles}>
