@@ -1,8 +1,16 @@
-import React from 'react';
-import HelpTabs from '../components/HelpTab';
+import React, { PropTypes } from 'react';
+import HelpTabs from '../components/HelpTabs';
 
-const Help = () => (
-  <HelpTabs />
+const Help = (props) => (
+  <div>
+    <HelpTabs />
+    { props.children }
+  </div>
 );
+
+Help.propTypes = {
+  children: PropTypes.object.isRequired
+};
+
 
 export default Help;

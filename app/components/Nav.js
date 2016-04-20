@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 
 const Nav = () => (
   <div>
-    <AppBar containerElement={<Link to="/"/>} title="DoDoneDid">
+    <AppBar containerElement={<Link to="/" />} title="DoDoneDid">
       <DoDoneDidDropDownMenu />
     </AppBar>
   </div>
