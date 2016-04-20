@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import Tabs from 'material-ui/lib/tabs/tabs';
 import Tab from 'material-ui/lib/tabs/tab';
-// import { browserHistory } from 'react-router'
-// import { Link } from 'react-router';
-// import Tab from './FAQs';
-// import Tab from './ContactTab';
+import { browserHistory } from 'react-router';
 
 const styles = {
   headline: {
@@ -21,26 +18,25 @@ export default class HelpTabs extends Component {
   }
 
   handleChange(e) {
-    console.log('e', e);
-    this.context.router.push('/help/faqs');
+    if (e.props.label === 'Contact') {
+      browserHistory.push('/help/contact');
+    } else {
+      browserHistory.push('/help/faqs');
+    }
   }
 
   render() {
     return (
       <Tabs styles={styles}>
         <Tab label="FAQs" onActive={(e) => {
-          this.handleChange.apply(this, e);
+          this.handleChange.call(this, e);
         }} />
         <Tab label="Contact" onActive={(e) => {
-          console.log(this, 'this');
-          console.log(e, 'e');
-          this.handleChange.apply(this, e);
+          this.handleChange.call(this, e);
         }} />
       </Tabs>
     );
   }
 }
 
-HelpTabs.contextTypes = {
-  router: React.PropTypes.object.isRequired
-};
+export default HelpTabs;
