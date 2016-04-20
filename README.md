@@ -16,3 +16,6 @@
 
 1. Commit your code
 1. Deploy to Heroku with `git push heroku master`
+
+# Tests
+1. Install `npm install -g karma-cli` globally
