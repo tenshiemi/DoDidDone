@@ -6,6 +6,12 @@
 1. Run `npm install`
 1. Install webpack and webpack-dev-server globally with: `npm install -g webpack` and `npm install -g webpack-dev-server`
 1. Add the heroku remote for production `git remote add heroku https://git.heroku.com/dodonedid.git`
+1. Install Mongo
+
+# Setting up MongoDB
+1. `brew install mongodb`
+1. `sudo mkdir -p /data/db`
+1. `sudo chown "id -u" /data/db` [Note: double quotes may need to be ` characters]
 
 # Running server locally
 
