@@ -4,19 +4,29 @@ import { removeTodo } from '../actions/todosAction';
 import { toggleTodo } from '../actions/todosAction';
 import Checkbox from 'material-ui/lib/checkbox';
 
-const TodoItem = ({ todoItem, index, dispatch }) => (
-  <li>
-    <Checkbox checked={ todoItem.completed } onClick={ () => {
-      dispatch(toggleTodo(index));
-    }}/>
-    { todoItem.text }
-    <a onClick={ () => {
-      dispatch(removeTodo(index));
-    }}>
-      <span> Delete</span>
-    </a>
-  </li>
-);
+const TodoItem = ({ todoItem, index, dispatch }) => {
+  const style = {
+    width: '40px',
+    display: 'inline-block'
+  };
+
+  return (
+    <li className="todo-list-item">
+      <div style={ style } >
+        <Checkbox checked={ todoItem.completed } onClick={ () => {
+          dispatch(toggleTodo(index));
+        }}/>
+      </div>
+      <span className="todo-item-text">{ todoItem.text }&nbsp;&nbsp;
+      <a onClick={ () => {
+        dispatch(removeTodo(index));
+      }}>
+        Delete
+      </a>
+      </span>
+    </li>
+  );
+};
 
 TodoItem.propTypes = {
   todoItem: PropTypes.object.isRequired,

@@ -2,22 +2,23 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { addTodo } from '../actions/todosAction';
 import RaisedButton from 'material-ui/lib/raised-button';
+import TextField from 'material-ui/lib/text-field';
 
 const AddTodo = ({ dispatch }) => {
-  let input;
-
   const style = {
     margin: 12
   };
 
   return (
     <div>
-      <input ref={node => {
-        input = node;
-      }} />
+      <TextField
+        hintText="Enter todo item"
+        id="addTodoText"
+      />
       <RaisedButton label="Add" style={style} primary={true} onClick={() => {
-        dispatch(addTodo(input.value));
-        input.value = '';
+        let inputField = document.getElementById('addTodoText');
+        dispatch(addTodo(inputField.value));
+        inputField.value = '';
       }} />
     </div>
   );

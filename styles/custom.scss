@@ -2,6 +2,22 @@ body {
   margin: 0;
 }
 
+.container {
+  margin: auto;
+  width: 960px;
+}
+
 .todo-list {
   list-style-type: none;
+}
+
+.todo-list-item {
+  margin: 10px 0 10px 0;
+  text-align: vertical-text;
+}
+
+.todo-item-text {
+  position: relative;
+  top: -6px;
+  line-height: 20px;
 }
