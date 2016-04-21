@@ -1,5 +1,6 @@
 # Distribution files
-dist
+dist/index_bundle.js
+dist/index_bundle.js.map
 
 # Logs
 logs
