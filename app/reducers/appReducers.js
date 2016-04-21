@@ -1,18 +1,22 @@
+import { List } from 'immutable';
+
 const sampleData = [
   { text: 'checked item', completed: true },
   { text: 'unchecked item', completed: false }
 ];
 
-const todos = (state = { todoItems: sampleData }, action) => {
+let immutableSampleData = List(sampleData);
+
+const todos = (state = { todoItems: immutableSampleData }, action) => {
   switch (action.type) {
     case 'ADD_TODO': {
       if (!action.text) {
         return state;
       }
-
       return {
         ...state,
-        todoItems: [...state.todoItems, { text: action.text, completed: false }]
+        //pushing the new add_todo object to the existing array state.todoItems
+        todoItems: state.todoItems.push({ text: action.text, completed: false })
       };
     }
     case 'REMOVE_TODO': {
