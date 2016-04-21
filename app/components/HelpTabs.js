@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Tabs from 'material-ui/lib/tabs/tabs';
-import Tab from 'material-ui/lib/tabs/tab';
+import { Tabs, Tab } from 'material-ui/Tabs/Tabs';
 import { browserHistory } from 'react-router';
 
 const styles = {

@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { addTodo } from '../actions/todosAction';
-import TextField from 'material-ui/lib/text-field';
+import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 const AddTodo = ({ dispatch }) => {

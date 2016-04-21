@@ -39,12 +39,8 @@
     "react-bootstrap": "^0.28.4",
     "react-dom": "^15.0.1",
     "react-redux": "^4.4.4",
-<<<<<<< ff033613b0ae98b0107159ff5059d7cd9d17d619
     "react-router": "^2.2.4",
-    "react-tap-event-plugin": "^0.2.2",
-=======
     "react-tap-event-plugin": "^1.0.0",
->>>>>>> updated React and its dependencies
     "redux": "^3.3.1",
     "redux-devtools": "^3.2.0",
     "sass-loader": "^3.2.0",
