@@ -12,4 +12,3 @@ const Footer = () => (
 );
 
 export default Footer;
-// From http://redux.js.org/docs/basics/UsageWithReact.html

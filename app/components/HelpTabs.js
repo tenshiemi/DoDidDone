@@ -1,16 +1,6 @@
 import React, { Component } from 'react';
-import Tabs from 'material-ui/lib/tabs/tabs';
-import Tab from 'material-ui/lib/tabs/tab';
+import { Tabs, Tab } from 'material-ui/Tabs';
 import { browserHistory } from 'react-router';
-
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400
-  }
-};
 
 class HelpTabs extends Component {
   constructor(props) {
@@ -25,7 +15,7 @@ class HelpTabs extends Component {
   }
   render() {
     return (
-      <Tabs styles={styles}>
+      <Tabs>
         <Tab label="FAQs" onActive={(e) => {
           this.handleChange.call(this, e);
         }} />

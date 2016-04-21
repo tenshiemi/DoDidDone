@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { removeTodo } from '../actions/todosAction';
 import { toggleTodo } from '../actions/todosAction';
-import Checkbox from 'material-ui/lib/checkbox';
+import Checkbox from 'material-ui/Checkbox';
 
 const TodoItem = ({ todoItem, index, dispatch }) => {
   const style = {
