@@ -1,7 +1,7 @@
 import React from 'react';
-import AppBar from 'material-ui/lib/app-bar';
 import DoDoneDidDropDownMenu from './DropDownMenu';
 import { Link } from 'react-router';
+import AppBar from 'material-ui/AppBar';
 
 const Nav = () => (
   <div>
