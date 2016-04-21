@@ -5,7 +5,11 @@ import AppBar from 'material-ui/AppBar';
 
 const Nav = () => (
   <div>
-    <AppBar containerElement={ <Link to="/" /> } title="DoDoneDid">
+    <AppBar
+      iconElementLeft={<div />}
+      containerElement={ <Link to="/" /> }
+      title="DoDoneDid"
+    >
       <DropDownMenu />
     </AppBar>
   </div>
