@@ -15,7 +15,7 @@ const AddTodo = ({ dispatch }) => {
         hintText="Enter todo item"
         id="addTodoText"
       />
-      <RaisedButton label="Add" style={style} primary={true} onClick={() => {
+      <RaisedButton label="Add" style={ style } primary={ true } onClick={ () => {
         let inputField = document.getElementById('addTodoText');
         dispatch(addTodo(inputField.value));
         inputField.value = '';

@@ -1,12 +1,12 @@
 import React from 'react';
-import DoDoneDidDropDownMenu from './DropDownMenu';
 import { Link } from 'react-router';
+import DropDownMenu from './DropDownMenu';
 import AppBar from 'material-ui/AppBar';
 
 const Nav = () => (
   <div>
-    <AppBar containerElement={<Link to="/" />} title="DoDoneDid">
-      <DoDoneDidDropDownMenu />
+    <AppBar containerElement={ <Link to="/" /> } title="DoDoneDid">
+      <DropDownMenu />
     </AppBar>
   </div>
 );
