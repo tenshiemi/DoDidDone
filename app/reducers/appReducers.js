@@ -32,7 +32,7 @@ const todos = (state = { todoItems: List(sampleData) }, action) => {
 
       return {
         ...state,
-        todoItems: newToDoList
+        todoItems: newTodoList
       };
     }
     default: {
