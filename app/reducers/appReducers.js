@@ -1,13 +1,11 @@
 import { List } from 'immutable';
 
 const sampleData = [
-  { text: '1', completed: true },
-  { text: '2', completed: false }
+  { text: 'Do this first', completed: true },
+  { text: 'Then do that', completed: false }
 ];
 
-let immutableSampleData = List(sampleData);
-
-const todos = (state = { todoItems: immutableSampleData }, action) => {
+const todos = (state = { todoItems: List(sampleData) }, action) => {
   switch (action.type) {
     case 'ADD_TODO': {
       if (!action.text) {
@@ -16,8 +14,6 @@ const todos = (state = { todoItems: immutableSampleData }, action) => {
       return {
         ...state,
         todoItems: state.todoItems.push({ text: action.text, completed: false })
-      //  IF WE REMOVE THE spread (...state), the state seems to stil be correctly updated...WHY?
-      //  pushing the new add_todo object to the existing array state.todoItems
       };
     }
     case 'REMOVE_TODO': {
@@ -25,23 +21,17 @@ const todos = (state = { todoItems: immutableSampleData }, action) => {
         ...state,
         todoItems: state.todoItems.delete(action.index) };
     }
-      //  REMOVING this  ,...state.todoItems.slice(action.index + 1)
-      //  from the REMOVE_TODO array doesn't break the code. why?
-      //  ALSO there is a bug, if you remove all the items from the
-      //  to do list you end up not being able to add new ones
     case 'TOGGLE_TODO': {
-      const newToDoState = {
-        ...state.todoItems[action.index],
-        completed: !state.todoItems[action.index].completed
-      };
+      const newToDoList = state.todoItems.update(action.index, (todoItem)=> {
+        return {
+          ...todoItem,
+          completed: !todoItem.completed
+        };
+      });
 
       return {
         ...state,
-        todoItems: [
-          ...state.todoItems.slice(0, action.index),
-          newToDoState,
-          ...state.todoItems.slice(action.index + 1)
-        ]
+        todoItems: newToDoList
       };
     }
     default: {
