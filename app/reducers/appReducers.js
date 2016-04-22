@@ -19,10 +19,11 @@ const todos = (state = { todoItems: List(sampleData) }, action) => {
     case 'REMOVE_TODO': {
       return {
         ...state,
-        todoItems: state.todoItems.delete(action.index) };
+        todoItems: state.todoItems.delete(action.index)
+      };
     }
     case 'TOGGLE_TODO': {
-      const newToDoList = state.todoItems.update(action.index, (todoItem)=> {
+      const newTodoList = state.todoItems.update(action.index, (todoItem) => {
         return {
           ...todoItem,
           completed: !todoItem.completed
