@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import TodoList from '../components/TodoList';
 import AddTodo from '../components/AddTodo';
+import Immutable from 'immutable';
 
 class TodoListContainer extends React.Component {
   constructor(props) {
@@ -18,11 +19,11 @@ class TodoListContainer extends React.Component {
 }
 
 TodoListContainer.propTypes = {
-  todoItems: PropTypes.array.isRequired
+  todoItems: PropTypes.instanceOf(Immutable.List)
 };
 
 const mapStateToProps = (state) => {
-  const { todoItems } = state;
+  const todoItems = state.get('todoItems');
 
   return {
     todoItems

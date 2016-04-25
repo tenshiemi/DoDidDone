@@ -1,11 +1,12 @@
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 
 const sampleData = [
   { text: 'Do this first', completed: true },
   { text: 'Then do that', completed: false }
 ];
 
-const todos = (state = { todoItems: List(sampleData) }, action) => {
+const todos = (state = Map({ todoItems: List(sampleData) }), action) => {
+  // console.log(state.get('todoItems'), 'state reducers');
   switch (action.type) {
     case 'ADD_TODO': {
       if (!action.text) {
