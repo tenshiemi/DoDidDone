@@ -31,7 +31,6 @@
     "body-parser": "^1.15.0",
     "classnames": "^2.2.3",
     "css-loader": "^0.23.1",
-    "es6-promise": "^3.1.2",
     "express": "^4.13.4",
     "html-webpack-plugin": "^2.15.0",
     "immutable": "^3.8.1",
