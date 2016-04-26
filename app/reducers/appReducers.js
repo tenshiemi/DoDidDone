@@ -19,12 +19,13 @@ const todos = (state = Map({ todoItems: List(initialData) }), action) => {
       return state.set('todoItems', state.get('todoItems').delete(action.index));
     }
     case 'TOGGLE_TODO': {
-      const toggleTodoItem = state.get('todoItems').update(action.index, (todoItem) => {
+      const newTodoList = state.get('todoItems').update(action.index, (todoItem) => {
         return {
           ...todoItem,
           completed: !todoItem.completed
-        };});
-      return state.set('todoItems', toggleTodoItem);
+        };
+      });
+      return state.set('todoItems', newTodoList);
     }
     default: {
       return state;
