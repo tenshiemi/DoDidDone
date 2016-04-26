@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+var Todo = require('./models/todo');
 
 const apiServer = (PORT) => {
   const backendServer = express();
