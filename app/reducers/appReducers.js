@@ -1,39 +1,31 @@
-import { List } from 'immutable';
+import { List, Map } from 'immutable';
 
-const sampleData = [
+const initialData = [
   { text: 'Do this first', completed: true },
   { text: 'Then do that', completed: false }
 ];
 
-const todos = (state = { todoItems: List(sampleData) }, action) => {
+const todos = (state = Map({ todoItems: List(initialData) }), action) => {
   switch (action.type) {
     case 'ADD_TODO': {
       if (!action.text) {
         return state;
       }
-      return {
-        ...state,
-        todoItems: state.todoItems.push({ text: action.text, completed: false })
-      };
+      return state.set('todoItems', state.get('todoItems').push(
+        { text: action.text, completed: false }
+      ));
     }
     case 'REMOVE_TODO': {
-      return {
-        ...state,
-        todoItems: state.todoItems.delete(action.index)
-      };
+      return state.set('todoItems', state.get('todoItems').delete(action.index));
     }
     case 'TOGGLE_TODO': {
-      const newTodoList = state.todoItems.update(action.index, (todoItem) => {
+      const newTodoList = state.get('todoItems').update(action.index, (todoItem) => {
         return {
           ...todoItem,
           completed: !todoItem.completed
         };
       });
-
-      return {
-        ...state,
-        todoItems: newTodoList
-      };
+      return state.set('todoItems', newTodoList);
     }
     default: {
       return state;
