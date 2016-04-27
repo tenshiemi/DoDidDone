@@ -1,6 +1,5 @@
 import React from 'react';
 import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
-
 import App from './containers/App';
 import TodoListContainer from './containers/TodoListContainer';
 import About from './containers/About';
@@ -13,11 +12,14 @@ export default (
     <Route component={ App }>
       <Route path="/" component={ TodoListContainer } />
       <Route path="about" component={ About } />
+        <IndexRedirect to="about" />
+        <Route path="about" component={ About }>
       <Route path="help" component={ Help }>
         <IndexRedirect to="faqs" />
         <Route path="faqs" component={ FAQs } />
         <Route path="contact" component={ ContactTab } />
       </Route>
+    </Route>
     </Route>
   </Router>
 );

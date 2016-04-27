@@ -46,7 +46,7 @@ class DropDownMenu extends Component {
           }}
         >
           <Menu>
-            <MenuItem value={1} primaryText="User Profile" />
+            <MenuItem value={1}><Link to={ 'about' }>About this user</Link></MenuItem>
             <MenuItem value={2}><Link to={ 'help' }>Help</Link></MenuItem>
             <MenuItem value={3} primaryText="Logout" />
           </Menu>
