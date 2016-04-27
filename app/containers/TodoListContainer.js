@@ -23,10 +23,8 @@ TodoListContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const todoItems = state.get('todoItems');
-
   return {
-    todoItems
+    todoItems: state.todos.get('todoItems')
   };
 };
 
