@@ -21,7 +21,10 @@ const TodoItem = ({ todoItem, index, dispatch }) => {
       <a onClick={ () => {
         dispatch(removeTodo(index));
       }}>
-        <i className="material-icons" aria-label="Delete">delete_forever</i>
+        <i
+          className="material-icons material-icons--delete-button"
+          aria-label="Delete">delete_forever
+        </i>
       </a>
       </span>
     </li>
