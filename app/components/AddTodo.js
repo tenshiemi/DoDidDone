@@ -9,6 +9,12 @@ const AddTodo = ({ dispatch }) => {
     margin: 12
   };
 
+  const addTodoItem = () => {
+    let inputField = document.getElementById('addTodoText');
+    dispatch(addTodo(inputField.value));
+    inputField.value = '';
+  };
+
   return (
     <div>
       <TextField
@@ -17,20 +23,16 @@ const AddTodo = ({ dispatch }) => {
         aria-label="Enter todo item"
         onKeyPress= { (e) => {
           if (e.key === 'Enter') {
-            let inputField = document.getElementById('addTodoText');
-            dispatch(addTodo(inputField.value));
-            inputField.value = '';
+            addTodoItem();
           }
-        }}/>
+        }} />
       <RaisedButton
         aria-label="Add Item"
         label="Add"
         style={ style }
         primary={ true }
         onClick={ () => {
-          let inputField = document.getElementById('addTodoText');
-          dispatch(addTodo(inputField.value));
-          inputField.value = '';
+          addTodoItem();
         }} />
     </div>
   );
