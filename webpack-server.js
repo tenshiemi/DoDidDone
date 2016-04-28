@@ -9,7 +9,7 @@ const appServer = (PORT) => {
     hot: true,
     historyApiFallback: true,
     proxy: {
-      "*" : `http://localhost:${PORT - 1}`
+      "*" : `http://localhost:8080`
     }
   });
 

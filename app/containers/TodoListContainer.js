@@ -1,12 +1,19 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import 'isomorphic-fetch';
+import Immutable from 'immutable';
 import TodoList from '../components/TodoList';
 import AddTodo from '../components/AddTodo';
-import Immutable from 'immutable';
 
 class TodoListContainer extends React.Component {
   constructor(props) {
     super(props);
+
+    fetch('/tasks', { method: 'get' }).then(function(response) {
+      return response.json();
+    }).then(function(response) {
+      console.log(response);
+    });
   }
   render() {
     return (
