@@ -23,6 +23,9 @@ body {
 }
 
 .material-icons {
+    position: relative;
+    top: 4px;
+    color: #00BCD4;
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
   /* Support for Safari and Chrome. */
