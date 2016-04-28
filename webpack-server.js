@@ -1,9 +1,9 @@
 const webpack = require('webpack');
 const config = require('./webpack.config');
-const WebpackDevServer = require('webpack-dev-server');
-
 
 const appServer = (PORT) => {
+  const WebpackDevServer = require('webpack-dev-server');
+
   const frontendServer = new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,
