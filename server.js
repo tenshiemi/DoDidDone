@@ -1,34 +1,20 @@
-const express = require('express');
-const path = require('path');
-const webpack = require('webpack');
+const appServer = require("./webpack-server");
+const apiServer = require("./express-server");
+const mongoose = require('mongoose');
+const config = require('./config');
 
-const server = express();
+const PORT = process.env.PORT || 8080;
+const PROD = process.env.NODE_ENV === "production";
 
-const isDevelopment = (process.env.NODE_ENV !== 'production');
-const static_path = path.join(__dirname, 'dist');
 
-server.use(express.static(static_path))
-  .get('*', (req, res) => {
-    res.sendFile('index.html', {
-      root: static_path
-    });
-  }).listen(process.env.PORT || 8080, (err) => {
-    if (err) { console.log(err) };
-    console.log('Listening at localhost:8080');
-  });
+mongoose.connect(config.database);
+mongoose.connection.on('error', function() {
+  console.info('Error: Could not connect to MongoDB. Did you forget to run `mongod`?');
+});
 
-if (isDevelopment) {
-  const config = require('./webpack.config');
-  const WebpackDevServer = require('webpack-dev-server');
-  console.log(config.output.publicPath);
-
-  new WebpackDevServer(webpack(config), {
-    publicPath: config.output.publicPath,
-    hot: true,
-    historyApiFallback: true,
-  }).listen(3000, 'localhost', (err, result) => {
-    if (err) { console.log(err) }
-    console.log('Listening at localhost:3000');
-  });
+if (PROD) {
+  apiServer(8080);
+} else {
+  apiServer(8080);
+  appServer(3000);
 }
-
