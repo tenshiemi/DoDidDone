@@ -9,23 +9,30 @@ const AddTodo = ({ dispatch }) => {
     margin: 12
   };
 
+  const addTodoItem = () => {
+    let inputField = document.getElementById('addTodoText');
+    dispatch(addTodo(inputField.value));
+    inputField.value = '';
+  };
+
   return (
     <div>
       <TextField
         hintText="Enter todo item"
         id="addTodoText"
         aria-label="Enter todo item"
-      />
+        onKeyPress= { (e) => {
+          if (e.key === 'Enter') {
+            addTodoItem();
+          }
+        }} />
       <RaisedButton
         aria-label="Add Item"
         label="Add"
         style={ style }
         primary={ true }
-        onClick={ () => {
-          let inputField = document.getElementById('addTodoText');
-          dispatch(addTodo(inputField.value));
-          inputField.value = '';
-        }} />
+        onClick={ addTodoItem }
+      />
     </div>
   );
 };
