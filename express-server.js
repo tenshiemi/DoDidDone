@@ -7,15 +7,27 @@ const apiServer = (PORT) => {
 
   backendServer.use(express.static(static_path));
 
-  backendServer.get('/*', function (req, res) {
+    /**
+   * HTTP GET /tasks
+   * Returns: the list of tasks in JSON format
+   */
+  backendServer.get('/tasks', (req, res) => {
+    res.json({ "tasks": [
+        { "text": "checked item", "completed": "true" },
+        { "text": "unchecked item", "completed": "false" }
+      ]
+    });
+  });
+
+  backendServer.get('/*', (req, res) => {
     res.sendFile('index.html', {
       root: static_path
     });
   })
 
-  backendServer.listen(PORT, function (err) {
+  backendServer.listen(PORT, (err) => {
     if (err) { console.log(err) };
-    console.log('Listening at localhost:8080');
+    console.log(`Listening at localhost:${PORT}`);
   });
 }
 
