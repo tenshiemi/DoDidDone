@@ -14,12 +14,18 @@ const AddTodo = ({ dispatch }) => {
       <TextField
         hintText="Enter todo item"
         id="addTodoText"
+        aria-label="Enter todo item"
       />
-      <RaisedButton label="Add" style={ style } primary={ true } onClick={ () => {
-        let inputField = document.getElementById('addTodoText');
-        dispatch(addTodo(inputField.value));
-        inputField.value = '';
-      }} />
+      <RaisedButton
+        aria-label="Add Item"
+        label="Add"
+        style={ style }
+        primary={ true }
+        onClick={ () => {
+          let inputField = document.getElementById('addTodoText');
+          dispatch(addTodo(inputField.value));
+          inputField.value = '';
+        }} />
     </div>
   );
 };
