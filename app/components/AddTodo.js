@@ -15,6 +15,13 @@ const AddTodo = ({ dispatch }) => {
         hintText="Enter todo item"
         id="addTodoText"
         aria-label="Enter todo item"
+        onKeyPress= { (e) => {
+          if (e.key === 'Enter') {
+            let inputField = document.getElementById('addTodoText');
+            dispatch(addTodo(inputField.value));
+            inputField.value = '';
+          }
+        }}
       />
       <RaisedButton
         aria-label="Add Item"
