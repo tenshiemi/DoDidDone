@@ -46,8 +46,8 @@ const apiServer = (PORT) => {
     res.json(todoItems);
   });
 
-  backendServer.get('/*', (req, res) => {
-    res.sendFile('index.html', {
+  backendServer.get('/*', (request, response) => {
+    response.sendFile('index.html', {
       root: static_path
     });
   })
