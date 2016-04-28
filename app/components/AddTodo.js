@@ -21,8 +21,7 @@ const AddTodo = ({ dispatch }) => {
             dispatch(addTodo(inputField.value));
             inputField.value = '';
           }
-        }}
-      />
+        }}/>
       <RaisedButton
         aria-label="Add Item"
         label="Add"
