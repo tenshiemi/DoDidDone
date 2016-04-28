@@ -31,9 +31,8 @@ const AddTodo = ({ dispatch }) => {
         label="Add"
         style={ style }
         primary={ true }
-        onClick={ () => {
-          addTodoItem();
-        }} />
+        onClick={ addTodoItem }
+      />
     </div>
   );
 };
