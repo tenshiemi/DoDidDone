@@ -11,10 +11,10 @@ const apiServer = (PORT) => {
    * HTTP GET /tasks
    * Returns: the list of tasks in JSON format
    */
-  backendServer.get('/tasks', (req, res) => {
-    res.json({ "tasks": [
-        { "text": "checked item", "completed": "true" },
-        { "text": "unchecked item", "completed": "false" }
+  backendServer.get('/todos', (req, res) => {
+    res.json({ "todos": [
+        { "text": "checked item", "completed": true },
+        { "text": "unchecked item", "completed": false }
       ]
     });
   });

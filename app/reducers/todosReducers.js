@@ -1,12 +1,10 @@
 import { List, Map } from 'immutable';
 
-const initialData = [
-  { text: 'Do this first', completed: true },
-  { text: 'Then do that', completed: false }
-];
-
-const todos = (state = Map({ todoItems: List(initialData) }), action) => {
+const todos = (state = Map({ todoItems: List() }), action) => {
   switch (action.type) {
+    case 'RECEIVE_TODO_ITEMS': {
+      return state.set('todoItems', List(action.todoItems));
+    }
     case 'ADD_TODO': {
       if (!action.text) {
         return state;
