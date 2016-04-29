@@ -5,14 +5,6 @@ const todos = (state = Map({ todoItems: List() }), action) => {
     case 'RECEIVE_TODO_ITEMS': {
       return state.set('todoItems', List(action.todoItems));
     }
-    case 'ADD_TODO': {
-      if (!action.text) {
-        return state;
-      }
-      return state.set('todoItems', state.get('todoItems').push(
-        { text: action.text, completed: false }
-      ));
-    }
     case 'REMOVE_TODO': {
       return state.set('todoItems', state.get('todoItems').delete(action.index));
     }

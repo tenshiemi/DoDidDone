@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { addTodo } from '../actions/todosAction';
+import { addTodoItem } from '../actions/todosAction';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -9,10 +9,13 @@ const AddTodo = ({ dispatch }) => {
     margin: 12
   };
 
-  const addTodoItem = () => {
+  const addTodo = () => {
     let inputField = document.getElementById('addTodoText');
-    dispatch(addTodo(inputField.value));
-    inputField.value = '';
+
+    if (inputField.value !== '') {
+      dispatch(addTodoItem(inputField.value));
+      inputField.value = '';
+    }
   };
 
   return (
@@ -23,7 +26,7 @@ const AddTodo = ({ dispatch }) => {
         aria-label="Enter todo item"
         onKeyPress= { (e) => {
           if (e.key === 'Enter') {
-            addTodoItem();
+            addTodo();
           }
         }} />
       <RaisedButton
@@ -31,7 +34,7 @@ const AddTodo = ({ dispatch }) => {
         label="Add"
         style={ style }
         primary={ true }
-        onClick={ addTodoItem }
+        onClick={ addTodo }
       />
     </div>
   );
