@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import TodoItem from './TodoItem';
-import Immutable from 'immutable';
+import { List } from 'immutable';
 
 const TodoList = ({ todoItems }) => (
   <ul className="todo-list">
@@ -11,7 +11,7 @@ const TodoList = ({ todoItems }) => (
 );
 
 TodoList.propTypes = {
-  todoItems: PropTypes.instanceOf(Immutable.List)
+  todoItems: PropTypes.instanceOf(List)
 };
 
 export default TodoList;

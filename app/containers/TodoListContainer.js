@@ -1,12 +1,16 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import 'isomorphic-fetch';
+import { List } from 'immutable';
+import { fetchTodoItems } from '../actions/todosAction';
 import TodoList from '../components/TodoList';
 import AddTodo from '../components/AddTodo';
-import Immutable from 'immutable';
 
 class TodoListContainer extends React.Component {
   constructor(props) {
     super(props);
+
+    this.props.dispatch(fetchTodoItems());
   }
   render() {
     return (
@@ -19,7 +23,8 @@ class TodoListContainer extends React.Component {
 }
 
 TodoListContainer.propTypes = {
-  todoItems: PropTypes.instanceOf(Immutable.List)
+  todoItems: PropTypes.instanceOf(List),
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
