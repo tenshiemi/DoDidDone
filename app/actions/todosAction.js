@@ -24,10 +24,29 @@ export function receiveTodoItems(todoItems) {
 
 export function fetchTodoItems() {
   return function(dispatch) {
-    fetch('/todos', { method: 'get' }).then(function(response) {
+    fetch('/todos', { method: 'GET' }).then(function(response) {
       return response.json();
     }).then(function(response) {
       dispatch(receiveTodoItems(response.todos));
+    }).catch(function(error) {
+      console.log('request failed', error);
+    });
+  };
+}
+
+export function addTodoItem(text) {
+  return function(dispatch) {
+    fetch('/todo', {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ text })
+    }).then(function() {
+      dispatch(fetchTodoItems());
+    }).catch(function(error) {
+      console.log('request failed', error);
     });
   };
 }
