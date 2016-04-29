@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
+import Immutable, { List } from 'immutable';
 
-const UserBio = () => (
+const UserBio = ({ userBio }) => (
 	<div>
-		<p>Olivia Overscheduled</p>
+    { userBio.map((userBio) =>
+      <span className="userBioText">{ userBio.text }</span>
+      )}
 	</div>
 );
+
+UserBio.PropTypes = {
+  userBio: PropTypes.instanceOf(Immutable.List)
+};
 
 export default UserBio;
