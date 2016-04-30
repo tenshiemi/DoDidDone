@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { removeTodo } from '../actions/todosAction';
+import { removeTodoItem } from '../actions/todosAction';
 import { toggleTodo } from '../actions/todosAction';
 import Checkbox from 'material-ui/Checkbox';
 
@@ -19,7 +19,7 @@ const TodoItem = ({ todoItem, index, dispatch }) => {
       </div>
       <span className="todo-item-text">{ todoItem.text }&nbsp;&nbsp;
       <a onClick={ () => {
-        dispatch(removeTodo(index));
+        dispatch(removeTodoItem(index));
       }}>
         <i
           className="material-icons material-icons--delete-button"

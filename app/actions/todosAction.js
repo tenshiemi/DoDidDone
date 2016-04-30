@@ -1,15 +1,5 @@
-export const ADD_TODO = 'ADD_TODO';
-export const REMOVE_TODO = 'REMOVE_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
 export const RECEIVE_TODO_ITEMS = 'RECEIVE_TODO_ITEMS';
-
-export function addTodo(text) {
-  return { type: ADD_TODO, text };
-}
-
-export function removeTodo(index) {
-  return { type: REMOVE_TODO, index };
-}
 
 export function toggleTodo(index) {
   return { type: TOGGLE_TODO, index };
@@ -43,8 +33,29 @@ export function addTodoItem(text) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ text })
-    }).then(function() {
-      dispatch(fetchTodoItems());
+    }).then(function(response) {
+      return response.json();
+    }).then(function(responseJSON) {
+      dispatch(receiveTodoItems(responseJSON.todos));
+    }).catch(function(error) {
+      console.log('request failed', error);
+    });
+  };
+}
+
+export function removeTodoItem(index) {
+  return function(dispatch) {
+    fetch('/todo', {
+      method: 'DELETE',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ index })
+    }).then(function(response) {
+      return response.json();
+    }).then(function(responseJSON) {
+      dispatch(receiveTodoItems(responseJSON.todos));
     }).catch(function(error) {
       console.log('request failed', error);
     });
