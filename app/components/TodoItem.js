@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { removeTodoItem } from '../actions/todosAction';
-import { toggleTodo } from '../actions/todosAction';
+import { toggleTodoStatus } from '../actions/todosAction';
 import Checkbox from 'material-ui/Checkbox';
 
 const TodoItem = ({ todoItem, index, dispatch }) => {
@@ -14,7 +14,7 @@ const TodoItem = ({ todoItem, index, dispatch }) => {
     <li className="todo-list-item">
       <div style={ style } >
         <Checkbox aria-label="Checkbox" checked={ todoItem.completed } onClick={ () => {
-          dispatch(toggleTodo(index));
+          dispatch(toggleTodoStatus(index));
         }}/>
       </div>
       <span className="todo-item-text">{ todoItem.text }&nbsp;&nbsp;

@@ -38,6 +38,14 @@ const apiServer = (PORT) => {
     res.json(todoItems);
   });
 
+  backendServer.put('/todo', (req, res) => {
+    const index = parseInt(req.body.index, 10);
+
+    todoItems.todos[index].completed = !todoItems.todos[index].completed;
+
+    res.json(todoItems);
+  });
+
   backendServer.get('/*', (req, res) => {
     res.sendFile('index.html', {
       root: static_path
