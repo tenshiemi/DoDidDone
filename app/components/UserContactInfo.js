@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-// import { List } from 'immutable';
 
 const UserContact = ({ userContact }) => {
   console.log(userContact);

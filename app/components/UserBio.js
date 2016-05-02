@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-// import { List } from 'immutable';
 
 const UserBio = ({ userBio }) => {
   console.log(userBio);
