@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 
 const UserBio = ({ userBio }) => {
-  console.log(userBio);
   return (
     <div>
       <span className="userBioText">{ userBio }</span>
@@ -9,7 +8,7 @@ const UserBio = ({ userBio }) => {
   );
 };
 
-UserBio.PropTypes = {
+UserBio.propTypes = {
   userBio: PropTypes.string
 };
 

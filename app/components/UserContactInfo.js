@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 
 const UserContact = ({ userContact }) => {
-  console.log(userContact);
   return (
     <div>
       <span className="userContactText">{ userContact }</span>
@@ -9,7 +8,7 @@ const UserContact = ({ userContact }) => {
   );
 };
 
-UserContact.PropTypes = {
+UserContact.propTypes = {
   userContact: PropTypes.string
 };
 

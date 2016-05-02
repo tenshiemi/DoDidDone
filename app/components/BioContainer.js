@@ -5,7 +5,6 @@ import UserContactInfo from './UserContactInfo.js';
 import { List } from 'immutable';
 
 const BioContainer = ({ userData }) => {
-  console.log('userData in BioContainer.js', userData);
   return (
     <div>
      { userData.map((userDetail, index) =>
@@ -19,7 +18,7 @@ const BioContainer = ({ userData }) => {
   );
 };
 
-BioContainer.PropTypes = {
+BioContainer.propTypes = {
   userData: PropTypes.instanceOf(List)
 };
 

@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 
 const UserPicture = ({ userPicture }) => {
-  console.log(userPicture);
   return (
     <div>
       <span className="userPhoto" ><img src={ userPicture } /></span>
@@ -9,7 +8,7 @@ const UserPicture = ({ userPicture }) => {
   );
 };
 
-UserPicture.PropTypes = {
+UserPicture.propTypes = {
   userPicture: PropTypes.string
 };
 

@@ -16,7 +16,6 @@ class About extends React.Component {
     super(props);
   }
   render() {
-    console.log('userData in About.js', userData);
     return (
 			<div>
         <BioContainer userData={ userData } />
