@@ -17,12 +17,12 @@ const TodoItem = ({ todoItem, index, dispatch }) => {
           dispatch(toggleTodo(index));
         }}/>
       </div>
-      <span className="todo-item--text">{ todoItem.text }&nbsp;&nbsp;
+      <span className="todo-item__text">{ todoItem.text }&nbsp;&nbsp;
       <a onClick={ () => {
         dispatch(removeTodo(index));
       }}>
         <i
-          className="material-icons material-icons__delete-button"
+          className="material-icons material-icons__delete"
           aria-label="Delete">delete_forever
         </i>
       </a>

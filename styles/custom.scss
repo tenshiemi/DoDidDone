@@ -5,11 +5,11 @@ body {
 .app-container {
   margin: auto;
   width: 960px;
+}
 
-  &--footer  {
+.footer {
   margin: auto;
   width: 960px;
-  }
 }
 
 .todo-list {
@@ -20,13 +20,13 @@ body {
   text-align: vertical-text;
   }
 
-  &--text {
+  &__text {
   position: relative;
   top: -6px;
   line-height: 20px;
   }
-
 }
+
 .material-icons {
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
@@ -39,7 +39,7 @@ body {
   /* Support for IE. */
   font-feature-settings: 'liga';
 
-  &__delete-button {
+  &__delete {
       position: relative;
       top: 4px;
       color: #00BCD4;
