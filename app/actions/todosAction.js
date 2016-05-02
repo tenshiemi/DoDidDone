@@ -1,4 +1,14 @@
+export const REMOVE_TODO = 'REMOVE_TODO';
+export const TOGGLE_TODO = 'TOGGLE_TODO';
 export const RECEIVE_TODO_ITEMS = 'RECEIVE_TODO_ITEMS';
+
+export function removeTodo(index) {
+  return { type: REMOVE_TODO, index };
+}
+
+export function toggleTodo(index) {
+  return { type: TOGGLE_TODO, index };
+}
 
 export function receiveTodoItems(todoItems) {
   return {

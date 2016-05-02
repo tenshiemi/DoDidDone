@@ -16,7 +16,7 @@
 # Running server locally
 
 1. Run `npm start` from the root directory of the app in command line
-1. Navigate to `localhost:8080` to view your local environment
+1. Navigate to `localhost:3000` to view your local environment
 
 # Deploying to Heroku
 

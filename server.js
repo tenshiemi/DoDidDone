@@ -14,6 +14,6 @@ mongoose.connection.on('error', function() {
 if (PROD) {
   apiServer(PORT);
 } else {
-  apiServer(PORT - 1);
-  appServer(PORT);
+  apiServer(8080);
+  appServer(3000);
 }
