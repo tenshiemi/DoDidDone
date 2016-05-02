@@ -8,8 +8,14 @@ const todos = (state = Map({ todoItems: List() }), action) => {
       return state.set('todoItems', List(action.todoItems));
     }
     case 'EDIT_TODO_ITEM': {
-      console.log(state);
-      return state;
+      console.log(action.text);
+      const editedTodoItem = state.get('todoItems').update(action.index, (text) => {
+        return {
+          ...todoItem,
+          text
+        };
+      });
+      return state.set('todoItems', editedTodoItem);
     }
     default: {
       return state;
