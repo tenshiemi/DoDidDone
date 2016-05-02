@@ -15,12 +15,12 @@ const TodoItem = ({ todoItem, index, dispatch }) => {
     <li className="todo-list__item">
       <div style={ style } >
         <Checkbox aria-label="Checkbox" checked={ todoItem.completed } onClick={ () => {
-          dispatch(toggleTodoStatus(index));
+          dispatch(toggleTodoStatus(index, todoItem._id));
         }}/>
       </div>
       <span className="todo-item__text">{ todoItem.text }&nbsp;&nbsp;
       <a onClick={ () => {
-        dispatch(removeTodo(index, todoItem._id));
+        dispatch(removeTodoItem(index, todoItem._id));
       }}>
         <i
           className="material-icons material-icons__delete"

@@ -30,7 +30,7 @@ const apiServer = (PORT) => {
     });
   });
 
-  backendServer.post('/todo', (request, response) => {
+  backendServer.post('/todos', (request, response) => {
     var todo;
     console.log("POST: ", request.body);
     todo = new TodoModel({
@@ -46,21 +46,35 @@ const apiServer = (PORT) => {
     });
   });
 
-  backendServer.delete('/todo', (req, res) => {
-    const index = parseInt(req.body.index, 10);
-    todoItems.todos = todoItems.todos.slice(0, req.body.index)
-      .concat(todoItems.todos.slice(req.body.index + 1));
-    res.json(todoItems);
+  backendServer.delete('/todos/:id', (request, response) => {
+    return TodoModel.findById(request.params.id, (err, product) => {
+      return product.remove((err) => {
+        if (!err) {
+          console.log("removed");
+          return response.send('');
+        } else {
+          return console.log(err);
+        }
+      });
+    });
   });
 
-  backendServer.put('/todo', (req, res) => {
-    const index = parseInt(req.body.index, 10);
-    if (req.body.text) {
-      todoItems.todos[index].text = req.body.text
-    } else {
-      todoItems.todos[index].completed = !todoItems.todos[index].completed;
-    }
-    res.json(todoItems);
+  backendServer.put('/todos/:id', (request, response) => {
+    return TodoModel.findById(request.params.id, (err, todo) => {
+      if (req.body.text) {
+        todoItems.todos[index].text = req.body.text
+      } else {
+        todoItems.todos[index].completed = !todoItems.todos[index].completed;
+      }
+
+      return todo.save((err) => {
+        if (!err) {
+          return response.send(todo);
+        } else {
+          return console.log(err);
+        }
+      });
+    });
   });
 
   backendServer.get('/*', (request, response) => {
