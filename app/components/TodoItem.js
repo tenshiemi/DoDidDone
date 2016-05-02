@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { removeTodoItem } from '../actions/todosAction';
+import { editTodoItem } from '../actions/todosAction';
 import { toggleTodoStatus } from '../actions/todosAction';
 import Checkbox from 'material-ui/Checkbox';
 
@@ -24,6 +25,16 @@ const TodoItem = ({ todoItem, index, dispatch }) => {
         <i
           className="material-icons material-icons__delete"
           aria-label="Delete">delete_forever
+        </i>
+      </a>
+      <a onClick={ () => {
+        const editedTodo = prompt('Edit Todo Item Below:');
+        console.log('Item index:', index, 'EditedTodo:', editedTodo);
+        dispatch(editTodoItem(index, editedTodo));
+      }}>
+        <i
+          className="material-icons material-icons__edit"
+          aria-label="Delete">mode_edit
         </i>
       </a>
       </span>

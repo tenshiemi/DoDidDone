@@ -1,4 +1,5 @@
 export const RECEIVE_TODO_ITEMS = 'RECEIVE_TODO_ITEMS';
+export const EDIT_TODO_ITEM = 'EDIT_TODO_ITEM';
 
 export function receiveTodoItems(todoItems) {
   return {
@@ -74,4 +75,8 @@ export function toggleTodoStatus(index) {
       console.log('request failed', error);
     });
   };
+}
+
+export function editTodoItem(index, text) {
+  return { type: 'EDIT_TODO_ITEM', index, text };
 }
