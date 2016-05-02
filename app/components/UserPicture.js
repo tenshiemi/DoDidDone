@@ -1,16 +1,16 @@
 import React, { PropTypes } from 'react';
-import Immutable, { List } from 'immutable';
 
-const UserPicture = ({ userImageURL }) => (
-	<div>
-    { userImageURL.map((userImageURL) =>
-      <span className="userPhoto"><img src={ userImageURL } /></span>
-    )}
-	</div>
-);
+const UserPicture = ({ userPicture }) => {
+  console.log(userPicture);
+  return (
+    <div>
+      <span className="userPhoto" ><img src={ userPicture } /></span>
+    </div>
+  );
+};
 
 UserPicture.PropTypes = {
-  userImageURL: PropTypes.instanceOf(Immutable.List)
+  userPicture: PropTypes.string
 };
 
 export default UserPicture;

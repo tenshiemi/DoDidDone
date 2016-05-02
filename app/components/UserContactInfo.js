@@ -1,16 +1,17 @@
 import React, { PropTypes } from 'react';
-import Immutable, { List } from 'immutable';
+// import { List } from 'immutable';
 
-const UserContact = ({ userContact }) => (
-	<div>
-		{ userContact.map((userContact) =>
-      <span className="userContactText">{ userContact.text }</span>
-      )}
-	</div>
-);
+const UserContact = ({ userContact }) => {
+  console.log(userContact);
+  return (
+    <div>
+      <span className="userContactText">{ userContact }</span>
+    </div>
+  );
+};
 
 UserContact.PropTypes = {
-  userContact: PropTypes.instanceOf(Immutable.List)
+  userContact: PropTypes.string
 };
 
 export default UserContact;

@@ -1,31 +1,28 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import BioContainer from '../components/BioContainer.js';
-import Immutable, { List } from 'immutable';
+import { List } from 'immutable';
 
-const userData = [
+const userData = List([
   { userBio: 'Olivia Overscheduled',
-   userImageURL: '../../public/busy300x300.jpg',
+   userImageURL: 'http://i.imgur.com/RYBQAKA.jpg',
    userContact: '(415) 864-8840' },
   { userBio: 'Tia Tudeux',
-   userImageURL: '../../public/tia300x300.jpg',
+   userImageURL: 'http://i.imgur.com/VS8ujlb.jpg',
    userContact: '(415) 795-4022' }
-];
+]);
 
 class About extends React.Component {
   constructor(props) {
     super(props);
-	}
+  }
   render() {
+    console.log('userData in About.js', userData);
     return (
 			<div>
-				<BioContainer userData={ this.props.userData } />
+        <BioContainer userData={ userData } />
 			</div>
 		);
-	}
+  }
 }
-
-About.propTypes = {
-  userData: PropTypes.instanceOf(Immutable.List)
-};
 
 export default About;
