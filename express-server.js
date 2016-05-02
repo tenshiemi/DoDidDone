@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-var Todo = require('./models/todo');
+var TodoModel = require('./models/todo');
 
 const apiServer = (PORT) => {
   const backendServer = express();
@@ -20,13 +20,30 @@ const apiServer = (PORT) => {
    * HTTP GET /tasks
    * Returns: the list of tasks in JSON format
    */
-  backendServer.get('/todos', (req, res) => {
-    res.json(todoItems);
+  backendServer.get('/todos', (request, response) => {
+    return TodoModel.find((err, todos) => {
+      if (!err) {
+        return response.send(todos);
+      } else {
+        return console.log(err);
+      }
+    });
   });
 
-  backendServer.post('/todo', (req, res) => {
-    todoItems.todos.push({ "text": req.body.text, "completed": false });
-    res.json(todoItems);
+  backendServer.post('/todo', (request, response) => {
+    var todo;
+    console.log("POST: ", request.body);
+    todo = new TodoModel({
+      text: request.body.text,
+      completed: false
+    });
+    todo.save((err) => {
+      if (!err) {
+        return response.send(todo);
+      } else {
+        return console.log(err);
+      }
+    });
   });
 
   backendServer.delete('/todo', (req, res) => {

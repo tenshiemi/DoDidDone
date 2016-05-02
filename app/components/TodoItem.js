@@ -20,7 +20,7 @@ const TodoItem = ({ todoItem, index, dispatch }) => {
       </div>
       <span className="todo-item__text">{ todoItem.text }&nbsp;&nbsp;
       <a onClick={ () => {
-        dispatch(removeTodoItem(index));
+        dispatch(removeTodo(index, todoItem._id));
       }}>
         <i
           className="material-icons material-icons__delete"

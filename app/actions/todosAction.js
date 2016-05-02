@@ -1,9 +1,14 @@
+export const ADD_TODO = 'ADD_TODO';
 export const REMOVE_TODO = 'REMOVE_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
 export const RECEIVE_TODO_ITEMS = 'RECEIVE_TODO_ITEMS';
 
-export function removeTodo(index) {
-  return { type: REMOVE_TODO, index };
+export function addTodoToState(todoItem) {
+  return { type: ADD_TODO, todoItem };
+}
+
+export function removeTodo(index, todoItemId) {
+  return { type: REMOVE_TODO, index, todoItemId };
 }
 
 export function toggleTodo(index) {
@@ -11,6 +16,7 @@ export function toggleTodo(index) {
 }
 
 export function receiveTodoItems(todoItems) {
+  console.log(todoItems);
   return {
     type: RECEIVE_TODO_ITEMS,
     todoItems
@@ -21,9 +27,9 @@ export function fetchTodoItems() {
   return (dispatch) => {
     fetch('/todos', { method: 'GET' }).then((response) => {
       return response.json();
-    }).then((response) => {
-      dispatch(receiveTodoItems(response.todos));
-    }).catch((error) => {
+    }).then(function(response) {
+      dispatch(receiveTodoItems(response));
+    }).catch(function(error) {
       console.log('request failed', error);
     });
   };
@@ -38,7 +44,8 @@ export function addTodoItem(text) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ text })
-    }).then((response) => {
+    }).then(function(response) {
+      console.log(response);
       return response.json();
     }).then((responseJSON) => {
       dispatch(receiveTodoItems(responseJSON.todos));
@@ -97,9 +104,9 @@ export function editTodoItem(index, text) {
       body: JSON.stringify({ index, text })
     }).then((response) => {
       return response.json();
-    }).then((responseJSON) => {
-      dispatch(receiveTodoItems(responseJSON.todos));
-    }).catch((error) => {
+    }).then(function(responseJSON) {
+      dispatch(addTodoToState(responseJSON));
+    }).catch(function(error) {
       console.log('request failed', error);
     });
   };

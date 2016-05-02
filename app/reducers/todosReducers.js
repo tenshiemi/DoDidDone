@@ -5,6 +5,9 @@ const todos = (state = Map({ todoItems: List() }), action) => {
     case 'RECEIVE_TODO_ITEMS': {
       return state.set('todoItems', List(action.todoItems));
     }
+    case 'ADD_TODO': {
+      return state.set('todoItems', state.get('todoItems').push(action.todoItem));
+    }
     default: {
       return state;
     }
