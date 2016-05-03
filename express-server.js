@@ -38,8 +38,7 @@ const apiServer = (PORT) => {
   backendServer.put('/todo', (req, res) => {
     const index = parseInt(req.body.index, 10);
     if (req.body.text) {
-      const editedText = req.body.text;
-      todoItems.todos[index].text = editedText
+      todoItems.todos[index].text = req.body.text
     } else {
       todoItems.todos[index].completed = !todoItems.todos[index].completed;
     }
