@@ -46,3 +46,17 @@ body {
       cursor: pointer;
   }
 }
+
+.landing-page {
+  margin-top: 25%;
+
+  &__login {
+    float: right;
+    margin-right: 40%;
+  }
+
+  &__signup {
+    float: left;
+    margin-left: 40%;
+  }
+}

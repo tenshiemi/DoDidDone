@@ -14,11 +14,11 @@ export default (
       <Route path="/" component={ TodoListContainer } />
       <Route path="about" component={ About } />
       <Route path="help" component={ Help }>
-      <Route path="landing" component={ LandingPage } />
         <IndexRedirect to="faqs" />
         <Route path="faqs" component={ FAQs } />
         <Route path="contact" component={ ContactTab } />
       </Route>
     </Route>
+    <Route path="entry" component={ LandingPage } />
   </Router>
 );
