@@ -6,6 +6,7 @@ import About from './containers/About';
 import Help from './containers/Help';
 import FAQs from './components/FAQs';
 import ContactTab from './components/ContactTab';
+import LandingPage from './containers/LandingPage';
 
 export default (
   <Router history={ browserHistory }>
@@ -13,6 +14,7 @@ export default (
       <Route path="/" component={ TodoListContainer } />
       <Route path="about" component={ About } />
       <Route path="help" component={ Help }>
+      <Route path="landing" component={ LandingPage } />
         <IndexRedirect to="faqs" />
         <Route path="faqs" component={ FAQs } />
         <Route path="contact" component={ ContactTab } />
