@@ -22,15 +22,31 @@ export function receiveTodoItems(todoItems) {
   };
 }
 
+function checkStatus(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return response;
+  }
+  console.log('hi');
+  let error = new Error(response.statusText);
+  error.response = response;
+  throw error;
+}
+
+function parseJSON(response) {
+  return response.json();
+}
+
+function logError(error) {
+  console.log('Request failed:', error);
+}
+
 export function fetchTodoItems() {
   return (dispatch) => {
-    fetch('/todos', { method: 'GET' }).then((response) => {
-      return response.json();
-    }).then((response) => {
-      dispatch(receiveTodoItems(response));
-    }).catch((error) =>{
-      console.log('request failed', error);
-    });
+    return fetch('/todos', { method: 'GET' })
+      .then(checkStatus)
+      .then(parseJSON)
+      .then(json => dispatch(receiveTodoItems(json)))
+      .catch(logError);
   };
 }
 
@@ -43,46 +59,37 @@ export function addTodoItem(text) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ text })
-    }).then((response) => {
-      return response.json();
-    }).then((todo) => {
-      dispatch(addTodoToState(todo));
-    }).catch((error) => {
-      console.log('request failed', error);
-    });
+    }).then(checkStatus)
+    .then(parseJSON)
+    .then(todo => dispatch(addTodoToState(todo)))
+    .catch(logError);
   };
 }
 
 export function removeTodoItem(index, id) {
   return (dispatch) => {
-    fetch('/todos/' + id, {
+    return fetch('/todos/' + id, {
       method: 'DELETE',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       }
-    }).then(() => {
-      dispatch(removeTodoFromState(index));
-    }).catch((error) => {
-      console.log('request failed', error);
-    });
+    }).then(() => dispatch(removeTodoFromState(index)))
+    .catch(logError);
   };
 }
 
 export function toggleTodoStatus(index, id) {
   return (dispatch) => {
-    fetch('/todos/' + id, {
+    return fetch('/todos/' + id, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
-    }).then((response) => {
-      return response.json();
-    }).then((todo) => {
-      dispatch(updateTodoInState(todo, index));
-    }).catch((error) => {
-      console.log('request failed', error);
-    });
+    }).then(checkStatus)
+    .then(parseJSON)
+    .then(todo => dispatch(updateTodoInState(todo, index)))
+    .catch(logError);
   };
 }
 
@@ -95,12 +102,9 @@ export function editTodoItem(index, text) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ index, text })
-    }).then((response) => {
-      return response.json();
-    }).then((todo) => {
-      dispatch(updateTodoInState(todo, index));
-    }).catch((error) => {
-      console.log('request failed', error);
-    });
+    }).then(checkStatus)
+    .then(parseJSON)
+    .then((todo) => dispatch(updateTodoInState(todo, index)))
+    .catch(logError);
   };
 }

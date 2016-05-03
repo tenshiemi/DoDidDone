@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var todoSchema = new mongoose.Schema({
+const todoSchema = new mongoose.Schema({
   text: String,
   completed: Boolean
 });
