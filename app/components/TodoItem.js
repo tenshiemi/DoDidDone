@@ -29,7 +29,6 @@ const TodoItem = ({ todoItem, index, dispatch }) => {
       </a>
       <a onClick={ () => {
         const editedTodo = prompt('Edit Todo Item Below:');
-        console.log('Item index:', index, 'EditedTodo:', editedTodo);
         dispatch(editTodoItem(index, editedTodo));
       }}>
         <i

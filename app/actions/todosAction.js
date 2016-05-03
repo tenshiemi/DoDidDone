@@ -1,5 +1,4 @@
 export const RECEIVE_TODO_ITEMS = 'RECEIVE_TODO_ITEMS';
-export const EDIT_TODO_ITEM = 'EDIT_TODO_ITEM';
 
 export function receiveTodoItems(todoItems) {
   return {
@@ -68,11 +67,8 @@ export function toggleTodoStatus(index) {
       },
       body: JSON.stringify({ index })
     }).then(function(response) {
-      console.log(response, 'response');
       return response.json();
     }).then(function(responseJSON) {
-      console.log(responseJSON, 'responseJSON');
-      console.log(responseJSON.todos, 'todos');
       dispatch(receiveTodoItems(responseJSON.todos));
     }).catch(function(error) {
       console.log('request failed', error);
