@@ -1,6 +1,5 @@
 import React from 'react';
 import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
-
 import App from './containers/App';
 import TodoListContainer from './containers/TodoListContainer';
 import About from './containers/About';
