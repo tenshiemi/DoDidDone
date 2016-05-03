@@ -25,13 +25,11 @@ const apiServer = (PORT) => {
 
   backendServer.post('/todo', (req, res) => {
     todoItems.todos.push({ "text": req.body.text, "completed": false });
-
     res.json(todoItems);
   });
 
   backendServer.delete('/todo', (req, res) => {
     const index = parseInt(req.body.index, 10);
-
     todoItems.todos = todoItems.todos.slice(0, req.body.index)
       .concat(todoItems.todos.slice(req.body.index + 1));
 
@@ -40,8 +38,13 @@ const apiServer = (PORT) => {
 
   backendServer.put('/todo', (req, res) => {
     const index = parseInt(req.body.index, 10);
-
-    todoItems.todos[index].completed = !todoItems.todos[index].completed;
+    if (req.body.text) {
+      console.log(req.body.text);
+      const editedText = req.body.text;
+      todoItems.todos[index].text = editedText
+    } else {
+      todoItems.todos[index].completed = !todoItems.todos[index].completed;
+    }
 
     res.json(todoItems);
   });
@@ -56,6 +59,14 @@ const apiServer = (PORT) => {
     if (err) { console.log(err) };
     console.log(`Listening at localhost:${PORT}`);
   });
+
+  // backendServer.put('/todo', (req, res) => {
+  //   const index = parseInt(req.body.index, 10);
+
+  //   todoItems.todos[index].completed = !todoItems.todos[index].completed;
+
+  //   res.json(todoItems);
+  // });
 }
 
 module.exports = apiServer;

@@ -68,8 +68,11 @@ export function toggleTodoStatus(index) {
       },
       body: JSON.stringify({ index })
     }).then(function(response) {
+      console.log(response, 'response');
       return response.json();
     }).then(function(responseJSON) {
+      console.log(responseJSON, 'responseJSON');
+      console.log(responseJSON.todos, 'todos');
       dispatch(receiveTodoItems(responseJSON.todos));
     }).catch(function(error) {
       console.log('request failed', error);
@@ -78,5 +81,20 @@ export function toggleTodoStatus(index) {
 }
 
 export function editTodoItem(index, text) {
-  return { type: 'EDIT_TODO_ITEM', index, text };
+  return function(dispatch) {
+    fetch('/todo', {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ index, text })
+    }).then(function(response) {
+      return response.json();
+    }).then(function(responseJSON) {
+      dispatch(receiveTodoItems(responseJSON.todos));
+    }).catch(function(error) {
+      console.log('request failed', error);
+    });
+  };
 }
