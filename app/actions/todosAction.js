@@ -8,19 +8,19 @@ export function receiveTodoItems(todoItems) {
 }
 
 export function fetchTodoItems() {
-  return function(dispatch) {
-    fetch('/todos', { method: 'GET' }).then(function(response) {
+  return (dispatch) => {
+    fetch('/todos', { method: 'GET' }).then((response) => {
       return response.json();
-    }).then(function(response) {
+    }).then((response) => {
       dispatch(receiveTodoItems(response.todos));
-    }).catch(function(error) {
+    }).catch((error) => {
       console.log('request failed', error);
     });
   };
 }
 
 export function addTodoItem(text) {
-  return function(dispatch) {
+  return (dispatch) => {
     fetch('/todo', {
       method: 'POST',
       headers: {
@@ -28,18 +28,18 @@ export function addTodoItem(text) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ text })
-    }).then(function(response) {
+    }).then((response) => {
       return response.json();
-    }).then(function(responseJSON) {
+    }).then((responseJSON) => {
       dispatch(receiveTodoItems(responseJSON.todos));
-    }).catch(function(error) {
+    }).catch((error) => {
       console.log('request failed', error);
     });
   };
 }
 
 export function removeTodoItem(index) {
-  return function(dispatch) {
+  return (dispatch) => {
     fetch('/todo', {
       method: 'DELETE',
       headers: {
@@ -47,11 +47,11 @@ export function removeTodoItem(index) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ index })
-    }).then(function(response) {
+    }).then((response) => {
       return response.json();
-    }).then(function(responseJSON) {
+    }).then((responseJSON) => {
       dispatch(receiveTodoItems(responseJSON.todos));
-    }).catch(function(error) {
+    }).catch((error) => {
       console.log('request failed', error);
     });
   };
@@ -66,11 +66,30 @@ export function toggleTodoStatus(index) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ index })
-    }).then(function(response) {
+    }).then((response) => {
       return response.json();
-    }).then(function(responseJSON) {
+    }).then((responseJSON) =>{
       dispatch(receiveTodoItems(responseJSON.todos));
-    }).catch(function(error) {
+    }).catch((error) => {
+      console.log('request failed', error);
+    });
+  };
+}
+
+export function editTodoItem(index, text) {
+  return (dispatch) => {
+    fetch('/todo', {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ index, text })
+    }).then((response) => {
+      return response.json();
+    }).then((responseJSON) => {
+      dispatch(receiveTodoItems(responseJSON.todos));
+    }).catch((error) => {
       console.log('request failed', error);
     });
   };
