@@ -29,7 +29,7 @@ const TodoItem = ({ todoItem, index, dispatch }) => {
       </a>
       <a onClick={ () => {
         const editedTodo = prompt('Edit Todo Item Below:');
-        dispatch(editTodoItem(index, editedTodo));
+        dispatch(editTodoItem(index, todoItem._id, editedTodo));
       }}>
         <i
           className="material-icons material-icons__edit"

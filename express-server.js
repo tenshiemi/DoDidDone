@@ -41,7 +41,7 @@ const apiServer = (PORT) => {
       if (!err) {
         return response.send(todo);
       } else {
-        return res.status(500);
+        return response.status(500);
       }
     });
   });
@@ -55,7 +55,7 @@ const apiServer = (PORT) => {
           console.log("Todo item deleted");
           return response.send('');
         } else {
-          return res.status(500);
+          return response.status(500);
         }
       });
     });
@@ -65,17 +65,17 @@ const apiServer = (PORT) => {
     return TodoModel.findById(request.params.id, (err, todo) => {
       if (err) return response.status(500);
 
-      if (req.body.text) {
-        todoItems.todos[index].text = req.body.text
+      if (request.body.text) {
+        todo.text = request.body.text
       } else {
-        todoItems.todos[index].completed = !todoItems.todos[index].completed;
+        todo.completed = !todo.completed;
       }
 
       return todo.save((err) => {
         if (!err) {
           return response.send(todo);
         } else {
-          return res.status(500);
+          return response.status(500);
         }
       });
     });
