@@ -47,10 +47,10 @@ const apiServer = (PORT) => {
   });
 
   backendServer.delete('/todos/:id', (request, response) => {
-    return TodoModel.findById(request.params.id, (err, product) => {
+    return TodoModel.findById(request.params.id, (err, todo) => {
       if (err) return response.status(500);
 
-      return product.remove((err) => {
+      return todo.remove((err) => {
         if (!err) {
           console.log("Todo item deleted");
           return response.send('');
