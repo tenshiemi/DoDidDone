@@ -1,5 +1,5 @@
-const appServer = require("./webpack-server");
-const apiServer = require("./express-server");
+const appServer = require("./server/webpack-server");
+const apiServer = require("./server/express-server");
 const mongoose = require('mongoose');
 const config = require('./config');
 
