@@ -4,7 +4,6 @@ const express    = require('express')
       bodyParser = require('body-parser') // parses JSON from api requests
       jwt        = require('jsonwebtoken') // used to create, sign, and verify tokens
       config     = require('../config') // get our config file
-      User       = require('../models/user')
       TodoModel  = require('../models/todo');
 
 const apiServer = (PORT) => {
