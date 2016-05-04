@@ -9,7 +9,7 @@ describe.skip('(Container) TodoListContainer', () => {
     _props = {
         todoItems: []
     }
-    _wrapper = shallow(<TodoListContainer {..._props}/>);
+    _wrapper = shallow(<TodoListContainer { ..._props }/>);
   });
 
   it('Renders a todo list container', () => {
