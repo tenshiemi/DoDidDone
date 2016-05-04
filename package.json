@@ -44,6 +44,7 @@
     "imports-loader": "^0.6.5",
     "isomorphic-fetch": "^2.2.1",
     "json-loader": "^0.5.4",
+    "jsonwebtoken": "^6.2.0",
     "logger": "0.0.1",
     "material-ui": "^0.15.0-beta.1",
     "mongoose": "^4.4.12",
