@@ -7,9 +7,9 @@ describe('(Component) AddTodo', () => {
 
   beforeEach(() => {
     _props = {
-        dispatch: function(){};
-    }
-    _wrapper = shallow(<AddTodo {..._props}/>);
+        dispatch: function() {}
+    };
+    _wrapper = shallow(<AddTodo { ..._props } />);
   });
 
   it('Renders a todo adding textfield', () => {

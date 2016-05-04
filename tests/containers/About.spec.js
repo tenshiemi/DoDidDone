@@ -5,9 +5,7 @@ import { shallow } from 'enzyme';
 describe('(Container) About', () => {
   let _wrapper;
 
-  beforeEach(() => {
-    _wrapper = shallow(<About/>);
-  });
+  beforeEach(() => _wrapper = shallow(<About/>));
 
   it('Renders an about header', () => {
     const header = _wrapper.find('h1');

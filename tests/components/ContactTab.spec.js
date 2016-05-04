@@ -5,9 +5,7 @@ import { shallow } from 'enzyme';
 describe('(Component) ContactTab', () => {
   let _wrapper;
 
-  beforeEach(() => {
-    _wrapper = shallow(<ContactTab/>);
-  });
+  beforeEach(() => _wrapper = shallow(<ContactTab/>));
 
   it('Renders a contact tab', () => {
     const tab = _wrapper.find('h2');
