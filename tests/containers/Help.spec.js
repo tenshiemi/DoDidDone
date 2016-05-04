@@ -9,7 +9,7 @@ describe('(Container) Help', () => {
     _props = {
         children: []
     }
-    _wrapper = shallow(<Help {..._props}/>);
+    _wrapper = shallow(<Help { ..._props }/>);
   });
 
   it('Renders a help container', () => {
