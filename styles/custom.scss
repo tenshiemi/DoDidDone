@@ -16,14 +16,14 @@ body {
   list-style-type: none;
 
   &__item {
-  margin: 10px 0 10px 0;
-  text-align: vertical-text;
+    margin: 10px 0 10px 0;
+    text-align: vertical-text;
   }
 
   &__text {
-  position: relative;
-  top: -6px;
-  line-height: 20px;
+    position: relative;
+    top: -6px;
+    line-height: 20px;
   }
 }
 
@@ -40,23 +40,18 @@ body {
   font-feature-settings: 'liga';
 
   &__delete, &__edit {
-      position: relative;
-      top: 4px;
-      color: #00BCD4;
-      cursor: pointer;
+    position: relative;
+    top: 4px;
+    color: #00BCD4;
+    cursor: pointer;
   }
 }
 
 .landing-page {
   margin-top: 25%;
+  margin-left: 25%;
 
-  &__login {
-    float: right;
-    margin-right: 40%;
-  }
-
-  &__signup {
+  &__signup, &__login {
     float: left;
-    margin-left: 40%;
   }
 }
