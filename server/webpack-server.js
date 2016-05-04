@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const config = require('./webpack.config');
+const config = require('../webpack.config');
 
 const appServer = (PORT) => {
   const WebpackDevServer = require('webpack-dev-server');
