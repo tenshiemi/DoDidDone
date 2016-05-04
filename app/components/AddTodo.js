@@ -4,7 +4,7 @@ import { addTodoItem } from '../actions/todosAction';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const AddTodo = ({ dispatch }) => {
+export const AddTodo = ({ dispatch }) => {
   const style = {
     margin: 12
   };

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FAQs = () => (
+export const FAQs = () => (
   <div>
     <h2>FAQs</h2>
     <p>Some content and Frequently Asked Questions Go Here</p>

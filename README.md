@@ -24,4 +24,4 @@
 1. Deploy to Heroku with `git push heroku master`
 
 # Tests
-1. Install `npm install -g karma-cli` globally
+1. Run `npm test`

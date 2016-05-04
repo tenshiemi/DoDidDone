@@ -5,7 +5,7 @@ import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 
-class DropDownMenu extends Component {
+export class DropDownMenu extends Component {
   constructor(props) {
     super(props);
 
