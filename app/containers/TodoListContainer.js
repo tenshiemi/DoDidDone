@@ -6,7 +6,7 @@ import { fetchTodoItems } from '../actions/todosAction';
 import TodoList from '../components/TodoList';
 import AddTodo from '../components/AddTodo';
 
-class TodoListContainer extends React.Component {
+export class TodoListContainer extends React.Component {
   constructor(props) {
     super(props);
 

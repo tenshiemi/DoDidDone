@@ -24,4 +24,8 @@ class About extends React.Component {
   }
 }
 
+export const About = () => (
+  <h1>About</h1>
+);
+
 export default About;

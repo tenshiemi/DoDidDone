@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import DropDownMenu from './DropDownMenu';
 import AppBar from 'material-ui/AppBar';
 
-const Nav = () => (
+export const Nav = () => (
   <div>
     <AppBar
       iconElementLeft={<div />}

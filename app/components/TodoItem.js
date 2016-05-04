@@ -5,7 +5,7 @@ import { editTodoItem } from '../actions/todosAction';
 import { toggleTodoStatus } from '../actions/todosAction';
 import Checkbox from 'material-ui/Checkbox';
 
-const TodoItem = ({ todoItem, index, dispatch }) => {
+export const TodoItem = ({ todoItem, index, dispatch }) => {
   const style = {
     width: '40px',
     display: 'inline-block'
