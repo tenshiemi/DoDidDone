@@ -5,9 +5,7 @@ import { shallow } from 'enzyme';
 describe('(Component) Nav', () => {
   let _wrapper;
 
-  beforeEach(() => {
-    _wrapper = shallow(<Nav/>);
-  });
+  beforeEach(() => _wrapper = shallow(<Nav/>));
 
   it('Renders a navbar', () => {
     const navbar = _wrapper.find('AppBar');

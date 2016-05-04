@@ -9,9 +9,9 @@ describe('(Component) TodoItem', () => {
     _props = {
       todoItem: {},
       index: 0,
-      dispatch: function(){};
+      dispatch: function(){}
     }
-    _wrapper = shallow(<TodoItem {..._props}/>);
+    _wrapper = shallow(<TodoItem { ..._props }/>);
   });
 
   it('Renders a todo item', () => {

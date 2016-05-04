@@ -9,7 +9,7 @@ describe('(Component) TodoList', () => {
     _props = {
       todoItems: []
     }
-    _wrapper = shallow(<TodoList {..._props}/>);
+    _wrapper = shallow(<TodoList { ..._props }/>);
   });
 
   it('Renders a todo list', () => {

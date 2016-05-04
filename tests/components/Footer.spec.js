@@ -6,9 +6,7 @@ import { shallow } from 'enzyme';
 describe('(Component) Footer', () => {
   let _wrapper;
 
-  beforeEach(() => {
-    _wrapper = shallow(<Footer/>);
-  });
+  beforeEach(() => _wrapper = shallow(<Footer/>));
 
   it('Renders a footer that reps our company', () => {
     const item = _wrapper.find('p');

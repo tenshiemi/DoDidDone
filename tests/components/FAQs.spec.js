@@ -5,9 +5,7 @@ import { shallow } from 'enzyme';
 describe('(Component) FAQs', () => {
   let _wrapper;
 
-  beforeEach(() => {
-    _wrapper = shallow(<FAQs/>);
-  });
+  beforeEach(() => _wrapper = shallow(<FAQs/>));
 
   it('Renders an FAQ', () => {
     const faq = _wrapper.find('h2');
