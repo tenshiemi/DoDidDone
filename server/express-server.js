@@ -7,7 +7,7 @@ const express    = require('express')
 
 const apiServer = (PORT) => {
   const backendServer = express();
-  const static_path = path.join(__dirname, 'dist');
+  const static_path = path.join(__dirname, '../', 'dist');
 
   backendServer.use(express.static(static_path));
   backendServer.set('superSecret', config.secret); // secret variable
