@@ -10,7 +10,7 @@
     "heroku-on": "heroku ps:scale web=1 builder=1 worker=1",
     "lint": "eslint . --ext .js --ext .jsx",
     "postinstall": "webpack --config ./webpack-production.config.js --progress --colors",
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "test": "NODE_ENV=test babel-node ./node_modules/karma/bin/karma start ./karma.conf"
   },
   "repository": {

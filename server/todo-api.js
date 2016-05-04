@@ -1,21 +1,4 @@
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
-var TodoModel = require('./models/todo');
-
-const apiServer = (PORT) => {
-  const backendServer = express();
-  const static_path = path.join(__dirname, 'dist');
-
-  var todoItems = { "todos": [
-      { "text": "checked item", "completed": true },
-      { "text": "unchecked item", "completed": false }
-    ]
-  }
-
-  backendServer.use(express.static(static_path));
-  backendServer.use(bodyParser.json());
-
+module.exports = function(backendServer){
     /**
    * HTTP GET /tasks
    * Returns: the list of tasks in JSON format
@@ -80,17 +63,4 @@ const apiServer = (PORT) => {
       });
     });
   });
-
-  backendServer.get('/*', (request, response) => {
-    response.sendFile('index.html', {
-      root: static_path
-    });
-  })
-
-  backendServer.listen(PORT, (err) => {
-    if (err) { console.log(err) };
-    console.log(`Listening at localhost:${PORT}`);
-  });
 }
-
-module.exports = apiServer;
