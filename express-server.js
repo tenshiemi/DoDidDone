@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+var TodoModel = require('./models/todo');
 
 const apiServer = (PORT) => {
   const backendServer = express();
@@ -19,34 +20,69 @@ const apiServer = (PORT) => {
    * HTTP GET /tasks
    * Returns: the list of tasks in JSON format
    */
-  backendServer.get('/todos', (req, res) => {
-    res.json(todoItems);
+  backendServer.get('/todos', (request, response) => {
+    return TodoModel.find((err, todos) => {
+      if (!err) {
+        return response.send(todos);
+      } else {
+        return response.status(500);
+      }
+    });
   });
 
-  backendServer.post('/todo', (req, res) => {
-    todoItems.todos.push({ "text": req.body.text, "completed": false });
-    res.json(todoItems);
+  backendServer.post('/todos', (request, response) => {
+    var todo;
+    console.log("POST: ", request.body);
+    todo = new TodoModel({
+      text: request.body.text,
+      completed: false
+    });
+    todo.save((err) => {
+      if (!err) {
+        return response.send(todo);
+      } else {
+        return response.status(500);
+      }
+    });
   });
 
-  backendServer.delete('/todo', (req, res) => {
-    const index = parseInt(req.body.index, 10);
-    todoItems.todos = todoItems.todos.slice(0, req.body.index)
-      .concat(todoItems.todos.slice(req.body.index + 1));
-    res.json(todoItems);
+  backendServer.delete('/todos/:id', (request, response) => {
+    return TodoModel.findById(request.params.id, (err, todo) => {
+      if (err) return response.status(500);
+
+      return todo.remove((err) => {
+        if (!err) {
+          console.log("Todo item deleted");
+          return response.send('');
+        } else {
+          return response.status(500);
+        }
+      });
+    });
   });
 
-  backendServer.put('/todo', (req, res) => {
-    const index = parseInt(req.body.index, 10);
-    if (req.body.text) {
-      todoItems.todos[index].text = req.body.text
-    } else {
-      todoItems.todos[index].completed = !todoItems.todos[index].completed;
-    }
-    res.json(todoItems);
+  backendServer.put('/todos/:id', (request, response) => {
+    return TodoModel.findById(request.params.id, (err, todo) => {
+      if (err) return response.status(500);
+
+      if (request.body.text) {
+        todo.text = request.body.text
+      } else {
+        todo.completed = !todo.completed;
+      }
+
+      return todo.save((err) => {
+        if (!err) {
+          return response.send(todo);
+        } else {
+          return response.status(500);
+        }
+      });
+    });
   });
 
-  backendServer.get('/*', (req, res) => {
-    res.sendFile('index.html', {
+  backendServer.get('/*', (request, response) => {
+    response.sendFile('index.html', {
       root: static_path
     });
   })
