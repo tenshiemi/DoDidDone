@@ -8,9 +8,12 @@
     "babel-node": "./node_modules/.bin/babel-node",
     "heroku-off": "heroku ps:scale web=0 worker=0 builder=0",
     "heroku-on": "heroku ps:scale web=1 builder=1 worker=1",
+<<<<<<< HEAD
     "lint": "eslint . --ext .js --ext .jsx",
     "postinstall": "webpack --config ./webpack-production.config.js --progress --colors",
     "start": "node server.js",
+=======
+>>>>>>> 993e66bca14e800754b73cdda5d26a1c78a79c8a
     "test": "NODE_ENV=test babel-node ./node_modules/karma/bin/karma start ./karma.conf"
   },
   "repository": {
