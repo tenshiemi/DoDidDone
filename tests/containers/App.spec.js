@@ -9,7 +9,7 @@ describe('(Container) App', () => {
     _props = {
         children: []
     }
-    _wrapper = shallow(<App {..._props}/>);
+    _wrapper = shallow(<App { ..._props }/>);
   });
 
   it('Renders an app container', () => {
