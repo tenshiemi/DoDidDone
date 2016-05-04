@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Tabs, Tab } from 'material-ui/Tabs';
 import { browserHistory } from 'react-router';
 
-class HelpTabs extends Component {
+export class HelpTabs extends Component {
   constructor(props) {
     super(props);
   }

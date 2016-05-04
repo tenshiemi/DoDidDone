@@ -11,16 +11,17 @@ const userData = List([
    userContact: '(415) 795-4022' }
 ]);
 
-class About extends React.Component {
+export class About extends React.Component {
   constructor(props) {
     super(props);
   }
   render() {
     return (
-			<div>
+      <div>
+        <h1>About the Team</h1>
         <BioContainer userData={ userData } />
-			</div>
-		);
+      </div>
+    );
   }
 }
 

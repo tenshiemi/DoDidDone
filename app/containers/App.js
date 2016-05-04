@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 
-const App = (props) => (
+export const App = (props) => (
   <div>
     <Nav />
     <div className="app-container">
