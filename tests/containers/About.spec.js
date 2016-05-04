@@ -12,6 +12,6 @@ describe('(Container) About', () => {
   it('Renders an about header', () => {
     const header = _wrapper.find('h1')
     expect(header).to.exist
-    expect(header.text()).to.match(/About/)
+    expect(header.text()).to.match(/About the Team/)
   })
 })
