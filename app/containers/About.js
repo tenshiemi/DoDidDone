@@ -17,16 +17,12 @@ export class About extends React.Component {
   }
   render() {
     return (
-			<div>
+      <div>
         <h1>About the Team</h1>
         <BioContainer userData={ userData } />
-			</div>
-		);
+      </div>
+    );
   }
 }
-
-export const About = () => (
-  <h1>About</h1>
-);
 
 export default About;
