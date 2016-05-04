@@ -7,7 +7,7 @@ const style = {
 
 const Signup = () => (
   <div>
-    <RaisedButton label="Signup" secondary={true} style={style} />
+    <RaisedButton label="Signup" secondary={true} style={style}  />
   </div>
 );
 
