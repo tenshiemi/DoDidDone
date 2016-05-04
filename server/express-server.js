@@ -21,8 +21,15 @@ const apiServer = (PORT) => {
   // use morgan to log requests to the console
   backendServer.use(morgan('dev'));
 
-  require('./auth-api')(backendServer);
-  require('./todo-api')(backendServer);
+    // API ROUTES -------------------
+
+  // get an instance of the router for api routes
+  const apiRoutes = express.Router();
+  require('./auth-api')(apiRoutes);
+  require('./todo-api')(apiRoutes);
+
+  // apply the routes to our application with the prefix /api
+  backendServer.use('/api', apiRoutes);
 
   backendServer.get('/*', (request, response) => {
     response.sendFile('index.html', {

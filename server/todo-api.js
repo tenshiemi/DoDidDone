@@ -1,9 +1,9 @@
-module.exports = function(backendServer){
+module.exports = function(apiRoutes){
     /**
    * HTTP GET /tasks
    * Returns: the list of tasks in JSON format
    */
-  backendServer.get('/todos', (request, response) => {
+  apiRoutes.get('/todos', (request, response) => {
     return TodoModel.find((err, todos) => {
       if (!err) {
         return response.send(todos);
@@ -13,7 +13,7 @@ module.exports = function(backendServer){
     });
   });
 
-  backendServer.post('/todos', (request, response) => {
+  apiRoutes.post('/todos', (request, response) => {
     var todo;
     console.log("POST: ", request.body);
     todo = new TodoModel({
@@ -29,7 +29,7 @@ module.exports = function(backendServer){
     });
   });
 
-  backendServer.delete('/todos/:id', (request, response) => {
+  apiRoutes.delete('/todos/:id', (request, response) => {
     return TodoModel.findById(request.params.id, (err, todo) => {
       if (err) return response.status(500);
 
@@ -44,7 +44,7 @@ module.exports = function(backendServer){
     });
   });
 
-  backendServer.put('/todos/:id', (request, response) => {
+  apiRoutes.put('/todos/:id', (request, response) => {
     return TodoModel.findById(request.params.id, (err, todo) => {
       if (err) return response.status(500);
 

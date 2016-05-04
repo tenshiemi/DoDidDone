@@ -1,5 +1,5 @@
-module.exports = function(backendServer){
-  backendServer.get('/signup', function(request, response) {
+module.exports = function(apiRoutes){
+  apiRoutes.get('/signup', function(request, response) {
 
     // create a sample user
     var nick = new User({

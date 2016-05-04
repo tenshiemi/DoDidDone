@@ -42,7 +42,7 @@ function logError(error) {
 
 export function fetchTodoItems() {
   return (dispatch) => {
-    return fetch('/todos', { method: 'GET' })
+    return fetch('/api/todos', { method: 'GET' })
       .then(checkStatus)
       .then(parseJSON)
       .then(json => dispatch(receiveTodoItems(json)))
@@ -52,7 +52,7 @@ export function fetchTodoItems() {
 
 export function addTodoItem(text) {
   return (dispatch) => {
-    fetch('/todos', {
+    fetch('/api/todos', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -68,7 +68,7 @@ export function addTodoItem(text) {
 
 export function removeTodoItem(index, id) {
   return (dispatch) => {
-    return fetch('/todos/' + id, {
+    return fetch('/api/todos/' + id, {
       method: 'DELETE',
       headers: {
         Accept: 'application/json',
@@ -81,7 +81,7 @@ export function removeTodoItem(index, id) {
 
 export function toggleTodoStatus(index, id) {
   return (dispatch) => {
-    return fetch('/todos/' + id, {
+    return fetch('/api/todos/' + id, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
@@ -96,7 +96,7 @@ export function toggleTodoStatus(index, id) {
 
 export function editTodoItem(index, id, text) {
   return (dispatch) => {
-    fetch('/todos/' + id, {
+    fetch('/api/todos/' + id, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
