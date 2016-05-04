@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
+import FlatButton from 'material-ui/FlatButton';
 
 class DropDownMenu extends Component {
   constructor(props) {
@@ -30,12 +30,16 @@ class DropDownMenu extends Component {
   render() {
     return (
       <div>
-        <RaisedButton
-          onTouchTap={ (e) => {
-            this.handleTouchTap.call(this, e);
-          }}
-          label="Click me"
+        <div className="navbar__dropdown-button">
+          <FlatButton
+            onTouchTap={ (e) => {
+              this.handleTouchTap.call(this, e);
+            }}
+            label="Click me"
+            rippleColor={"white"}
         />
+        </div>
+
         <Popover
           open={ this.state.open }
           anchorEl={ this.state.anchorEl }
