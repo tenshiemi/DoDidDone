@@ -1,13 +1,14 @@
 import React from 'react';
 import { TodoList } from 'components/TodoList';
 import { shallow } from 'enzyme';
+import { List } from 'immutable';
 
 describe('(Component) TodoList', () => {
   let _props, _wrapper;
 
   beforeEach(() => {
     _props = {
-      todoItems: []
+      todoItems: List([])
     }
     _wrapper = shallow(<TodoList { ..._props }/>);
   });

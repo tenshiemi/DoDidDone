@@ -12,18 +12,23 @@ body {
   width: 960px;
 }
 
+.navbar__dropdown-button {
+    margin-top: 13px;
+    color: white;
+  }
+
 .todo-list {
   list-style-type: none;
 
   &__item {
-  margin: 10px 0 10px 0;
-  text-align: vertical-text;
+    margin: 10px 0 10px 0;
+    text-align: vertical-text;
   }
 
   &__text {
-  position: relative;
-  top: -6px;
-  line-height: 20px;
+    position: relative;
+    top: -6px;
+    line-height: 20px;
   }
 }
 
@@ -40,9 +45,9 @@ body {
   font-feature-settings: 'liga';
 
   &__delete, &__edit {
-      position: relative;
-      top: 4px;
-      color: #00BCD4;
-      cursor: pointer;
+    position: relative;
+    top: 4px;
+    color: #00BCD4;
+    cursor: pointer;
   }
 }
