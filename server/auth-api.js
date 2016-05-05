@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 
-module.exports = function(server, apiRoutes){
+module.exports = function(server, apiRoutes) {
   apiRoutes.post('/signup', function(request, response) {
     const saltRounds = 10;
 
@@ -37,8 +37,8 @@ module.exports = function(server, apiRoutes){
             response.json({ success: false, message: 'Authentication failed.' });
           } else {
             // If user successfully authenticates, create a token
-            const token = jwt.sign({ userName: user.name, userEmail: user.email}, server.get('superSecret'), {
-              expiresIn: 43200 // expires in 24 hours
+            const token = jwt.sign({ userName: user.name, userEmail: user.email }, server.get('superSecret'), {
+              expiresIn: 86400 // expires in 24 hours
             })
 
             // Return the information including token as JSON
@@ -52,7 +52,7 @@ module.exports = function(server, apiRoutes){
     })
   });
 
-  apiRoutes.use(function(request, response,next) {
+  apiRoutes.use(function(request, response, next) {
     // Check header or url parameters or post parameters for token
     var token = request.body.token || request.query.token || request.headers['x-access-token'];
 
