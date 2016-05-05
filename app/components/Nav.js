@@ -1,12 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 import DropDownMenu from './DropDownMenu';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-
+import NavTitle from './NavTitle';
 
 export class Nav extends React.Component {
   constructor(props) {
@@ -51,11 +51,7 @@ export class Nav extends React.Component {
 
     return (
       <div>
-        <AppBar
-          iconElementLeft={ <div /> }
-          containerElement={ <Link to="/" /> }
-          title="DoDoneDid"
-        >
+        <AppBar iconElementLeft={ <div />}>
           <FlatButton label="Login" secondary={ true } onTouchTap={
               () => this.handleOpen('login')} />
           <FlatButton label="Signup" secondary={ true } onTouchTap={
