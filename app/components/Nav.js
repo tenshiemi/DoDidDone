@@ -26,53 +26,33 @@ export class Nav extends React.Component {
   }
 
   render() {
-    const signupActions = [
+    const actions = [
       <FlatButton
-        className="navbar__modal-cancel-button"
         label="Cancel"
         primary={ true }
         onTouchTap={ () => this.handleClose() }
       />,
       <FlatButton
-        label="Signup"
-        className="navbar__modal-signup-button"
+        label="Submit"
         primary={ true }
         keyboardFocused={ true }
         onTouchTap={ () => this.handleClose() }
       />
     ];
 
-    const loginActions = [
-      <FlatButton
-        className="navbar__modal-cancel-button"
-        label="Cancel"
-        primary={ true }
-        onTouchTap={ () => this.handleClose() }
-        />,
-      <FlatButton
-        className="navbar__modal-login-button"
-        label="Login"
-        primary={ true }
-        keyboardFocused={ true }
-        onTouchTap={ () => this.handleClose() }
-      />
-    ];
-
-    const modalProperties = {
+    const modalTitle = {
       signup: {
-        title: 'DoDoneDid Signup',
-        actions: signupActions
+        title: 'DoDoneDid Signup'
       },
       login: {
-        title: 'DoDoneDid Login',
-        actions: loginActions
+        title: 'DoDoneDid Login'
       }
     };
 
     return (
       <div>
         <AppBar
-          iconElementLeft={<div />}
+          iconElementLeft={ <div /> }
           containerElement={ <Link to="/" /> }
           title="DoDoneDid"
         >
@@ -81,8 +61,8 @@ export class Nav extends React.Component {
           <FlatButton label="Signup" secondary={ true } onTouchTap={
               () => this.handleOpen('signup') } />
           <Dialog
-            title={ modalProperties[this.state.modalState].title }
-            actions={ modalProperties[this.state.modalState].actions }
+            title={ modalTitle[this.state.modalState].title }
+            actions={actions}
             modal={ true }
             open={ this.state.open }
             onRequestClose={ this.handleClose }
@@ -92,7 +72,7 @@ export class Nav extends React.Component {
           <DropDownMenu />
         </AppBar>
       </div>
-      );
+    );
   }
 }
 

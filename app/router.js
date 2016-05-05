@@ -6,7 +6,6 @@ import About from './containers/About';
 import Help from './containers/Help';
 import FAQs from './components/FAQs';
 import ContactTab from './components/ContactTab';
-import LandingPage from './containers/LandingPage';
 
 export default (
   <Router history={ browserHistory }>
@@ -19,6 +18,5 @@ export default (
         <Route path="contact" component={ ContactTab } />
       </Route>
     </Route>
-    <Route path="entry" component={ LandingPage } />
   </Router>
 );

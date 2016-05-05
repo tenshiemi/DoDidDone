@@ -32,11 +32,9 @@ export class DropDownMenu extends Component {
       <div>
         <div className="navbar__dropdown-button">
           <FlatButton
-            onTouchTap={ (e) => {
-              this.handleTouchTap.call(this, e);
-            }}
+            onTouchTap={ (e) => this.handleTouchTap.call(this, e) }
             label="Click me"
-            rippleColor={"white"}
+            rippleColor={ "white" }
         />
         </div>
 
@@ -50,9 +48,9 @@ export class DropDownMenu extends Component {
           }}
         >
           <Menu>
-            <MenuItem value={1}><Link to={ 'about' }>About us</Link></MenuItem>
-            <MenuItem value={2}><Link to={ 'help' }>Help</Link></MenuItem>
-            <MenuItem value={3} primaryText="Logout" />
+            <MenuItem value={ 1 }><Link to={ 'about' }>About us</Link></MenuItem>
+            <MenuItem value={ 2 }><Link to={ 'help' }>Help</Link></MenuItem>
+            <MenuItem value={ 3 } primaryText="Logout" />
           </Menu>
         </Popover>
       </div>
