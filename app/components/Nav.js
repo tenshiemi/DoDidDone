@@ -4,15 +4,17 @@ import DropDownMenu from './DropDownMenu';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
+import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 
 
 class Nav extends React.Component {
-   constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
-      open: true,
+      open: false,
       modalState: 'login'
-    }
+    };
   }
 
   handleOpen(modalState) {
@@ -56,6 +58,17 @@ class Nav extends React.Component {
       />
     ];
 
+    const modalProperties = {
+      signup: {
+        title: 'DoDoneDid Signup',
+        actions: signupActions
+      },
+      login: {
+        title: 'DoDoneDid Login',
+        actions: loginActions
+      }
+    };
+
     return (
       <div>
         <AppBar
@@ -64,32 +77,18 @@ class Nav extends React.Component {
           title="DoDoneDid"
         >
           <FlatButton label="Login" secondary={ true } onTouchTap={
-              () => this.handleOpen('login')}>
-              <Dialog
-                title="DoDoneDid Login"
-                actions={loginActions}
-                modal={true}
-                open={this.state.open}
-                onRequestClose={this.handleClose}
-                // props={this.props.modalState}
-                >
-                  Login to your DoDoneDid account.
-              </Dialog>
-          </FlatButton>
-
+              () => this.handleOpen('login')} />
           <FlatButton label="Signup" secondary={ true } onTouchTap={
-              () => this.handleOpen('signup') }>
-              <Dialog
-                title="DoDoneDid Signup"
-                actions={signupActions}
-                modal={true}
-                open={this.state.open}
-                onRequestClose={this.handleClose}
-                // props={this.props.modalState}
-                >
-                  Complete the fields below to create your account.
-              </Dialog>
-          </FlatButton>
+              () => this.handleOpen('signup') } />
+          <Dialog
+            title={ modalProperties[this.state.modalState].title }
+            actions={ modalProperties[this.state.modalState].actions }
+            modal={ true }
+            open={ this.state.open }
+            onRequestClose={ this.handleClose }
+          >
+            { this.state.modalState === 'login' ? (<LoginForm />) : (<SignupForm />) }
+          </Dialog>
           <DropDownMenu />
         </AppBar>
       </div>
