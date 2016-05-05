@@ -5,18 +5,21 @@ import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 
+
 class Nav extends React.Component {
-  constructor(props) {
+   constructor(props) {
     super(props);
     this.state = {
-      open: false
-    };
+      open: true,
+      modalState: 'login'
+    }
   }
 
-  handleOpen(){
-    return this.setState({ open: true });
+  handleOpen(modalState) {
+    return this.setState({ open: true, modalState });
   }
-  handleClose(){
+
+  handleClose() {
     return this.setState({ open: false });
   }
 
@@ -24,13 +27,13 @@ class Nav extends React.Component {
     const signupActions = [
       <FlatButton
         className="navbar__modal-cancel-button"
-        className="navbar__modal-signup-button"
         label="Cancel"
         primary={ true }
         onTouchTap={ () => this.handleClose() }
       />,
       <FlatButton
         label="Signup"
+        className="navbar__modal-signup-button"
         primary={ true }
         keyboardFocused={ true }
         onTouchTap={ () => this.handleClose() }
@@ -43,7 +46,7 @@ class Nav extends React.Component {
         label="Cancel"
         primary={ true }
         onTouchTap={ () => this.handleClose() }
-      />,
+        />,
       <FlatButton
         className="navbar__modal-login-button"
         label="Login"
@@ -60,29 +63,34 @@ class Nav extends React.Component {
           containerElement={ <Link to="/" /> }
           title="DoDoneDid"
         >
-          <FlatButton label="Login" secondary={ true } onTouchTap={ () => this.handleOpen() } />
-          <FlatButton label="Signup" secondary={ true } onTouchTap={ () => this.handleOpen() } />
+          <FlatButton label="Login" secondary={ true } onTouchTap={
+              () => this.handleOpen('login')}>
+              <Dialog
+                title="DoDoneDid Login"
+                actions={loginActions}
+                modal={true}
+                open={this.state.open}
+                onRequestClose={this.handleClose}
+                // props={this.props.modalState}
+                >
+                  Login to your DoDoneDid account.
+              </Dialog>
+          </FlatButton>
+
+          <FlatButton label="Signup" secondary={ true } onTouchTap={
+              () => this.handleOpen('signup') }>
+              <Dialog
+                title="DoDoneDid Signup"
+                actions={signupActions}
+                modal={true}
+                open={this.state.open}
+                onRequestClose={this.handleClose}
+                // props={this.props.modalState}
+                >
+                  Complete the fields below to create your account.
+              </Dialog>
+          </FlatButton>
           <DropDownMenu />
-          <Dialog
-            className="navbar__login-button"
-            title="DoDoneDid Login"
-            actions={loginActions}
-            modal={true}
-            open={this.state.open}
-            onRequestClose={this.handleClose}
-          >
-          Login to your DoDoneDid account.
-          </Dialog>
-          <Dialog
-            className="navbar__signup-button"
-            title="DoDoneDid Signup"
-            actions={signupActions}
-            modal={false}
-            open={this.state.open}
-            onRequestClose={this.handleClose}
-          >
-          Complete the fields below to create an account.
-          </Dialog>
         </AppBar>
       </div>
       );
@@ -90,5 +98,3 @@ class Nav extends React.Component {
 }
 
 export default Nav;
-
-
