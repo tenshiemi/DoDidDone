@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router';
+import { Link } from 'react-router';
 import DropDownMenu from './DropDownMenu';
 import AppBar from 'material-ui/AppBar';
 import FlatButton from 'material-ui/FlatButton';
@@ -52,6 +52,9 @@ export class Nav extends React.Component {
     return (
       <div>
         <AppBar iconElementLeft={ <div />}>
+          <Link to={ '/' } className="navbar__title-link">
+            <NavTitle />
+          </Link>
           <FlatButton label="Login" secondary={ true } onTouchTap={
               () => this.handleOpen('login')} />
           <FlatButton label="Signup" secondary={ true } onTouchTap={
