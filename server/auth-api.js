@@ -1,23 +1,28 @@
+const bcrypt = require('bcrypt');
+
 module.exports = function(server, apiRoutes){
-  apiRoutes.get('/signup', function(request, response) {
-    // create a sample user
-    var nick = new User({
-      name: 'Nick Cerminara',
-      email: 'test@truss.works',
-      password: 'password',
-      admin: true
-    });
+  apiRoutes.post('/signup', function(request, response) {
+    const saltRounds = 10;
 
-    // save the sample user
-    nick.save(function(err) {
-      if (err) throw err;
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+      bcrypt.hash(request.body.password, salt, function(err, hash) {
+        const user = new User({
+          name: request.body.name,
+          email: request.body.email,
+          password: hash
+        });
 
-      console.log('User saved successfully');
-      response.json({ success: true });
+        user.save(function(err) {
+          if (err) throw err;
+
+          console.log('User saved successfully');
+          response.json({ success: true });
+        });
+      });
     });
   });
 
-  apiRoutes.post('/authenticate', function(request, response) {
+  apiRoutes.post('/authenticate', function (request, response) {
     User.findOne({
       email: request.body.email
     }, (err, user) => {
@@ -26,45 +31,46 @@ module.exports = function(server, apiRoutes){
       if (!user) {
         response.json({ success: false, message: 'Authentication failed. User not found.' });
       } else if (user) {
-        if (user.password != request.body.password) {
-          response.json({ success: false, message: 'Authentication failed. Wrong password.' });
-        } else {
-          // if user is found and password is right
-          // create a token
-          var token = jwt.sign(user, server.get('superSecret'), {
-            expiresIn: 43200 // expires in 24 hours
-          });
+        // Load hash from your password DB.
+        bcrypt.compare(request.body.password, user.password, function(err, res) {
+          if (res != true) {
+            response.json({ success: false, message: 'Authentication failed.' });
+          } else {
+            // If user successfully authenticates, create a token
+            const token = jwt.sign({ userName: user.name, userEmail: user.email}, server.get('superSecret'), {
+              expiresIn: 43200 // expires in 24 hours
+            })
 
-          // return the information including token as JSON
-          response.json({
-            success: true,
-            message: 'Enjoy your token!',
-            token: token
-          });
-        }
+            // Return the information including token as JSON
+            response.json({
+              success: true,
+              token: token
+            });
+          }
+        });
       }
     })
   });
 
-  apiRoutes.use(function(request, response, next) {
-    // check header or url parameters or post parameters for token
-    var token = req.body.token || req.query.token || req.headers['x-access-token'];
+  apiRoutes.use(function(request, response,next) {
+    // Check header or url parameters or post parameters for token
+    var token = request.body.token || request.query.token || request.headers['x-access-token'];
 
-    // decode token
+    // Decode token
     if (token) {
-      // verifies secret and checks expiration
-      jwt.verify(token, app.get('superSecret'), function(err, decoded) {
+      // Verifies secret and checks expiration
+      jwt.verify(token, server.get('superSecret'), function(err, decoded){
         if (err) {
-          return res.json({ success: false, message: 'Failed to authenticate token.' });
+          return response.json({success: false, message: 'Failed to authenticate token.'});
         } else {
-          // if everything is good, save to request for use in other routes
-          req.decoded = decoded;
+          // If everything is good, save to request for use in other routes
+          request.decoded = decoded;
           next();
         }
       });
     } else {
-      // if there is no token, return an error
-      return res.status(403).send({
+      // If there is no token, return an error
+      return response.status(403).send({
           success: false,
           message: 'No token provided.'
       });
