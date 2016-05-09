@@ -50,9 +50,9 @@ export class Nav extends React.Component {
 
     return (
       <div>
-        <Toolbar className="navbar" iconElementLeft={ <div />}>
+        <Toolbar className="navbar" iconElementLeft={ <div /> }>
           <Link to={ '/' } className="navbar__title">
-            <ToolbarTitle text="DoDoneDid"/>
+            <ToolbarTitle text="DoDoneDid" />
           </Link>
           <ToolbarGroup firstChild={ true }>
             <FlatButton label="Login" secondary={ true } onTouchTap={
