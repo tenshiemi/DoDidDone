@@ -9,7 +9,7 @@ export const Help = (props) => (
 );
 
 Help.propTypes = {
-  children: PropTypes.object.isRequired
+  children: PropTypes.array.isRequired
 };
 
 export default Help;
