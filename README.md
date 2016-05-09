@@ -15,7 +15,8 @@
 
 # Running server locally
 
-1. Run `npm start` from the root directory of the app in command line
+1. Run `mongod` in command line and leave it running
+1. Run `npm start` from the root directory of the app in another terminal tab
 1. Navigate to `localhost:3000` to view your local environment
 
 # Deploying to Heroku
