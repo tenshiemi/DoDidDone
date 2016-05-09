@@ -42,9 +42,14 @@ body {
 
   &__text {
     position: relative;
-    top: -6px;
+    top: -4px;
     line-height: 20px;
   }
+}
+
+.todo-item__checkbox {
+  width: 40px;
+  display: inline-block;
 }
 
 .material-icons {
