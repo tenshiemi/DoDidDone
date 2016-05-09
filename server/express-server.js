@@ -3,6 +3,7 @@ const express    = require('express')
       path       = require('path')
       bodyParser = require('body-parser') // parses JSON from api requests
       jwt        = require('jsonwebtoken') // used to create, sign, and verify tokens
+      uuid       = require('node-uuid')
       config     = require('../config') // get our config file
       User       = require('../models/user')
       TodoModel  = require('../models/todo');
@@ -10,9 +11,10 @@ const express    = require('express')
 const apiServer = (PORT) => {
   const backendServer = express();
   const static_path = path.join(__dirname, '../', 'dist');
+  const secretKey = uuid.v4();
 
   backendServer.use(express.static(static_path));
-  backendServer.set('superSecret', config.secret); // Secret variable
+  backendServer.set(secretKey, config.secret); // Secret variable
 
   // Use body parser so we can get info from POST and/or URL parameters
   backendServer.use(bodyParser.urlencoded({ extended: false }));
