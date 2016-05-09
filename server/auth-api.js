@@ -1,19 +1,23 @@
 const bcrypt = require('bcrypt');
 
 module.exports = function(server, apiRoutes) {
-  apiRoutes.post('/signup', function(request, response) {
+  apiRoutes.post('/signup', (request, response) => {
     const saltRounds = 10;
 
-    bcrypt.genSalt(saltRounds, function(err, salt) {
-      bcrypt.hash(request.body.password, salt, function(err, hash) {
+    bcrypt.genSalt(saltRounds, (saltingErr, salt) => {
+      if (saltingErr) throw saltingErr;
+
+      bcrypt.hash(request.body.password, salt, (hashingErr, hash) => {
+        if (hashingErr) throw hashingErr;
+
         const user = new User({
           name: request.body.name,
           email: request.body.email,
           password: hash
         });
 
-        user.save(function(err) {
-          if (err) throw err;
+        user.save((saveErr) => {
+          if (saveErr) throw saveErr;
 
           console.log('User saved successfully');
           response.json({ success: true });
@@ -25,15 +29,15 @@ module.exports = function(server, apiRoutes) {
   apiRoutes.post('/authenticate', function (request, response) {
     User.findOne({
       email: request.body.email
-    }, (err, user) => {
-      if (err) throw err;
+    }, (findErr, user) => {
+      if (findErr) throw findErr;
 
       if (!user) {
         response.json({ success: false, message: 'Authentication failed. User not found.' });
       } else if (user) {
         // Load hash from your password DB.
-        bcrypt.compare(request.body.password, user.password, function(err, res) {
-          if (res !== true) {
+        bcrypt.compare(request.body.password, user.password, (compareErr, compareRes) => {
+          if (compareRes !== true) {
             response.json({ success: false, message: 'Authentication failed.' });
           } else {
             // If user successfully authenticates, create a token
@@ -59,8 +63,8 @@ module.exports = function(server, apiRoutes) {
     // Decode token
     if (token) {
       // Verifies secret and checks expiration
-      jwt.verify(token, server.get('superSecret'), function(err, decoded){
-        if (err) {
+      jwt.verify(token, server.get('superSecret'), (authErr, decoded) => {
+        if (authErr) {
           return response.json({ success: false, message: 'Failed to authenticate token.' });
         } else {
           // If everything is good, save to request for use in other routes
