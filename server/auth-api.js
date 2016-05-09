@@ -36,8 +36,8 @@ module.exports = function(server, apiRoutes) {
         response.json({ success: false, message: 'Authentication failed. User not found.' });
       } else if (user) {
         // Load hash from your password DB.
-        bcrypt.compare(request.body.password, user.password, (compareErr, response) => {
-          if (response !== true) {
+        bcrypt.compare(request.body.password, user.password, (compareErr, compareRes) => {
+          if (compareRes !== true) {
             response.json({ success: false, message: 'Authentication failed.' });
           } else {
             // If user successfully authenticates, create a token
