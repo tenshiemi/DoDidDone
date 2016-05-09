@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
 import DropDownMenu from './DropDownMenu';
-import AppBar from 'material-ui/AppBar';
+import { Toolbar, ToolbarTitle, ToolbarGroup } from 'material-ui/Toolbar';
 import FlatButton from 'material-ui/FlatButton';
 import Dialog from 'material-ui/Dialog';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
-
 
 export class Nav extends React.Component {
   constructor(props) {
@@ -51,26 +50,27 @@ export class Nav extends React.Component {
 
     return (
       <div>
-        <AppBar
-          iconElementLeft={ <div /> }
-          containerElement={ <Link to="/" /> }
-          title="DoDoneDid"
-        >
-          <FlatButton label="Login" secondary={ true } onTouchTap={
-              () => this.handleOpen('login')} />
-          <FlatButton label="Signup" secondary={ true } onTouchTap={
-              () => this.handleOpen('signup') } />
-          <Dialog
-            title={ modalTitle[this.state.modalState].title }
-            actions={actions}
-            modal={ true }
-            open={ this.state.open }
-            onRequestClose={ this.handleClose }
-          >
-            { this.state.modalState === 'login' ? (<LoginForm />) : (<SignupForm />) }
-          </Dialog>
-          <DropDownMenu />
-        </AppBar>
+        <Toolbar className="navbar" iconElementLeft={ <div /> }>
+          <Link to={ '/' } className="navbar__title">
+            <ToolbarTitle text="DoDoneDid" />
+          </Link>
+          <ToolbarGroup firstChild={ true }>
+            <FlatButton label="Login" secondary={ true } onTouchTap={
+                () => this.handleOpen('login')} />
+            <FlatButton label="Signup" secondary={ true } onTouchTap={
+                () => this.handleOpen('signup') } />
+            <Dialog
+              title={ modalTitle[this.state.modalState].title }
+              actions={ actions }
+              modal={ true }
+              open={ this.state.open }
+              onRequestClose={ this.handleClose }
+            >
+              { this.state.modalState === 'login' ? (<LoginForm />) : (<SignupForm />) }
+            </Dialog>
+            <DropDownMenu />
+          </ToolbarGroup>
+        </Toolbar>
       </div>
     );
   }

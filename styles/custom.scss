@@ -12,16 +12,31 @@ body {
   width: 960px;
 }
 
-.navbar__dropdown-button {
+.navbar {
+  background-color: #00B8D4 !important;
+  font-family: 'Roboto';
+
+  &__dropdown-button {
     margin-top: 13px;
     color: white;
   }
+
+  &__title {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    width: 1100;
+    position: relative;
+    margin-top: 10;
+    padding: 0;
+  }
+}
 
 .todo-list {
   list-style-type: none;
 
   &__item {
-    margin: 10px 0 10px 0;
+    margin: 10px;
     text-align: vertical-text;
   }
 
