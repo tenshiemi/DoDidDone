@@ -5,8 +5,15 @@ sudo: false
 cache:
   directories:
   - node_modules
+env:
+  - CXX=g++-5
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-5
+    - g++-5
 install:
   - npm install
   - webpack --config ./webpack-production.config.js --progress --colors
-
-
