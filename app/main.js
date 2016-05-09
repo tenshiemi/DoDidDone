@@ -6,19 +6,20 @@ import thunk from 'redux-thunk';
 import router from './router';
 import rootReducer from './reducers/combinedReducers';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
-import { cyan800, amberA700 } from 'material-ui/styles/colors';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
+import muiTheme from '../styles/muiTheme';
 
 injectTapEventPlugin();
 require('../styles/custom.scss');
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
+const theme = getMuiTheme(muiTheme);
+
 render(
   <Provider store={ store }>
-    <MuiThemeProvider muiTheme={ getMuiTheme(lightBaseTheme) }>
+    <MuiThemeProvider muiTheme={ theme }>
       { router }
     </MuiThemeProvider>
   </Provider>,
