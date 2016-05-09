@@ -33,13 +33,13 @@ module.exports = function(server, apiRoutes) {
       } else if (user) {
         // Load hash from your password DB.
         bcrypt.compare(request.body.password, user.password, function(err, res) {
-          if (res != true) {
+          if (res !== true) {
             response.json({ success: false, message: 'Authentication failed.' });
           } else {
             // If user successfully authenticates, create a token
             const token = jwt.sign({ userName: user.name, userEmail: user.email }, server.get('superSecret'), {
               expiresIn: 86400 // expires in 24 hours
-            })
+            });
 
             // Return the information including token as JSON
             response.json({
@@ -61,7 +61,7 @@ module.exports = function(server, apiRoutes) {
       // Verifies secret and checks expiration
       jwt.verify(token, server.get('superSecret'), function(err, decoded){
         if (err) {
-          return response.json({success: false, message: 'Failed to authenticate token.'});
+          return response.json({ success: false, message: 'Failed to authenticate token.' });
         } else {
           // If everything is good, save to request for use in other routes
           request.decoded = decoded;

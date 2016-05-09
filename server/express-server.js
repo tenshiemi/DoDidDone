@@ -12,23 +12,23 @@ const apiServer = (PORT) => {
   const static_path = path.join(__dirname, '../', 'dist');
 
   backendServer.use(express.static(static_path));
-  backendServer.set('superSecret', config.secret); // secret variable
+  backendServer.set('superSecret', config.secret); // Secret variable
 
-  // use body parser so we can get info from POST and/or URL parameters
+  // Use body parser so we can get info from POST and/or URL parameters
   backendServer.use(bodyParser.urlencoded({ extended: false }));
   backendServer.use(bodyParser.json());
 
-  // use morgan to log requests to the console
+  // Use morgan to log requests to the console
   backendServer.use(morgan('dev'));
 
   // API ROUTES -------------------
 
-  // get an instance of the router for api routes
+  // Get an instance of the router for api routes
   const apiRoutes = express.Router();
   require('./todo-api')(apiRoutes);
   require('./auth-api')(backendServer, apiRoutes);
 
-  // apply the routes to our application with the prefix /api
+  // Apply the routes to our application with the prefix /api
   backendServer.use('/api', apiRoutes);
 
   backendServer.get('/*', (request, response) => {
