@@ -11,7 +11,7 @@
 # Setting up MongoDB
 1. `brew install mongodb`
 1. `sudo mkdir -p /data/db`
-1. `sudo chown "id -u" /data/db` [Note: double quotes may need to be ` characters]
+1. `sudo chown \`id -u\` /data/db`
 
 # Running server locally
 
