@@ -12,10 +12,26 @@ body {
   width: 960px;
 }
 
-.navbar__dropdown-button {
+.navbar {
+  background-color: #00B8D4 !important;
+  font-family: 'Roboto';
+
+  &__dropdown-button {
     margin-top: 13px;
     color: white;
   }
+
+  &__title {
+  text-decoration: none;
+  color: white;
+  // font-size: 'xx-;large';
+  font-weight: 'bold';;
+  width: 1100;;
+  position: relative;
+  margin-top: 10;;
+  padding: 0;
+  }
+}
 
 .todo-list {
   list-style-type: none;
@@ -30,10 +46,6 @@ body {
     top: -6px;
     line-height: 20px;
   }
-}
-
-.navbar__title-link {
-  text-decoration: none
 }
 
 .material-icons {
