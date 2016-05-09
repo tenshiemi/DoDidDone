@@ -21,7 +21,7 @@ const apiServer = (PORT) => {
   // use morgan to log requests to the console
   backendServer.use(morgan('dev'));
 
-    // API ROUTES -------------------
+  // API ROUTES -------------------
 
   // get an instance of the router for api routes
   const apiRoutes = express.Router();
