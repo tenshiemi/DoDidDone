@@ -22,14 +22,13 @@ body {
   }
 
   &__title {
-  text-decoration: none;
-  color: white;
-  // font-size: 'xx-;large';
-  font-weight: 'bold';;
-  width: 1100;;
-  position: relative;
-  margin-top: 10;;
-  padding: 0;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    width: 1100;
+    position: relative;
+    margin-top: 10;
+    padding: 0;
   }
 }
 
@@ -37,7 +36,7 @@ body {
   list-style-type: none;
 
   &__item {
-    margin: 10px 0 10px 0;
+    margin: 10px;
     text-align: vertical-text;
   }
 

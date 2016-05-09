@@ -61,7 +61,7 @@ export class Nav extends React.Component {
                 () => this.handleOpen('signup') } />
             <Dialog
               title={ modalTitle[this.state.modalState].title }
-              actions={actions}
+              actions={ actions }
               modal={ true }
               open={ this.state.open }
               onRequestClose={ this.handleClose }
