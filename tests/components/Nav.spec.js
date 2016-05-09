@@ -8,7 +8,7 @@ describe('(Component) Nav', () => {
   beforeEach(() => _wrapper = shallow(<Nav/>));
 
   it('Renders a navbar', () => {
-    const navbar = _wrapper.find('AppBar');
+    const navbar = _wrapper.find('Toolbar');
     expect(navbar).to.exist;
   });
 });
