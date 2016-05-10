@@ -14,8 +14,6 @@ body {
 
 .navbar {
   font-family: 'Roboto';
-  background-color: #EFEBE9 !important;
-
 
   &__container {
     padding: 10px;
@@ -49,7 +47,6 @@ body {
 
   &__title {
     text-decoration: none;
-    color: #EC407A;
     font-weight: bold;
     width: 1100;
     position: relative;
@@ -94,5 +91,10 @@ body {
     position: relative;
     top: 4px;
     cursor: pointer;
+    color: #E91E63;
   }
+}
+
+button {
+  color: rgb(0,212,78);
 }

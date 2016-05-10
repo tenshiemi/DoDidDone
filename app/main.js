@@ -15,7 +15,7 @@ require('../styles/custom.scss');
 
 console.log(muiTheme);
 
-const customThemes = getMuiTheme(muiTheme.palette);
+const customThemes = getMuiTheme(muiTheme);
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
