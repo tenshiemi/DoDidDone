@@ -8,13 +8,12 @@ import rootReducer from './reducers/combinedReducers';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-// import { amber900, cyan500 } from 'material-ui/styles/colors';
-import { muiTheme, palette } from '../styles/muiTheme';
+import { palette } from '../styles/muiTheme';
 
 injectTapEventPlugin();
 require('../styles/custom.scss');
 
-const theme = getMuiTheme(muiTheme, palette);
+const theme = getMuiTheme(palette);
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

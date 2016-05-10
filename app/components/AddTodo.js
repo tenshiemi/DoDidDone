@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import { addTodoItem } from '../actions/todosAction';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import { amber900 } from 'material-ui/styles/colors';
+
 
 export const AddTodo = ({ dispatch }) => {
   const style = {
-    margin: 12
+    margin: 12,
+    background: amber900
   };
 
   const addTodo = () => {
@@ -30,6 +33,7 @@ export const AddTodo = ({ dispatch }) => {
           }
         }} />
       <RaisedButton
+        className="addTodo__button"
         aria-label="Add Item"
         label="Add"
         style={ style }
