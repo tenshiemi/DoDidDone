@@ -1,3 +1,5 @@
+import actionHelpers from './actionHelpers';
+
 export const ADD_TODO = 'ADD_TODO';
 export const REMOVE_TODO = 'REMOVE_TODO';
 export const TOGGLE_TODO = 'TOGGLE_TODO';
@@ -43,10 +45,10 @@ function logError(error) {
 export function fetchTodoItems() {
   return (dispatch) => {
     return fetch('/api/todos', { method: 'GET' })
-      .then(checkStatus)
-      .then(parseJSON)
+      .then(actionHelpers.checkStatus)
+      .then(actionHelpers.parseJSON)
       .then(json => dispatch(receiveTodoItems(json)))
-      .catch(logError);
+      .catch(actionHelpers.logError);
   };
 }
 
