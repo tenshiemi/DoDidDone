@@ -60,7 +60,8 @@ module.exports = function(server, apiRoutes) {
             // Return the information including token as JSON
             response.json({
               success: true,
-              token: token
+              token: token,
+              email: user.email
             });
           }
         });
