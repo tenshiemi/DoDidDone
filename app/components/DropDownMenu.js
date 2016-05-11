@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import { connect } from 'react-redux';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -16,6 +17,7 @@ export class DropDownMenu extends Component {
 
     this.handleTouchTap = this.handleTouchTap.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
+    this.logOutUser = this.logOutUser.bind(this);
   }
   handleTouchTap(e) {
     e.preventDefault();
@@ -33,7 +35,8 @@ export class DropDownMenu extends Component {
   logOutUser(e) {
     e.preventDefault();
 
-    dispatch(logOutUser());
+    this.handleRequestClose();
+    this.props.dispatch(logOutUser());
   }
   render() {
     const dropDownButton = {

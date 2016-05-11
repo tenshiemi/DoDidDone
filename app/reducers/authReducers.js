@@ -1,6 +1,6 @@
 import { Map } from 'immutable';
 
-const auth = (state = Map({user: null, token: null}), action) => {
+const auth = (state = Map({ user: null, token: null }), action) => {
   switch (action.type) {
     case 'SET_USER_AND_TOKEN': {
       return state.withMutations(oldState => {
