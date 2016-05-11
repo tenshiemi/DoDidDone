@@ -30,7 +30,7 @@ export class DropDownMenu extends Component {
   render() {
     return (
       <div>
-        <div className="navbar__dropdown-button">
+        <div>
           <FlatButton
             onTouchTap={ (e) => this.handleTouchTap.call(this, e) }
             label="Click me"
