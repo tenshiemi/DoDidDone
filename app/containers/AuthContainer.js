@@ -50,11 +50,13 @@ class AuthContainer extends React.Component {
   render() {
     const actions = [
       <FlatButton
+        className="modal-button"
         label="Cancel"
         primary={ true }
         onTouchTap={ () => this.handleClose() }
       />,
       <FlatButton
+        className="modal-button"
         label="Submit"
         primary={ true }
         keyboardFocused={ true }
