@@ -13,8 +13,6 @@ import { muiTheme } from '../styles/muiTheme';
 injectTapEventPlugin();
 require('../styles/custom.scss');
 
-console.log(muiTheme);
-
 const customThemes = getMuiTheme(muiTheme);
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

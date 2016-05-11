@@ -1,50 +1,34 @@
-import { red700, amber900, blueGrey400 } from 'material-ui/styles/colors';
+import { grey800, redA400, amberA700, grey300 } from 'material-ui/styles/colors';
 
 export const muiTheme = {
   palette: {
-    textColor: blueGrey400
+    textColor: grey800
   },
   textField: {
-    floatingLabelColor: amber900,
-    hintColor: blueGrey400,
-    errorColor: red700,
-    focusColor: red700,
-    borderColor: red700
+    floatingLabelColor: grey800,
+    hintColor: grey300,
+    errorColor: grey800,
+    focusColor: grey800,
+    borderColor: grey800
   },
   checkbox: {
-    boxColor: blueGrey400,
-    checkedColor: blueGrey400
+    boxColor: redA400,
+    checkedColor: redA400
   },
   flatButton: {
-    secondaryTextColor: blueGrey400,
+    secondaryTextColor: 'white',
     fontSize: 20
   },
   raisedButton: {
-    primaryColor: blueGrey400,
-    fontWeight: 15
+    primaryColor: redA400
   },
   toolbar: {
-    backgroundColor: amber900,
-    height: 56,
     titleFontSize: 40,
-    menuHoverColor: blueGrey400
+    backgroundColor: amberA700
   },
-  enhancedButton: {
-    tapHighlightColor: amber900
-  },
-  dialog: {
-      titleFontSize: 40,
-      bodyFontSize: 40,
-      bodyColor: amber900
-    },
-  floatingActionButton: {
-      buttonSize: 56,
-      miniSize: 40,
-      color: amber900,
-      iconColor: amber900,
-      secondaryColor: amber900,
-      secondaryIconColor: amber900
-    },
+  tabs: {
+    backgroundColor: grey800
+  }
 };
 
 export default muiTheme;

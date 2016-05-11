@@ -1,5 +1,10 @@
+h3, p, div {
+  font-family: 'Architects Daughter';
+
+}
 body {
   margin: 0;
+  font-family: 'Architects Daughter';
 }
 
 .app-container {
@@ -10,10 +15,14 @@ body {
 .footer {
   margin: auto;
   width: 960px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-left: 100px;
 }
 
 .navbar {
-  font-family: 'Roboto';
+  font-family: 'Architects Daughter';
 
   &__container {
     padding: 10px;
@@ -42,7 +51,11 @@ body {
     margin: 10px 24px;
     text-align: center;
     background: none;
+<<<<<<< abcb3420829018b7343f7241cc69bb74cc984e1f
 >>>>>>> wip
+=======
+    color: #FFFFFF;
+>>>>>>> Implemented custom styling
   }
 
   &__title {
@@ -52,6 +65,7 @@ body {
     position: relative;
     margin-top: 10;
     padding: 0;
+    color: white;
   }
 }
 
@@ -61,6 +75,7 @@ body {
   &__item {
     margin: 10px;
     text-align: vertical-text;
+    color: #616161;
   }
 
   &__text {
@@ -91,10 +106,6 @@ body {
     position: relative;
     top: 4px;
     cursor: pointer;
-    color: #E91E63;
+    color: #616161;
   }
-}
-
-button {
-  color: rgb(0,212,78);
 }
