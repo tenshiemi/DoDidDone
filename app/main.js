@@ -18,9 +18,9 @@ const customThemes = getMuiTheme(muiTheme);
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 render(
-  <Provider store={ store }>
-    <MuiThemeProvider muiTheme={ customThemes }>
-      { router }
+  <Provider store={store}>
+    <MuiThemeProvider muiTheme={customThemes}>
+      {router}
     </MuiThemeProvider>
   </Provider>,
   document.getElementById('app')
