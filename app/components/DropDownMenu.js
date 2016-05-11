@@ -16,7 +16,6 @@ export class DropDownMenu extends Component {
     this.handleTouchTap = this.handleTouchTap.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
   }
-
   handleTouchTap(e) {
     e.preventDefault();
 
@@ -29,6 +28,9 @@ export class DropDownMenu extends Component {
     this.setState({
       open: false
     });
+  }
+  logOutUser() {
+
   }
   render() {
     const dropDownButton = {
@@ -53,7 +55,7 @@ export class DropDownMenu extends Component {
           <Menu>
             <MenuItem value={1}><Link to={'about'}>About us</Link></MenuItem>
             <MenuItem value={2}><Link to={'help'}>Help</Link></MenuItem>
-            <MenuItem value={3} primaryText="Logout" />
+            <MenuItem value={3}><a>Log out</a></MenuItem>
           </Menu>
         </Popover>
       </div>
