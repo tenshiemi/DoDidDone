@@ -38,7 +38,7 @@ export class DropDownMenu extends Component {
           <FlatButton
             onTouchTap={ (e) => this.handleTouchTap.call(this, e) }
             label="Click me"
-            rippleColor={ '#FFFFFF' }
+            rippleColor={ "#FFFFFF" }
             style={ dropDownButton }
         />
         </div>

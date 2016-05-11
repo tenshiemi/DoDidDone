@@ -51,11 +51,7 @@ body {
     margin: 10px 24px;
     text-align: center;
     background: none;
-<<<<<<< abcb3420829018b7343f7241cc69bb74cc984e1f
->>>>>>> wip
-=======
     color: #FFFFFF;
->>>>>>> Implemented custom styling
   }
 
   &__title {
@@ -68,6 +64,10 @@ body {
     color: white;
   }
 }
+
+ button.modal-button {
+      color: #616161 !important;
+  }
 
 .todo-list {
   list-style-type: none;
