@@ -24,24 +24,6 @@ export function receiveTodoItems(todoItems) {
   };
 }
 
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
-
-  let error = new Error(response.statusText);
-  error.response = response;
-  throw error;
-}
-
-function parseJSON(response) {
-  return response.json();
-}
-
-function logError(error) {
-  console.log('Request failed:', error);
-}
-
 export function fetchTodoItems() {
   return (dispatch) => {
     return fetch('/api/todos', { method: 'GET' })
@@ -54,17 +36,17 @@ export function fetchTodoItems() {
 
 export function addTodoItem(text) {
   return (dispatch) => {
-    fetch('/api/todos', {
+    return fetch('/api/todos', {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ text })
-    }).then(checkStatus)
-    .then(parseJSON)
+    }).then(actionHelpers.checkStatus)
+    .then(actionHelpers.parseJSON)
     .then(todo => dispatch(addTodoToState(todo)))
-    .catch(logError);
+    .catch(actionHelpers.logError);
   };
 }
 
@@ -77,7 +59,7 @@ export function removeTodoItem(index, id) {
         'Content-Type': 'application/json'
       }
     }).then(() => dispatch(removeTodoFromState(index)))
-    .catch(logError);
+    .catch(actionHelpers.logError);
   };
 }
 
@@ -89,25 +71,25 @@ export function toggleTodoStatus(index, id) {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       }
-    }).then(checkStatus)
-    .then(parseJSON)
+    }).then(actionHelpers.checkStatus)
+    .then(actionHelpers.parseJSON)
     .then(todo => dispatch(updateTodoInState(todo, index)))
-    .catch(logError);
+    .catch(actionHelpers.logError);
   };
 }
 
 export function editTodoItem(index, id, text) {
   return (dispatch) => {
-    fetch('/api/todos/' + id, {
+    return fetch('/api/todos/' + id, {
       method: 'PUT',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ index, text })
-    }).then(checkStatus)
-    .then(parseJSON)
+    }).then(actionHelpers.checkStatus)
+    .then(actionHelpers.parseJSON)
     .then((todo) => dispatch(updateTodoInState(todo, index)))
-    .catch(logError);
+    .catch(actionHelpers.logError);
   };
 }

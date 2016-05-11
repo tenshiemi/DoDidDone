@@ -11,11 +11,13 @@ const SignupForm = () => (
       hintText="Email"
       errorText="This field is required."
       id="emailField"
+      type="email"
     /><br />
     <TextField
       hintText="Password"
       errorText="This field is required."
       id="passwordField"
+      type="password"
     /><br />
   </div>
 );
