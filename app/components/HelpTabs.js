@@ -5,6 +5,8 @@ import { browserHistory } from 'react-router';
 export class HelpTabs extends Component {
   constructor(props) {
     super(props);
+
+    this.handleChange = this.handleChange.bind(this);
   }
   handleChange(e) {
     if (e.props.label === 'Contact') {
@@ -16,12 +18,8 @@ export class HelpTabs extends Component {
   render() {
     return (
       <Tabs>
-        <Tab label="FAQs" onActive={(e) => {
-          this.handleChange.call(this, e);
-        }} />
-        <Tab label="Contact" onActive={(e) => {
-          this.handleChange.call(this, e);
-        }} />
+        <Tab label="FAQs" onActive={this.handleChange} />
+        <Tab label="Contact" onActive={this.handleChange} />
       </Tabs>
     );
   }

@@ -14,6 +14,9 @@ class AuthContainer extends React.Component {
       open: false,
       modalState: 'login'
     };
+
+    this.handleClose = this.handleClose.bind(this);
+    this.handleSubmission = this.handleSubmission.bind(this);
   }
   handleOpen(modalState) {
     return this.setState({ open: true, modalState });
@@ -52,15 +55,15 @@ class AuthContainer extends React.Component {
       <FlatButton
         className="modal-button"
         label="Cancel"
-        primary={ true }
-        onTouchTap={ () => this.handleClose() }
+        primary
+        onTouchTap={this.handleClose}
       />,
       <FlatButton
         className="modal-button"
         label="Submit"
-        primary={ true }
-        keyboardFocused={ true }
-        onTouchTap={ () => this.handleSubmission() }
+        primary
+        keyboardFocused
+        onTouchTap={this.handleSubmission}
       />
     ];
 
@@ -71,18 +74,28 @@ class AuthContainer extends React.Component {
 
     return (
       <div>
-        <FlatButton label="Log in" secondary={ true } onTouchTap={
-            () => this.handleOpen('login')} />
-        <FlatButton label="Sign up" secondary={ true } onTouchTap={
-            () => this.handleOpen('signup') } />
+        <FlatButton
+          label="Log in"
+          secondary
+          onTouchTap={
+            () => this.handleOpen('login')
+          }
+        />
+        <FlatButton
+          label="Sign up"
+          secondary
+          onTouchTap={
+            () => this.handleOpen('signup')
+          }
+        />
         <Dialog
-          title={ modalTitle[this.state.modalState] }
-          actions={ actions }
-          modal={ true }
-          open={ this.state.open }
-          onRequestClose={ this.handleClose }
+          title={modalTitle[this.state.modalState]}
+          actions={actions}
+          modal
+          open={this.state.open}
+          onRequestClose={this.handleClose}
         >
-          { this.state.modalState === 'login' ? (<LoginForm />) : (<SignupForm />) }
+          {this.state.modalState === 'login' ? (<LoginForm />) : (<SignupForm />)}
         </Dialog>
       </div>
     );

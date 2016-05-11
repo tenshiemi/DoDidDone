@@ -6,7 +6,7 @@ export const App = (props) => (
   <div>
     <Nav />
     <div className="app-container">
-      { props.children }
+      {props.children}
     </div>
     <Footer />
   </div>

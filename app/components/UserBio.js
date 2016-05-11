@@ -3,7 +3,7 @@ import React, { PropTypes } from 'react';
 const UserBio = ({ userBio }) => {
   return (
     <div>
-      <span className="userBioText">{ userBio }</span>
+      <span className="userBioText">{userBio}</span>
     </div>
   );
 };

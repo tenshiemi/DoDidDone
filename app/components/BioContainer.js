@@ -7,11 +7,11 @@ import { List } from 'immutable';
 const BioContainer = ({ userData }) => {
   return (
     <div>
-     { userData.map((userDetail, index) =>
-        <div key={ index }>
-          <UserPicture key={ 'picture' + index } userPicture={ userDetail.userImageURL } />
-          <UserBio key={ 'bio' + index } userBio={ userDetail.userBio } />
-          <UserContactInfo key={ 'info' + index } userContact={ userDetail.userContact } />
+     {userData.map((userDetail, index) =>
+        <div key={index}>
+          <UserPicture key={'picture' + index} userPicture={userDetail.userImageURL} />
+          <UserBio key={'bio' + index} userBio={userDetail.userBio} />
+          <UserContactInfo key={'info' + index} userContact={userDetail.userContact} />
         </div>
       )}
     </div>
