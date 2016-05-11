@@ -32,7 +32,7 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         loaders: ['react-hot', 'babel', 'eslint-loader'],
-        include: path.join(__dirname, 'app')
+        include: [path.join(__dirname, 'app'), path.join(__dirname, 'styles')]
       },
       {
         test: /\.scss$/,

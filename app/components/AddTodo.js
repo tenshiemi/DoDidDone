@@ -30,6 +30,7 @@ export const AddTodo = ({ dispatch }) => {
           }
         }} />
       <RaisedButton
+        className="addTodo__button"
         aria-label="Add Item"
         label="Add"
         style={ style }
