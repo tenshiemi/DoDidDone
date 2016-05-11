@@ -6,11 +6,15 @@ const LoginForm = () => (
     <TextField
       hintText="Email"
       id="userEmail"
-    /><br />
+      type="email"
+    />
+    <br />
     <TextField
       hintText="Password"
       id="userPassword"
-    /><br />
+      type="password"
+    />
+    <br />
   </div>
 );
 

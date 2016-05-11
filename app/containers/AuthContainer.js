@@ -9,6 +9,7 @@ import FlatButton from 'material-ui/FlatButton';
 class AuthContainer extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       open: false,
       modalState: 'login'
