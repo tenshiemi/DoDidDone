@@ -1,9 +1,14 @@
 import actionHelpers from './actionHelpers';
 
 export const SET_USER_AND_TOKEN = 'SET_USER_AND_TOKEN';
+export const LOG_OUT_USER = 'LOG_OUT_USER';
 
 export function setUserAndToken(userInfo) {
   return { type: SET_USER_AND_TOKEN, user: userInfo.email, token: userInfo.token };
+}
+
+export function logOutUser() {
+  return { type: LOG_OUT_USER };
 }
 
 export function signUpUser(newUser) {

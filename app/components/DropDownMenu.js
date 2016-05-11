@@ -4,6 +4,7 @@ import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
+import { logOutUser } from '../actions/authAction';
 
 export class DropDownMenu extends Component {
   constructor(props) {
@@ -29,8 +30,10 @@ export class DropDownMenu extends Component {
       open: false
     });
   }
-  logOutUser() {
+  logOutUser(e) {
+    e.preventDefault();
 
+    dispatch(logOutUser());
   }
   render() {
     const dropDownButton = {
@@ -55,7 +58,7 @@ export class DropDownMenu extends Component {
           <Menu>
             <MenuItem value={1}><Link to={'about'}>About us</Link></MenuItem>
             <MenuItem value={2}><Link to={'help'}>Help</Link></MenuItem>
-            <MenuItem value={3}><a>Log out</a></MenuItem>
+            <MenuItem value={3}><a href="#" onClick={this.logOutUser}>Log out</a></MenuItem>
           </Menu>
         </Popover>
       </div>
@@ -63,4 +66,8 @@ export class DropDownMenu extends Component {
   }
 }
 
-export default DropDownMenu;
+DropDownMenu.propTypes = {
+  dispatch: PropTypes.func.isRequired
+};
+
+export default connect()(DropDownMenu);
