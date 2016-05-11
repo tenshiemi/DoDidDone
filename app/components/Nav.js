@@ -4,22 +4,18 @@ import AuthContainer from '../containers/AuthContainer';
 import DropDownMenu from './DropDownMenu';
 import { Toolbar, ToolbarTitle, ToolbarGroup } from 'material-ui/Toolbar';
 
-export class Nav extends React.Component {
-  render() {
-    return (
-      <Toolbar className="navbar" iconElementLeft={<div />}>
-        <Link to={'/'} className="navbar__title">
-          <ToolbarTitle text="DoDoneDid" />
-        </Link>
-        <div className="navbar__container">
-          <ToolbarGroup firstChild>
-              <AuthContainer />
-              <DropDownMenu />
-          </ToolbarGroup>
-        </div>
-      </Toolbar>
-    );
-  }
-}
+export const Nav = () => (
+  <Toolbar className="navbar" iconElementLeft={<div />}>
+    <Link to={'/'} className="navbar__title">
+      <ToolbarTitle text="DoDoneDid" />
+    </Link>
+    <div className="navbar__container">
+      <ToolbarGroup firstChild>
+          <AuthContainer />
+          <DropDownMenu />
+      </ToolbarGroup>
+    </div>
+  </Toolbar>
+);
 
 export default Nav;
