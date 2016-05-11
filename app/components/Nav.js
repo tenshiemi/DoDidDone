@@ -12,7 +12,7 @@ export class Nav extends React.Component {
           <ToolbarTitle text="DoDoneDid" />
         </Link>
         <div className="navbar__container">
-          <ToolbarGroup firstChild >
+          <ToolbarGroup firstChild>
               <AuthContainer />
               <DropDownMenu />
           </ToolbarGroup>
