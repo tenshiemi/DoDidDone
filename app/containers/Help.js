@@ -4,7 +4,7 @@ import HelpTabs from '../components/HelpTabs';
 export const Help = (props) => (
   <div>
     <HelpTabs />
-    { props.children }
+    {props.children}
   </div>
 );
 

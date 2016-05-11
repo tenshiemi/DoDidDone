@@ -65,9 +65,15 @@ body {
   }
 }
 
- button.modal-button {
-      color: #616161 !important;
+button.modal-button {
+  color: #616161 !important;
+}
+
+.add-todo {
+  &__button {
+    margin: 12px;
   }
+}
 
 .todo-list {
   list-style-type: none;

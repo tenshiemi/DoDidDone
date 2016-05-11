@@ -15,7 +15,7 @@ class TodoListContainer extends React.Component {
   render() {
     return (
       <div>
-        <TodoList todoItems={ this.props.todoItems } />
+        <TodoList todoItems={this.props.todoItems} />
         <AddTodo />
       </div>
     );

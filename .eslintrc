@@ -229,19 +229,33 @@
     //
     // React specific linting rules for ESLint
     //
+    // "jsx-a11y/aria-role": 2, // Use only valid, non-abstract ARIA roles
+    // "jsx-a11y/img-has-alt": 2, // Always require an alt tag for images
+    // "jsx-a11y/img-redundant-alt": 2, // Do not use synonyms for image in the alt tag
+    // "jsx-a11y/no-access-key": 2, // Do not use accessKey on elements
     "jsx-quotes": [2, "prefer-double"], // Enforce quote style for JSX attributes
     "react/display-name": 0, // Prevent missing displayName in a React component definition
+    "react/jsx-boolean-value": 1,
+    "react/jsx-closing-bracket-location": 2,
+    "react/jsx-curly-spacing": 2,
+    "react/jsx-no-bind": [2, {"allowArrowFunctions": true}], // Bind event handlers in the constructor
     "react/jsx-no-undef": 2, // Disallow undeclared variables in JSX
+    "react/jsx-pascal-case": 2,
     "react/jsx-sort-props": 0, // Enforce props alphabetical sorting
     "react/jsx-uses-react": 2, // Prevent React to be incorrectly marked as unused
     "react/jsx-uses-vars": 2, // Prevent variables used in JSX to be incorrectly marked as unused
     "react/no-did-mount-set-state": 2, // Prevent usage of setState in componentDidMount
     "react/no-did-update-set-state": 2, // Prevent usage of setState in componentDidUpdate
-    "react/no-multi-comp": 0, // Prevent multiple component definition per file
+    "react/no-is-mounted": 2, // Do not use isMounted
+    "react/no-multi-comp": 2, // Prevent multiple component definition per file
     "react/no-unknown-property": 2, // Prevent usage of unknown DOM property
+    "react/prefer-es6-class": 1, // Use class extends Component over CreateClass
+    "react/prefer-stateless-function": 1,
     "react/prop-types": 1, // Prevent missing props validation in a React component definition
     "react/react-in-jsx-scope": 2, // Prevent missing React when using JSX
     "react/self-closing-comp": 2, // Prevent extra closing tags for components without children
+    "react/sort-comp": 2,
     "react/wrap-multilines": 2, // Prevent missing parentheses around multilines JSX
+    // "require-render-return": 2,
   }
 }

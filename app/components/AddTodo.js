@@ -5,10 +5,6 @@ import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
 export const AddTodo = ({ dispatch }) => {
-  const style = {
-    margin: 12
-  };
-
   const addTodo = () => {
     let inputField = document.getElementById('addTodoText');
 
@@ -18,24 +14,27 @@ export const AddTodo = ({ dispatch }) => {
     }
   };
 
+  const submitOnEnter = (e) => {
+    if (e.key === 'Enter') {
+      addTodo();
+    }
+  };
+
   return (
     <div>
       <TextField
         hintText="Enter todo item"
         id="addTodoText"
         aria-label="Enter todo item"
-        onKeyPress= { (e) => {
-          if (e.key === 'Enter') {
-            addTodo();
-          }
-        }} />
+        onKeyPress={submitOnEnter}
+      />
       <RaisedButton
         className="addTodo__button"
         aria-label="Add Item"
         label="Add"
-        style={ style }
-        primary={ true }
-        onClick={ addTodo }
+        className="add-todo__button"
+        primary
+        onClick={addTodo}
       />
     </div>
   );

@@ -7,12 +7,12 @@ import { Toolbar, ToolbarTitle, ToolbarGroup } from 'material-ui/Toolbar';
 export class Nav extends React.Component {
   render() {
     return (
-      <Toolbar className="navbar" iconElementLeft={ <div /> }>
-        <Link to={ '/' } className="navbar__title">
+      <Toolbar className="navbar" iconElementLeft={<div />}>
+        <Link to={'/'} className="navbar__title">
           <ToolbarTitle text="DoDoneDid" />
         </Link>
         <div className="navbar__container">
-          <ToolbarGroup firstChild={ true }>
+          <ToolbarGroup firstChild >
               <AuthContainer />
               <DropDownMenu />
           </ToolbarGroup>

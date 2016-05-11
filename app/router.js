@@ -8,14 +8,14 @@ import FAQs from './components/FAQs';
 import ContactTab from './components/ContactTab';
 
 export default (
-  <Router history={ browserHistory }>
-    <Route component={ App }>
-      <Route path="/" component={ TodoListContainer } />
-      <Route path="about" component={ About } />
-      <Route path="help" component={ Help }>
+  <Router history={browserHistory}>
+    <Route component={App}>
+      <Route path="/" component={TodoListContainer} />
+      <Route path="about" component={About} />
+      <Route path="help" component={Help}>
         <IndexRedirect to="faqs" />
-        <Route path="faqs" component={ FAQs } />
-        <Route path="contact" component={ ContactTab } />
+        <Route path="faqs" component={FAQs} />
+        <Route path="contact" component={ContactTab} />
       </Route>
     </Route>
   </Router>

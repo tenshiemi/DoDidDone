@@ -4,8 +4,8 @@ import { List } from 'immutable';
 
 export const TodoList = ({ todoItems }) => (
   <ul className="todo-list">
-    { todoItems.map((todoItem, index) =>
-      <TodoItem key={ index } todoItem={ todoItem } index={ index } />
+    {todoItems.map((todoItem, index) =>
+      <TodoItem key={index} todoItem={todoItem} index={index} />
     )}
   </ul>
 );
