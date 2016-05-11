@@ -1,11 +1,24 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { removeTodoItem } from '../actions/todosAction';
-import { editTodoItem } from '../actions/todosAction';
+// import { editTodoItem } from '../actions/todosAction';
 import { toggleTodoStatus } from '../actions/todosAction';
 import Checkbox from 'material-ui/Checkbox';
+import TextField from 'material-ui/TextField';
 
-export const TodoItem = ({ todoItem, index, dispatch }) => {
+
+export class TodoItem  extends React.Component  {
+  // = ({ todoItem, index, dispatch }) => {
+  // let todoItemID = 0;
+
+  // edit.appendChild
+  // generateElement.setAttribute('id', 'select-' + todoItemID++);
+  // console.log(document.getElementById(todoItemID));
+  // const newtodoID = document.getElementById(todoItemID);
+  // const helper = newtodoID.setAttribute(todoItemID, todoItemID + 1);
+  // generateElement.appendChild(newtodoID);
+
+
   return (
     <li className="todo-list__item">
       <div className="todo-item__checkbox">
@@ -16,8 +29,10 @@ export const TodoItem = ({ todoItem, index, dispatch }) => {
         />
       </div>
       <span className="todo-list__text">
-        {todoItem.text}&nbsp;&nbsp;
-        <a onClick={() => {
+        <span id="todo">
+          { todoItem.text }  &nbsp;&nbsp;
+        </span>
+        <a onClick={ () => {
           dispatch(removeTodoItem(index, todoItem._id));
         }}
         >
@@ -25,11 +40,25 @@ export const TodoItem = ({ todoItem, index, dispatch }) => {
             delete_forever
           </i>
         </a>
-        <a onClick={() => {
-          const editedTodo = prompt('Edit Todo Item Below:');
-          dispatch(editTodoItem(index, todoItem._id, editedTodo));
-        }}
-        >
+        <a onClick={ () => {
+          // const editedTodo = prompt('Edit Todo Item Below:');
+          <TextField />
+          const edit = document.createElement('input');
+          edit.setAttribute('type', 'text');
+          edit.setAttribute('id', 'editID');
+          edit.setAttribute('value', edit.value);
+          const inputValue = document.getElementById('editID');
+          const todoField = document.getElementById('todo');
+          todoField.appendChild(edit);
+          // console.log(edit.value)
+          const update = todoField.appendChild(inputValue);
+          todoField.textContext = update;
+          while (todoField.hasChildNodes()) {
+            todoField.removeChild(todoField.lastChild);
+          }
+
+          // dispatch(editTodoItem(index, todoItem._id, editedTodo));
+        }}>
           <i className="material-icons material-icons__edit" aria-label="Delete">
             mode_edit
           </i>
