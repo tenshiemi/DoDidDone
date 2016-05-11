@@ -26,6 +26,8 @@ module.exports = function(server, apiRoutes) {
         user.save((saveErr) => {
           if (saveErr) throw saveErr;
 
+          console.log('Account creation succeeded for', request.body.email);
+
           // If user successfully signs up, create a token
           const token = generateToken(user);
 
@@ -47,13 +49,16 @@ module.exports = function(server, apiRoutes) {
       if (findErr) throw findErr;
 
       if (!user) {
+        console.error('Couldn\'t find user', request.body.email);
         response.json({ success: false, message: 'Authentication failed. User not found.' });
       } else if (user) {
         // Load hash from your password DB.
         bcrypt.compare(request.body.password, user.password, (compareErr, compareRes) => {
           if (compareRes !== true) {
+            console.error('Password check failed for', request.body.email);
             response.json({ success: false, message: 'Authentication failed.' });
           } else {
+            console.log('Log in succeeded for', request.body.email);
             // If user successfully authenticates, create a token
             const token = generateToken(user);
 

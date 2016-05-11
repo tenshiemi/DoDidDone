@@ -1,5 +1,5 @@
 const actionHelpers = {
-  checkStatus: function(response) {
+  checkStatus: (response) => {
     if (response.status >= 200 && response.status < 300) {
       return response;
     }
@@ -8,10 +8,19 @@ const actionHelpers = {
     error.response = response;
     throw error;
   },
-  parseJSON: function(response) {
+  parseJSON: (response) => {
     return response.json();
   },
-  logError: function(error) {
+  checkSuccess: (response) => {
+    if (response.success === false) {
+      let error = new Error(response.message);
+      error.response = response;
+      throw error;
+    }
+
+    return response;
+  },
+  logError: (error) => {
     console.error('Request failed:', error);
   }
 };

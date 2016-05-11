@@ -17,6 +17,7 @@ export function signUpUser(newUser) {
       body: JSON.stringify(newUser)
     }).then(actionHelpers.checkStatus)
     .then(actionHelpers.parseJSON)
+    .then(actionHelpers.checkSuccess)
     .then((userInfo) => dispatch(setUserAndToken(userInfo)))
     .catch(actionHelpers.logError);
   };
@@ -33,6 +34,7 @@ export function logInUser(userCredentials) {
       body: JSON.stringify(userCredentials)
     }).then(actionHelpers.checkStatus)
     .then(actionHelpers.parseJSON)
+    .then(actionHelpers.checkSuccess)
     .then((userInfo) => dispatch(setUserAndToken(userInfo)))
     .catch(actionHelpers.logError);
   };
