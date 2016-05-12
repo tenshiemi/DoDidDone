@@ -7,7 +7,7 @@ describe('(Container) Help', () => {
 
   beforeEach(() => {
     _props = {
-        children: []
+        children: ""
     }
     _wrapper = shallow(<Help { ..._props }/>);
   });
