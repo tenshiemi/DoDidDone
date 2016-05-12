@@ -17,15 +17,15 @@ export const EditTodo = ({ text, saveEdit, cancelEdit }) => {
       editTodo();
     }
   };
+
   return (
      <span>
       <TextField
         hintText="Edit todo item"
         id="editTodoItem"
-        aria-label="Edit todo item"
         defaultValue={text}
-        aria-label="Edit todo item"
         onKeyPress={submitOnEnter}
+        aria-label="Edit todo item"
       />
       <i
         className="material-icons material-icons__edit"

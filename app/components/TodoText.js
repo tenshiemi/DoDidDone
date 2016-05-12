@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 export const TodoText = ({ text }) => (
-  <span>{text}  &nbsp;&nbsp;</span>
+  <span>{text} &nbsp;&nbsp;</span>
 );
 
 TodoText.propTypes = {
