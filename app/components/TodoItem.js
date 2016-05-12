@@ -37,7 +37,8 @@ export class TodoItem extends React.Component {
             onClick={ () => {
               this.props.dispatch(
                 toggleTodoStatus(this.props.index, this.props.todoItem._id));
-            }}/>
+            }}
+          />
         </div>
         <span className="todo-list__text">
             { this.state.editing === true ?
