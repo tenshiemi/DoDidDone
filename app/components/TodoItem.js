@@ -1,10 +1,18 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { removeTodoItem } from '../actions/todosAction';
-// import { editTodoItem } from '../actions/todosAction';
+// /import { editTodoItem } from '../actions/todosAction';
 import { toggleTodoStatus } from '../actions/todosAction';
 import Checkbox from 'material-ui/Checkbox';
-// import TextField from 'material-ui/TextField';
+import EditTodo from './EditTodo';
+
+const TodoText = ({ text }) => (
+  <span>{ text }  &nbsp;&nbsp;</span>
+);
+
+TodoText.propTypes = {
+  text: PropTypes.string.isRequired
+};
 
 export class TodoItem extends React.Component {
   constructor(props) {
@@ -13,6 +21,11 @@ export class TodoItem extends React.Component {
     this.state = {
       editing: false
     };
+
+    this.editingState = this.editingState.bind(this);
+  }
+  editingState() {
+    this.setState({ editing: true });
   }
   render() {
     return (
@@ -27,9 +40,10 @@ export class TodoItem extends React.Component {
             }}/>
         </div>
         <span className="todo-list__text">
-          <span id="todo">
-            { this.props.todoItem.text }  &nbsp;&nbsp;
-          </span>
+            { this.state.editing === true ?
+              (<EditTodo text={this.props.todoItem.text} />) :
+              (<TodoText text={this.props.todoItem.text} />)
+            }
           <a onClick={ () => {
             this.props.dispatch(removeTodoItem(this.props.index, this.props.todoItem._id));
           }}>
@@ -37,11 +51,7 @@ export class TodoItem extends React.Component {
               delete_forever
             </i>
           </a>
-          <a onClick={ () => {
-            // const editedTodo = prompt('Edit Todo Item Below:');
-            // this.props.dispatch(editTodoItem(this.props.index,
-            // this.props.todoItem._id, this.props.editedTodo));
-          }}>
+          <a onClick={this.editingState}>
             <i className="material-icons material-icons__edit" aria-label="Delete">
               mode_edit
             </i>
