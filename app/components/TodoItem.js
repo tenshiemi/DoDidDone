@@ -7,7 +7,7 @@ import Checkbox from 'material-ui/Checkbox';
 import EditTodo from './EditTodo';
 
 const TodoText = ({ text }) => (
-  <span>{ text }  &nbsp;&nbsp;</span>
+  <span>{text}  &nbsp;&nbsp;</span>
 );
 
 TodoText.propTypes = {
@@ -33,21 +33,22 @@ export class TodoItem extends React.Component {
         <div className="todo-item__checkbox">
           <Checkbox
             aria-label="Checkbox"
-            checked={ this.props.todoItem.completed }
-            onClick={ () => {
+            checked={this.props.todoItem.completed}
+            onClick={() => {
               this.props.dispatch(
                 toggleTodoStatus(this.props.index, this.props.todoItem._id));
             }}
           />
         </div>
         <span className="todo-list__text">
-            { this.state.editing === true ?
+            {this.state.editing === true ?
               (<EditTodo text={this.props.todoItem.text} />) :
               (<TodoText text={this.props.todoItem.text} />)
             }
-          <a onClick={ () => {
+          <a onClick={() => {
             this.props.dispatch(removeTodoItem(this.props.index, this.props.todoItem._id));
-          }}>
+          }}
+          >
             <i className="material-icons material-icons__delete" aria-label="Delete">
               delete_forever
             </i>
