@@ -46,9 +46,10 @@ export class TodoItem extends React.Component {
         <span className="todo-list__text">
             {this.state.editing === true ?
                 (<span>
-                  <EditTodo text={this.props.todoItem.text}
-                  saveEdit={this.saveEdit}
-                  cancelEdit={this.cancelEdit}
+                  <EditTodo
+                    text={this.props.todoItem.text}
+                    saveEdit={this.saveEdit}
+                    cancelEdit={this.cancelEdit}
                   />
                </span>) :
               (<TodoText text={this.props.todoItem.text} />)

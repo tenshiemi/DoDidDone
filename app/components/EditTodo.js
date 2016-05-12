@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
 import RaisedButton from 'material-ui/RaisedButton';
+import FontIcon from 'material-ui/FontIcon';
 
 export const EditTodo = ({ text, saveEdit, cancelEdit }) => {
   const editTodo = () => {
@@ -18,7 +19,6 @@ export const EditTodo = ({ text, saveEdit, cancelEdit }) => {
       editTodo();
     }
   };
-
   return (
      <span>
       <TextField
@@ -29,8 +29,18 @@ export const EditTodo = ({ text, saveEdit, cancelEdit }) => {
         aria-label="Edit todo item"
         onKeyPress={submitOnEnter}
       />
-      <RaisedButton label="Cancel" onClick={cancelEdit} />
-      <RaisedButton label="Save" onClick={editTodo} />
+      <i
+        className="material-icons material-icons__edit"
+        aria-label="Cancel Edit"
+        onClick={cancelEdit}>
+          clear
+      </i>
+      <i
+        className="material-icons material-icons__edit"
+        aria-label="Save Edit"
+        onClick={editTodo}>
+          save
+      </i>
     </span>
   );
 };
