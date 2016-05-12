@@ -8,16 +8,6 @@ import TextField from 'material-ui/TextField';
 
 
 export class TodoItem  extends React.Component  {
-  // = ({ todoItem, index, dispatch }) => {
-  // let todoItemID = 0;
-
-  // edit.appendChild
-  // generateElement.setAttribute('id', 'select-' + todoItemID++);
-  // console.log(document.getElementById(todoItemID));
-  // const newtodoID = document.getElementById(todoItemID);
-  // const helper = newtodoID.setAttribute(todoItemID, todoItemID + 1);
-  // generateElement.appendChild(newtodoID);
-
 
   return (
     <li className="todo-list__item">
