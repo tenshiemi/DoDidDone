@@ -9,10 +9,12 @@ import TextField from 'material-ui/TextField';
 export class TodoItem  extends React.Component  {
     this.state = {
       editing: false,
-      todoItem: {},
-      index: [],
-      dispatch: {}
+      todoItem: completed ,
+      index: true,
+      dispatch: true
     };
+
+    this.setState
   }
   render() {
     return (
@@ -53,6 +55,14 @@ TodoItem.propTypes = {
   todoItem: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired
+};
+const mapStateToProps = (state) => {
+  return {
+    todoItem: state.todos.get('todoItems')
+    editing:
+    index:
+    dispatch:
+  };
 };
 
 export default connect()(TodoItem);
