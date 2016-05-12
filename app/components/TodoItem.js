@@ -17,6 +17,7 @@ export class TodoItem extends React.Component {
 
     this.editingState = this.editingState.bind(this);
     this.saveEdit = this.saveEdit.bind(this);
+    this.cancelEdit = this.cancelEdit.bind(this);
   }
   editingState() {
     this.setState({ editing: true });
@@ -24,6 +25,9 @@ export class TodoItem extends React.Component {
   saveEdit(editedText) {
     this.props.dispatch(
       editTodoItem(this.props.index, this.props.todoItem._id, editedText));
+    this.setState({ editing: false });
+  }
+  cancelEdit() {
     this.setState({ editing: false });
   }
   render() {
@@ -41,9 +45,12 @@ export class TodoItem extends React.Component {
         </div>
         <span className="todo-list__text">
             {this.state.editing === true ?
-              (<EditTodo text={this.props.todoItem.text}
-                saveEdit={this.saveEdit}
-               />) :
+                (<span>
+                  <EditTodo text={this.props.todoItem.text}
+                  saveEdit={this.saveEdit}
+                  cancelEdit={this.cancelEdit}
+                  />
+               </span>) :
               (<TodoText text={this.props.todoItem.text} />)
             }
           <a onClick={() => {
