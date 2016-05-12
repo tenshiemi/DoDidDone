@@ -1,8 +1,6 @@
 import React, { PropTypes } from 'react';
 import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
-import RaisedButton from 'material-ui/RaisedButton';
-import FontIcon from 'material-ui/FontIcon';
 
 export const EditTodo = ({ text, saveEdit, cancelEdit }) => {
   const editTodo = () => {
@@ -32,13 +30,15 @@ export const EditTodo = ({ text, saveEdit, cancelEdit }) => {
       <i
         className="material-icons material-icons__edit"
         aria-label="Cancel Edit"
-        onClick={cancelEdit}>
+        onClick={cancelEdit}
+      >
           clear
       </i>
       <i
         className="material-icons material-icons__edit"
         aria-label="Save Edit"
-        onClick={editTodo}>
+        onClick={editTodo}
+      >
           save
       </i>
     </span>
