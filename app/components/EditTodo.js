@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import TextField from 'material-ui/TextField';
 import { connect } from 'react-redux';
+import TextField from 'material-ui/TextField';
 
 export const EditTodo = ({ text, saveEdit, cancelEdit }) => {
   const editTodo = () => {
