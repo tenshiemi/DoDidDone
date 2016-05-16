@@ -19,8 +19,6 @@ class AuthContainer extends React.Component {
 
     this.handleClose = this.handleClose.bind(this);
     this.handleSubmission = this.handleSubmission.bind(this);
-
-    console.log(this.state);
   }
   handleOpen(modalState) {
     return this.setState({ open: true, modalState });
@@ -53,6 +51,13 @@ class AuthContainer extends React.Component {
     };
 
     this.props.dispatch(logInUser(userCredentials));
+
+    if (this.props.token && this.props.user !== null) {
+      this.validateUserLoginStatus();
+    }
+  }
+  validateUserLoginStatus() {
+    return this.setState({ userLoginStatus: 'loggedIn' });
   }
   render() {
     const actions = [
@@ -113,7 +118,17 @@ class AuthContainer extends React.Component {
 }
 
 AuthContainer.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  token: PropTypes.object,
+  user: PropTypes.object
+
 };
 
-export default connect()(AuthContainer);
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.get('token'),
+    user: state.auth.get('user')
+  };
+};
+
+export default connect(mapStateToProps)(AuthContainer);
