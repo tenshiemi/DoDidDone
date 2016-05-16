@@ -5,6 +5,7 @@ import Dialog from 'material-ui/Dialog';
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
 import FlatButton from 'material-ui/FlatButton';
+import LogoutButton from '../components/LogoutButton';
 
 class AuthContainer extends React.Component {
   constructor(props) {
@@ -12,11 +13,14 @@ class AuthContainer extends React.Component {
 
     this.state = {
       open: false,
-      modalState: 'login'
+      modalState: 'login',
+      userLoginStatus: 'loggedOut'
     };
 
     this.handleClose = this.handleClose.bind(this);
     this.handleSubmission = this.handleSubmission.bind(this);
+
+    console.log(this.state);
   }
   handleOpen(modalState) {
     return this.setState({ open: true, modalState });
@@ -74,20 +78,26 @@ class AuthContainer extends React.Component {
 
     return (
       <div>
-        <FlatButton
-          label="Log in"
-          secondary
-          onTouchTap={
-            () => this.handleOpen('login')
-          }
-        />
-        <FlatButton
-          label="Sign up"
-          secondary
-          onTouchTap={
-            () => this.handleOpen('signup')
-          }
-        />
+        {this.state.userLoginStatus === 'loggedOut' ? (
+          <div>
+            <FlatButton
+              label="Log in"
+              secondary
+              onTouchTap={
+                () => this.handleOpen('login')
+              }
+            />
+            <FlatButton
+              label="Sign up"
+              secondary
+              onTouchTap={
+                () => this.handleOpen('signup')
+              }
+            />
+          </div>
+        ) : (
+          <LogoutButton />
+        )}
         <Dialog
           title={modalTitle[this.state.modalState]}
           actions={actions}
