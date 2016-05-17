@@ -18,6 +18,7 @@ export class DropDownMenu extends Component {
     this.handleTouchTap = this.handleTouchTap.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.logOutUser = this.logOutUser.bind(this);
+    console.log(this.props.user);
   }
   handleTouchTap(e) {
     e.preventDefault();
@@ -45,7 +46,7 @@ export class DropDownMenu extends Component {
 
     return (
       <div>
-        {this.props.token && this.props.user === null ? (
+        {this.props.token !== null && this.props.user !== null ? (
           <div>
             <FlatButton
               onTouchTap={this.handleTouchTap}
@@ -63,33 +64,11 @@ export class DropDownMenu extends Component {
               <Menu>
                 <MenuItem value={1}><Link to={'about'}>About us</Link></MenuItem>
                 <MenuItem value={2}><Link to={'help'}>Help</Link></MenuItem>
-              </Menu>
-            </Popover>
-          </div>
-        ) : (
-            <div>
-              <FlatButton
-              onTouchTap={this.handleTouchTap}
-              label="Click me"
-              rippleColor={"#FFFFFF"}
-              style={dropDownButton}
-              />
-            <Popover
-              open={this.state.open}
-              anchorEl={this.state.anchorEl}
-              anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
-              targetOrigin={{ horizontal: 'left', vertical: 'top' }}
-              onRequestClose={this.handleRequestClose}
-            >
-              <Menu>
-                <MenuItem value={1}><Link to={'about'}>About us</Link></MenuItem>
-                <MenuItem value={2}><Link to={'help'}>Help</Link></MenuItem>
                 <MenuItem value={3}><a href="#" onClick={this.logOutUser}>Log out</a></MenuItem>
               </Menu>
             </Popover>
           </div>
-        )
-        }
+        ) : (null)}
       </div>
     );
   }

@@ -50,13 +50,6 @@ class AuthContainer extends React.Component {
     };
 
     this.props.dispatch(logInUser(userCredentials));
-
-    if (this.props.token && this.props.user !== null) {
-      this.updateUserLoginState();
-    }
-  }
-  updateUserLoginState() {
-    return this.setState({ userLoggedIn: true });
   }
   render() {
     const actions = [
@@ -82,7 +75,7 @@ class AuthContainer extends React.Component {
 
     return (
       <div>
-        {this.state.userLoggedIn === false ? (
+        {this.props.token === null && this.props.user === null ? (
           <div>
             <FlatButton
               label="Log in"
@@ -99,9 +92,7 @@ class AuthContainer extends React.Component {
               }
             />
           </div>
-        ) : (
-          <FlatButton style={{ display: 'none' }} disabled />
-        )}
+        ) : (null)}
         <Dialog
           title={modalTitle[this.state.modalState]}
           actions={actions}
