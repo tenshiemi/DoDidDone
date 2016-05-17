@@ -35,7 +35,7 @@ module.exports = function(server, apiRoutes) {
           response.json({
             success: true,
             token: token,
-            email: user.email,
+            email: user.email
           });
         });
       });
