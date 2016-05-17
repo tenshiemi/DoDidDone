@@ -12,7 +12,8 @@ class AuthContainer extends React.Component {
 
     this.state = {
       open: false,
-      modalState: 'login'
+      modalState: 'login',
+      userLoggedIn: false
     };
 
     this.handleClose = this.handleClose.bind(this);
@@ -74,20 +75,24 @@ class AuthContainer extends React.Component {
 
     return (
       <div>
-        <FlatButton
-          label="Log in"
-          secondary
-          onTouchTap={
-            () => this.handleOpen('login')
-          }
-        />
-        <FlatButton
-          label="Sign up"
-          secondary
-          onTouchTap={
-            () => this.handleOpen('signup')
-          }
-        />
+        {this.props.token === null && this.props.user === null ? (
+          <div>
+            <FlatButton
+              label="Log in"
+              secondary
+              onTouchTap={
+                () => this.handleOpen('login')
+              }
+            />
+            <FlatButton
+              label="Sign up"
+              secondary
+              onTouchTap={
+                () => this.handleOpen('signup')
+              }
+            />
+          </div>
+        ) : (null)}
         <Dialog
           title={modalTitle[this.state.modalState]}
           actions={actions}
@@ -103,7 +108,17 @@ class AuthContainer extends React.Component {
 }
 
 AuthContainer.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  token: PropTypes.string,
+  user: PropTypes.string
+
 };
 
-export default connect()(AuthContainer);
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.get('token'),
+    user: state.auth.get('user')
+  };
+};
+
+export default connect(mapStateToProps)(AuthContainer);
