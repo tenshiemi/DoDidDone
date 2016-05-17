@@ -18,7 +18,6 @@ export class DropDownMenu extends Component {
     this.handleTouchTap = this.handleTouchTap.bind(this);
     this.handleRequestClose = this.handleRequestClose.bind(this);
     this.logOutUser = this.logOutUser.bind(this);
-    console.log(this.props.user);
   }
   handleTouchTap(e) {
     e.preventDefault();
