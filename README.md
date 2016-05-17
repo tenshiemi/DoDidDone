@@ -1,5 +1,7 @@
 # DoDidDone
 
+DoDidDone is a React/Redux application built on MongoDB and Express. It's a training ground for Junior Engineers at Truss to learn Javascript and React. 
+
 # Setup
 
 1. Fork and set up repo on your local machine
