@@ -1,6 +1,6 @@
 # DoDidDone
 
-DoDidDone is a React/Redux application built on MongoDB and Express. It's a training ground for Junior Engineers at Truss to learn Javascript and React. 
+DoDidDone is a React/Redux application built on MongoDB and Express. It's one of several applications designed to be a training ground for Junior Engineers at Truss.
 
 # Setup
 
@@ -33,3 +33,7 @@ DoDidDone is a React/Redux application built on MongoDB and Express. It's a trai
 1. If adding a new feature, create a test that addresses it, even if it's only finding that a <div> created by that component exists.
 1. If altering a new feature, run `npm test` and ensure the test that addresses said feature still works; if not, please update.
 1. Add .skip to a test or delete entirely if obsolete. Do not comment them out, per Mocha style.
+
+# License
+
+TPLocation is available under the MIT license. See the LICENSE file for more info.
