@@ -5,7 +5,6 @@ import Dialog from 'material-ui/Dialog';
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
 import FlatButton from 'material-ui/FlatButton';
-import LogoutButton from '../components/LogoutButton';
 
 class AuthContainer extends React.Component {
   constructor(props) {
@@ -14,7 +13,7 @@ class AuthContainer extends React.Component {
     this.state = {
       open: false,
       modalState: 'login',
-      userLoginStatus: 'loggedOut'
+      userLoggedIn: false
     };
 
     this.handleClose = this.handleClose.bind(this);
@@ -53,11 +52,11 @@ class AuthContainer extends React.Component {
     this.props.dispatch(logInUser(userCredentials));
 
     if (this.props.token && this.props.user !== null) {
-      this.validateUserLoginStatus();
+      this.updateUserLoginState();
     }
   }
-  validateUserLoginStatus() {
-    return this.setState({ userLoginStatus: 'loggedIn' });
+  updateUserLoginState() {
+    return this.setState({ userLoggedIn: true });
   }
   render() {
     const actions = [
@@ -83,7 +82,7 @@ class AuthContainer extends React.Component {
 
     return (
       <div>
-        {this.state.userLoginStatus === 'loggedOut' ? (
+        {this.state.userLoggedIn === false ? (
           <div>
             <FlatButton
               label="Log in"
@@ -101,7 +100,7 @@ class AuthContainer extends React.Component {
             />
           </div>
         ) : (
-          <LogoutButton />
+          <FlatButton style={{ display: 'none' }} disabled />
         )}
         <Dialog
           title={modalTitle[this.state.modalState]}
@@ -119,8 +118,8 @@ class AuthContainer extends React.Component {
 
 AuthContainer.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  token: PropTypes.object,
-  user: PropTypes.object
+  token: PropTypes.string,
+  user: PropTypes.string
 
 };
 

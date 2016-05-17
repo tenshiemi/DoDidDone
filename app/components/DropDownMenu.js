@@ -45,32 +45,67 @@ export class DropDownMenu extends Component {
 
     return (
       <div>
-        <FlatButton
-          onTouchTap={this.handleTouchTap}
-          label="Click me"
-          rippleColor={"#FFFFFF"}
-          style={dropDownButton}
-        />
-        <Popover
-          open={this.state.open}
-          anchorEl={this.state.anchorEl}
-          anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
-          targetOrigin={{ horizontal: 'left', vertical: 'top' }}
-          onRequestClose={this.handleRequestClose}
-        >
-          <Menu>
-            <MenuItem value={1}><Link to={'about'}>About us</Link></MenuItem>
-            <MenuItem value={2}><Link to={'help'}>Help</Link></MenuItem>
-            <MenuItem value={3}><a href="#" onClick={this.logOutUser}>Log out</a></MenuItem>
-          </Menu>
-        </Popover>
+        {this.props.token && this.props.user === null ? (
+          <div>
+            <FlatButton
+              onTouchTap={this.handleTouchTap}
+              label="Click me"
+              rippleColor={"#FFFFFF"}
+              style={dropDownButton}
+            />
+            <Popover
+              open={this.state.open}
+              anchorEl={this.state.anchorEl}
+              anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
+              targetOrigin={{ horizontal: 'left', vertical: 'top' }}
+              onRequestClose={this.handleRequestClose}
+            >
+              <Menu>
+                <MenuItem value={1}><Link to={'about'}>About us</Link></MenuItem>
+                <MenuItem value={2}><Link to={'help'}>Help</Link></MenuItem>
+              </Menu>
+            </Popover>
+          </div>
+        ) : (
+            <div>
+              <FlatButton
+              onTouchTap={this.handleTouchTap}
+              label="Click me"
+              rippleColor={"#FFFFFF"}
+              style={dropDownButton}
+              />
+            <Popover
+              open={this.state.open}
+              anchorEl={this.state.anchorEl}
+              anchorOrigin={{ horizontal: 'left', vertical: 'bottom' }}
+              targetOrigin={{ horizontal: 'left', vertical: 'top' }}
+              onRequestClose={this.handleRequestClose}
+            >
+              <Menu>
+                <MenuItem value={1}><Link to={'about'}>About us</Link></MenuItem>
+                <MenuItem value={2}><Link to={'help'}>Help</Link></MenuItem>
+                <MenuItem value={3}><a href="#" onClick={this.logOutUser}>Log out</a></MenuItem>
+              </Menu>
+            </Popover>
+          </div>
+        )
+        }
       </div>
     );
   }
 }
 
 DropDownMenu.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  dispatch: PropTypes.func.isRequired,
+  token: PropTypes.string,
+  user: PropTypes.string
 };
 
-export default connect()(DropDownMenu);
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.get('token'),
+    user: state.auth.get('user')
+  };
+};
+
+export default connect(mapStateToProps)(DropDownMenu);
