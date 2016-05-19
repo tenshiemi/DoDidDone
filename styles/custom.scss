@@ -7,6 +7,14 @@ body {
   font-family: 'Architects Daughter';
 }
 
+.landing-page__header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 600px;
+  background-image: url('https://static.pexels.com/photos/6471/woman-hand-smartphone-desk.jpg');
+}
+
 .app-container {
   margin: auto;
   width: 960px;
@@ -61,7 +69,7 @@ body {
     position: relative;
     margin-top: 10;
     padding: 0;
-    color: white;
+    color: #3a3a3c;
   }
 }
 

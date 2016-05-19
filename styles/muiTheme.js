@@ -1,4 +1,4 @@
-import { grey800, redA400, amberA700, grey300 } from 'material-ui/styles/colors';
+import { grey800, amber300, grey300, teal200 } from 'material-ui/styles/colors';
 
 export const muiTheme = {
   palette: {
@@ -12,19 +12,19 @@ export const muiTheme = {
     borderColor: grey800
   },
   checkbox: {
-    boxColor: redA400,
-    checkedColor: redA400
+    boxColor: amber300,
+    checkedColor: amber300
   },
   flatButton: {
     secondaryTextColor: 'white',
     fontSize: 20
   },
   raisedButton: {
-    primaryColor: redA400
+    primaryColor: amber300
   },
   toolbar: {
     titleFontSize: 40,
-    backgroundColor: amberA700
+    backgroundColor: teal200
   },
   tabs: {
     backgroundColor: grey800
