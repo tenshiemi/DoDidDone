@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import LandingPageHeader from '../components/LandingPage/LPHeaderContainer';
-import HorizontalContainer from '../components/LandingPage/LPHorizontalContainer';
+import HeaderContainer from '../components/LandingPage/HeaderContainer';
+import HorizontalContainer from '../components/LandingPage/HorizontalContainer';
 import { List } from 'immutable';
 
 export class LandingPage extends Component {
@@ -19,12 +19,12 @@ export class LandingPage extends Component {
       },
       { text: 'Horizontal Text Content',
        image: 'http://hcha.org.uk/wp-content/uploads/2014/02/placeholder.jpg'
-      },
+      }
     ]);
 
     return (
       <div className="landing-page">
-        <LandingPageHeader heroSource={heroUrlSource} />
+        <HeaderContainer heroSource={heroUrlSource} />
         <HorizontalContainer horizontalContent={horizontalContent} />
       </div>
     );

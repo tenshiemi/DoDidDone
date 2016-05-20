@@ -1,18 +1,29 @@
 h3, p, div {
   font-family: 'Architects Daughter';
-
 }
+
 body {
   margin: 0;
   font-family: 'Architects Daughter';
 }
 
-.landing-page__header {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 600px;
-  background-image: url('https://static.pexels.com/photos/6471/woman-hand-smartphone-desk.jpg');
+.landing-page {
+  width: 100%;
+}
+
+.landing-page__heading {
+  background-image: url('http://s32.postimg.org/4tyongzt1/photo_1423068728938_d506c096081e_ixlib_rb_0_3_5.jpg');
+}
+
+.landing-page__horizontal-text {
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.landing-page__horizontal-img {
+  width:250px;
+  height: auto;
+  margin-left: 50px;
 }
 
 .app-container {
