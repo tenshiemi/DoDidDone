@@ -1,10 +1,11 @@
-// import React from 'react';
-// import { CardTitle } from 'material-ui/Card';
+import React from 'react';
 
-// const HorizontalTextContent = ({ textContent }) => {
-//   return (
-//     <CardTitle title={textContent} />
-//   );
-// };
+const HorizontalTextContent = ({ textContent }) => {
+  return (
+    <div className="landing-page__horizontal-text">
+      {textContent}
+    </div>
+  );
+};
 
-// export default HorizontalTextContent;
+export default HorizontalTextContent;
