@@ -7,6 +7,14 @@ body {
   font-family: 'Architects Daughter';
 }
 
+.landing-page__header {
+  height: 500px;
+  margin-left: -100%;
+  margin-right: -39%;
+  background-size: contain;
+  background-image: url('https://goo.gl/xDfIog');
+}
+
 .landing-page {
   font-family: 'Architects Daughter';
 
@@ -42,6 +50,7 @@ body {
 .app-container {
   margin: auto;
   width: 960px;
+
 }
 
 .footer {
