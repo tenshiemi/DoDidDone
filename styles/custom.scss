@@ -9,10 +9,11 @@ body {
 
 .landing-page {
   width: 100%;
+  font-family: 'Architects Daughter';
 }
 
-.landing-page__heading {
-  background-image: url('http://s32.postimg.org/4tyongzt1/photo_1423068728938_d506c096081e_ixlib_rb_0_3_5.jpg');
+.table {
+  font-family: 'Architects Daughter';
 }
 
 .landing-page__horizontal-text {
@@ -24,16 +25,6 @@ body {
   width:250px;
   height: auto;
   margin-left: 50px;
-}
-
-.landing-page__vertical-img {
-  width:250px;
-  height: auto;
-}
-
-.landing-page__vertical-text {
-  margin-left: 25%;
-  margin-right: 25%;
 }
 
 .app-container {
