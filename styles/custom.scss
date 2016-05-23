@@ -9,18 +9,17 @@ body {
 
 .landing-page {
   width: 100%;
-  font-family: 'Architects Daughter';
-}
 
-.landing-page__horizontal-text {
-  margin-left: 25%;
-  margin-right: 25%;
-}
+  &__horizontal-text {
+    margin-left: 25%;
+    margin-right: 25%;
+  }
 
-.landing-page__horizontal-img {
+  &__horizontal-img {
   width:250px;
   height: auto;
   margin-left: 50px;
+  }
 }
 
 .app-container {
