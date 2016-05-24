@@ -20,6 +20,17 @@ body {
   height: auto;
   margin-left: 50px;
   }
+
+  &vertical-text {
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  &vertical-img {
+  width:250px;
+  height: auto;
+  margin-left: 50px;
+  }
 }
 
 .app-container {
