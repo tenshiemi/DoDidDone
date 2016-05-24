@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import HorizontalContent from './HorizontalContent';
 import { List } from 'immutable';
+import HorizontalContent from './HorizontalContent';
 
 export const HorizontalContainer = ({ horizontalContent }) => {
   return (
