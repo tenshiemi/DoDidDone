@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
-import VerticalContent from './VerticalContent';
 import { List } from 'immutable';
+import VerticalContent from './VerticalContent';
 
 export const VerticalContainer = ({ verticalContent }) => {
   return (
