@@ -1,8 +1,8 @@
 import React from 'react';
+import { List } from 'immutable';
+import Header from '../components/LandingPage/LandingPageHeader';
 import HorizontalContainer from '../components/LandingPage/HorizontalContainer';
 import VerticalContainer from '../components/LandingPage/VerticalContainer';
-import Header from '../components/LandingPage/LandingPageHeader';
-import { List } from 'immutable';
 
 const verticalContent = List([
   { text: 'Vertical Text Content',
