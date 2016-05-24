@@ -21,15 +21,20 @@ body {
   margin-left: 50px;
   }
 
-  &vertical-text {
-    margin-left: 25%;
-    margin-right: 25%;
+  &__vertical-container {
+    position: relative;
   }
 
-  &vertical-img {
+  &__vertical-text {
+    margin-top: 100px;
+    margin-left: 50px;
+    position: absolute;
+    text-align: center;
+  }
+
+  &__vertical-img {
   width:250px;
   height: auto;
-  margin-left: 50px;
   }
 }
 

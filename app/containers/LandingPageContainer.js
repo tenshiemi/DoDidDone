@@ -32,7 +32,9 @@ export const LandingPage = () => {
   return (
     <div className="landing-page">
       <Header />
+      <br />
       <HorizontalContainer horizontalContent={horizontalContent} />
+      <br />
       <VerticalContainer verticalContent={verticalContent} />
     </div>
   );
