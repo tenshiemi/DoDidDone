@@ -2,8 +2,7 @@ import React from 'react';
 
 export const LandingPageHeader = () => {
   return (
-    <div className="landing-page__header">
-    </div>
+    <div className="landing-page__header" />
   );
 };
 

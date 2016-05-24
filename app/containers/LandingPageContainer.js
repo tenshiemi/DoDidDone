@@ -6,13 +6,13 @@ import { List } from 'immutable';
 
 const horizontalContent = List([
   { text: 'Horizontal Text Content',
-   image: 'http://hcha.org.uk/wp-content/uploads/2014/02/placeholder.jpg'
+   image: 'http://goo.gl/gpWQPB'
   },
   { text: 'Horizontal Text Content',
-   image: 'http://hcha.org.uk/wp-content/uploads/2014/02/placeholder.jpg'
+   image: 'http://goo.gl/gpWQPB'
   },
   { text: 'Horizontal Text Content',
-   image: 'http://hcha.org.uk/wp-content/uploads/2014/02/placeholder.jpg'
+   image: 'http://goo.gl/gpWQPB'
   }
 ]);
 
