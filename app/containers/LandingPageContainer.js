@@ -4,18 +4,6 @@ import VerticalContainer from '../components/LandingPage/VerticalContainer';
 import Header from '../components/LandingPage/LandingPageHeader';
 import { List } from 'immutable';
 
-const horizontalContent = List([
-  { text: 'Horizontal Text Content',
-   image: 'http://goo.gl/gpWQPB'
-  },
-  { text: 'Horizontal Text Content',
-   image: 'http://goo.gl/gpWQPB'
-  },
-  { text: 'Horizontal Text Content',
-   image: 'http://goo.gl/gpWQPB'
-  }
-]);
-
 const verticalContent = List([
   { text: 'Vertical Text Content',
    image: 'http://goo.gl/T3xaaI'
@@ -25,6 +13,18 @@ const verticalContent = List([
   },
   { text: 'Vertical Text Content',
    image: 'http://goo.gl/T3xaaI'
+  }
+]);
+
+const horizontalContent = List([
+  { text: 'Horizontal Text Content',
+   image: 'http://goo.gl/gpWQPB'
+  },
+  { text: 'Horizontal Text Content',
+   image: 'http://goo.gl/gpWQPB'
+  },
+  { text: 'Horizontal Text Content',
+   image: 'http://goo.gl/gpWQPB'
   }
 ]);
 
