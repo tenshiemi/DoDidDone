@@ -1,10 +1,25 @@
 h3, p, div {
   font-family: 'Architects Daughter';
-
 }
+
 body {
   margin: 0;
   font-family: 'Architects Daughter';
+}
+
+.landing-page {
+  width: 100%;
+
+  &__horizontal-text {
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+
+  &__horizontal-img {
+  width:250px;
+  height: auto;
+  margin-left: 50px;
+  }
 }
 
 .app-container {
@@ -61,7 +76,7 @@ body {
     position: relative;
     margin-top: 10;
     padding: 0;
-    color: white;
+    color: #3a3a3c;
   }
 }
 
