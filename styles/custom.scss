@@ -22,26 +22,36 @@ body {
   }
 
   &__vertical-container {
-    position: relative;
+    margin-top: 10%
   }
 
+  &__vertical-text-container {
+    // margin-top: 100px;
+    // margin-left: 50px;
+    // position: absolute;
+    // text-align: center;
+  }
   &__vertical-text {
-    margin-top: 100px;
-    margin-left: 50px;
-    position: absolute;
-    text-align: center;
+    margin-left: 10%;
+    margin: 0;
+    width: 70%;
+    float: right;
+    padding-top: 100px
+  }
+
+  &__vertical-img-container {
+    // position: relative;
   }
 
   &__vertical-img {
   width:250px;
-  height: auto;
+  height: inherit;
   }
 }
 
 .app-container {
   margin: auto;
   width: 960px;
-
 }
 
 .footer {
