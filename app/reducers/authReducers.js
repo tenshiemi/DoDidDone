@@ -8,7 +8,7 @@ const auth = (state = Map({ user: null, token: null }), action) => {
         oldState.set('token', action.token);
       });
     }
-    case 'LOG_OUT_USER': {
+    case 'CLEAR_USER_INFO': {
       return state.withMutations(oldState => {
         oldState.set('user', null);
         oldState.set('token', null);
