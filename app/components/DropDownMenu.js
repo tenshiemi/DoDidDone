@@ -45,7 +45,7 @@ export class DropDownMenu extends Component {
 
     return (
       <div>
-        {this.props.token !== null && this.props.user !== null ? (
+        {localStorage.getItem('id_token') ? (
           <div>
             <FlatButton
               onTouchTap={this.handleTouchTap}
