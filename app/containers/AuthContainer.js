@@ -75,7 +75,7 @@ class AuthContainer extends React.Component {
 
     return (
       <div>
-        {this.props.token === null && this.props.user === null ? (
+        {!localStorage.getItem('id_token') ? (
           <div>
             <FlatButton
               label="Log in"
