@@ -1,15 +1,13 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { addTodoItem } from '../actions/todosAction';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-export const AddTodo = ({ dispatch }) => {
+export const AddTodo = ({ onSubmit }) => {
   const addTodo = () => {
     let inputField = document.getElementById('addTodoText');
 
     if (inputField.value !== '') {
-      dispatch(addTodoItem(inputField.value));
+      onSubmit(inputField.value);
       inputField.value = '';
     }
   };
@@ -41,7 +39,7 @@ export const AddTodo = ({ dispatch }) => {
 };
 
 AddTodo.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired
 };
 
-export default connect()(AddTodo);
+export default AddTodo;
