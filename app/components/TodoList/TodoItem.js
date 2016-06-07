@@ -1,11 +1,7 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { removeTodoItem } from '../actions/todosAction';
-import { editTodoItem } from '../actions/todosAction';
-import { toggleTodoStatus } from '../actions/todosAction';
-import Checkbox from 'material-ui/Checkbox';
 import EditTodo from './EditTodo';
 import TodoText from './TodoText';
+import TodoToggle from './TodoToggle';
 
 export class TodoItem extends React.Component {
   constructor(props) {
@@ -23,8 +19,7 @@ export class TodoItem extends React.Component {
     this.setState({ editing: true });
   }
   saveEdit(editedText) {
-    this.props.dispatch(
-      editTodoItem(this.props.index, this.props.todoItem._id, editedText));
+    this.props.actions.editTodoItem(this.props.index, this.props.todoItem._id, editedText);
     this.setState({ editing: false });
   }
   cancelEdit() {
@@ -33,16 +28,12 @@ export class TodoItem extends React.Component {
   render() {
     return (
       <li className="todo-list__item">
-        <div className="todo-item__checkbox">
-          <Checkbox
-            aria-label="Checkbox"
-            checked={this.props.todoItem.completed}
-            onClick={() => {
-              this.props.dispatch(
-                toggleTodoStatus(this.props.index, this.props.todoItem._id));
-            }}
-          />
-        </div>
+        <TodoToggle
+          checked={this.props.todoItem.completed}
+          index={this.props.index}
+          id={this.props.todoItem._id}
+          onToggle={this.props.actions.toggleTodoStatus}
+        />
         <span className="todo-list__text">
             {this.state.editing === true ?
               (<span>
@@ -54,8 +45,10 @@ export class TodoItem extends React.Component {
                </span>) :
               (<TodoText text={this.props.todoItem.text} />)
             }
+        </span>
+        <span>
           <a onClick={() => {
-            this.props.dispatch(removeTodoItem(this.props.index, this.props.todoItem._id));
+            this.props.actions.removeTodoItem(this.props.index, this.props.todoItem._id);
           }}
           >
             <i className="material-icons material-icons__delete" aria-label="Delete">
@@ -74,9 +67,9 @@ export class TodoItem extends React.Component {
 }
 
 TodoItem.propTypes = {
-  todoItem: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
   index: PropTypes.number.isRequired,
-  dispatch: PropTypes.func.isRequired
+  todoItem: PropTypes.object.isRequired
 };
 
-export default connect()(TodoItem);
+export default TodoItem;
