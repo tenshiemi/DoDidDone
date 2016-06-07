@@ -14,7 +14,7 @@ export const TodoText = ({ editing, text, onSave, onCancel }) => (
         (<span>{text} &nbsp;&nbsp;</span>)
       }
   </span>
-)
+);
 
 TodoText.propTypes = {
   editing: PropTypes.bool.isRequired,
