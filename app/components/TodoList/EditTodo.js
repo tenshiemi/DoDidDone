@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
 import TextField from 'material-ui/TextField';
 
 export const EditTodo = ({ text, saveEdit, cancelEdit }) => {
@@ -51,5 +50,5 @@ EditTodo.propTypes = {
   cancelEdit: PropTypes.func.isRequired
 };
 
-export default connect()(EditTodo);
+export default EditTodo;
 

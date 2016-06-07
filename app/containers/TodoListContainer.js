@@ -3,9 +3,9 @@ import { List } from 'immutable';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import 'isomorphic-fetch';
-import { fetchTodoItems, addTodoItem } from '../actions/todosAction';
-import TodoList from '../components/TodoList';
-import AddTodo from '../components/AddTodo';
+import * as TodoActions from '../actions/todosAction';
+import TodoList from '../components/TodoList/TodoList';
+import AddTodo from '../components/TodoList/AddTodo';
 
 class TodoListContainer extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class TodoListContainer extends React.Component {
 
     return (
       <div>
-        <TodoList todoItems={todoItems} />
+        <TodoList todoItems={todoItems} actions={actions}/>
         <AddTodo onSubmit={actions.addTodoItem} />
       </div>
     );
@@ -37,7 +37,7 @@ const mapStateToProps = (state) => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators({ addTodoItem, fetchTodoItems }, dispatch)
+    actions: bindActionCreators(TodoActions, dispatch)
   };
 }
 
