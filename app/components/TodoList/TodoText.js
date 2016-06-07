@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import EditTodo from './EditTodo';
 
 export const TodoText = ({ editing, text, onSave, onCancel }) => (
-  <span className="todo-list__text">
+  <span>
       {editing === true ?
         (<span>
           <EditTodo
@@ -11,7 +11,7 @@ export const TodoText = ({ editing, text, onSave, onCancel }) => (
             cancelEdit={onCancel}
           />
          </span>) :
-        (<span>{text} &nbsp;&nbsp;</span>)
+        (<span className="todo-list__text">{text} &nbsp;&nbsp;</span>)
       }
   </span>
 );
