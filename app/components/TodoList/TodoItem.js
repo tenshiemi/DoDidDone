@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import EditTodo from './EditTodo';
 import TodoText from './TodoText';
 import TodoToggle from './TodoToggle';
 
@@ -34,18 +33,12 @@ export class TodoItem extends React.Component {
           id={this.props.todoItem._id}
           onToggle={this.props.actions.toggleTodoStatus}
         />
-        <span className="todo-list__text">
-            {this.state.editing === true ?
-              (<span>
-                <EditTodo
-                  text={this.props.todoItem.text}
-                  saveEdit={this.saveEdit}
-                  cancelEdit={this.cancelEdit}
-                />
-               </span>) :
-              (<TodoText text={this.props.todoItem.text} />)
-            }
-        </span>
+        <TodoText
+          editing={this.state.editing}
+          text={this.props.todoItem.text}
+          onSave={this.saveEdit}
+          onCancel={this.cancelEdit}
+        />
         <span>
           <a onClick={() => {
             this.props.actions.removeTodoItem(this.props.index, this.props.todoItem._id);
