@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import TodoActions from './TodoActions';
 import TodoText from './TodoText';
 import TodoToggle from './TodoToggle';
 
@@ -10,11 +11,11 @@ export class TodoItem extends React.Component {
       editing: false
     };
 
-    this.editingState = this.editingState.bind(this);
+    this.setEditingState = this.setEditingState.bind(this);
     this.saveEdit = this.saveEdit.bind(this);
     this.cancelEdit = this.cancelEdit.bind(this);
   }
-  editingState() {
+  setEditingState() {
     this.setState({ editing: true });
   }
   saveEdit(editedText) {
@@ -25,35 +26,28 @@ export class TodoItem extends React.Component {
     this.setState({ editing: false });
   }
   render() {
+    const { completed, _id, text } = this.props.todoItem;
+
     return (
       <li className="todo-list__item">
         <TodoToggle
-          checked={this.props.todoItem.completed}
+          checked={completed}
           index={this.props.index}
-          id={this.props.todoItem._id}
+          id={_id}
           onToggle={this.props.actions.toggleTodoStatus}
         />
         <TodoText
           editing={this.state.editing}
-          text={this.props.todoItem.text}
+          text={text}
           onSave={this.saveEdit}
           onCancel={this.cancelEdit}
         />
-        <span>
-          <a onClick={() => {
-            this.props.actions.removeTodoItem(this.props.index, this.props.todoItem._id);
-          }}
-          >
-            <i className="material-icons material-icons__delete" aria-label="Delete">
-              delete_forever
-            </i>
-          </a>
-          <a onClick={this.editingState}>
-            <i className="material-icons material-icons__edit" aria-label="Delete">
-              mode_edit
-            </i>
-          </a>
-        </span>
+        <TodoActions
+          setEditingState={this.setEditingState}
+          id={_id}
+          index={this.props.index}
+          removeTodo={this.props.actions.removeTodoItem}
+        />
       </li>
     );
   }
