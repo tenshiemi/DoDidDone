@@ -32,18 +32,20 @@ export class TodoItem extends React.Component {
           id={_id}
           onToggle={this.props.actions.toggleTodoStatus}
         />
-        <TodoText
-          editing={this.state.editing}
-          text={text}
-          onSave={this.saveEdit}
-          onCancel={this.toggleEditing}
-        />
-        <TodoActions
-          toggleEditing={this.toggleEditing}
-          id={_id}
-          index={this.props.index}
-          removeTodo={this.props.actions.removeTodoItem}
-        />
+        <div className="todo-list__wrapper">
+          <TodoText
+            editing={this.state.editing}
+            text={text}
+            onSave={this.saveEdit}
+            onCancel={this.toggleEditing}
+          />
+          <TodoActions
+            toggleEditing={this.toggleEditing}
+            id={_id}
+            index={this.props.index}
+            removeTodo={this.props.actions.removeTodoItem}
+          />
+        </div>
       </li>
     );
   }
