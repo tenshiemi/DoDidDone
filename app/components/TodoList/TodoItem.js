@@ -11,19 +11,15 @@ export class TodoItem extends React.Component {
       editing: false
     };
 
-    this.setEditingState = this.setEditingState.bind(this);
+    this.toggleEditing = this.toggleEditing.bind(this);
     this.saveEdit = this.saveEdit.bind(this);
-    this.cancelEdit = this.cancelEdit.bind(this);
   }
-  setEditingState() {
-    this.setState({ editing: true });
+  toggleEditing() {
+    this.setState({ editing: !this.state.editing });
   }
   saveEdit(editedText) {
     this.props.actions.editTodoItem(this.props.index, this.props.todoItem._id, editedText);
-    this.setState({ editing: false });
-  }
-  cancelEdit() {
-    this.setState({ editing: false });
+    this.toggleEditing();
   }
   render() {
     const { completed, _id, text } = this.props.todoItem;
@@ -40,10 +36,10 @@ export class TodoItem extends React.Component {
           editing={this.state.editing}
           text={text}
           onSave={this.saveEdit}
-          onCancel={this.cancelEdit}
+          onCancel={this.toggleEditing}
         />
         <TodoActions
-          setEditingState={this.setEditingState}
+          toggleEditing={this.toggleEditing}
           id={_id}
           index={this.props.index}
           removeTodo={this.props.actions.removeTodoItem}

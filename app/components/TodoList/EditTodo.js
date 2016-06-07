@@ -31,14 +31,14 @@ export const EditTodo = ({ text, saveEdit, cancelEdit }) => {
         aria-label="Cancel Edit"
         onClick={cancelEdit}
       >
-          clear
+        clear
       </i>
       <i
         className="material-icons material-icons__edit"
         aria-label="Save Edit"
         onClick={editTodo}
       >
-          save
+        save
       </i>
     </span>
   );

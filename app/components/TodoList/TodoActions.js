@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 
-export const TodoActions = ({ setEditingState, id, index, removeTodo }) => (
+export const TodoActions = ({ toggleEditing, id, index, removeTodo }) => (
   <span>
     <a onClick={() => {
       removeTodo(index, id);
@@ -10,7 +10,7 @@ export const TodoActions = ({ setEditingState, id, index, removeTodo }) => (
         delete_forever
       </i>
     </a>
-    <a onClick={setEditingState}>
+    <a onClick={toggleEditing}>
       <i className="material-icons material-icons__edit" aria-label="Delete">
         mode_edit
       </i>
@@ -22,7 +22,7 @@ TodoActions.propTypes = {
   id: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
   removeTodo: PropTypes.func.isRequired,
-  setEditingState: PropTypes.func.isRequired
+  toggleEditing: PropTypes.func.isRequired
 };
 
 export default TodoActions;
