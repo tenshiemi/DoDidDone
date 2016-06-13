@@ -25,8 +25,8 @@ const apiServer = (PORT) => {
 
   // Get an instance of the router for api routes
   const apiRoutes = express.Router();
-  require('./todo-api')(apiRoutes);
   require('./auth-api')(backendServer, apiRoutes);
+  require('./todo-api')(apiRoutes);
 
   // Apply the routes to our application with the prefix /api
   backendServer.use('/api', apiRoutes);
