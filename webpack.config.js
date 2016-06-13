@@ -18,7 +18,7 @@ module.exports = {
     './app/main',
   ],
   output: {
-    filename: 'index_bundle.js',
+    filename: '/index_bundle.js',
     path: __dirname + 'dist',
     publicPath: '/'
   },
