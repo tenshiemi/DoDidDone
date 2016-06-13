@@ -18,8 +18,8 @@ module.exports = {
     './app/main',
   ],
   output: {
-    filename: '/index_bundle.js',
-    path: __dirname + 'dist',
+    filename: 'index_bundle.js',
+    path: path.join(__dirname, 'dist'),
     publicPath: '/'
   },
   plugins: [

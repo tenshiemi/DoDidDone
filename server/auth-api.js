@@ -1,9 +1,12 @@
 const bcrypt = require('bcrypt');
+const authTokenValidation = require('./authTokenValidation');
 
 module.exports = function(server, apiRoutes) {
+  const secret = server.get('superSecret');
+
   const generateToken = (user) => {
     // If user successfully signs up or authenticates, create a token
-    return jwt.sign({ userName: user.name, userEmail: user.email }, server.get('superSecret'), {
+    return jwt.sign({ userName: user.name, userEmail: user.email }, secret, {
       expiresIn: 86400 // expires in 24 hours
     });
   }
@@ -75,15 +78,16 @@ module.exports = function(server, apiRoutes) {
   });
 
   apiRoutes.use(function(request, response, next) {
+    console.log('Checking for token');
     // Check header or url parameters or post parameters for token
     var token = request.body.token || request.query.token || request.headers['x-access-token'];
 
     // Decode token
     if (token) {
       // Verifies secret and checks expiration
-      jwt.verify(token, server.get('superSecret'), (authErr, decoded) => {
+      jwt.verify(token, secret, (authErr, decoded) => {
         if (authErr) {
-          return response.json({ success: false, message: 'Failed to authenticate token.' });
+          return response.status(401).json({ success: false, message: 'Failed to authenticate token.' });
         } else {
           // If everything is good, save to request for use in other routes
           request.decoded = decoded;

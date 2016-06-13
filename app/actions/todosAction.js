@@ -1,4 +1,5 @@
 import actionHelpers from './actionHelpers';
+import { appendTokenToRequest } from './authHelpers';
 
 export const ADD_TODO = 'ADD_TODO';
 export const REMOVE_TODO = 'REMOVE_TODO';
@@ -26,7 +27,7 @@ export function receiveTodoItems(todoItems) {
 
 export function fetchTodoItems() {
   return (dispatch) => {
-    return fetch('/api/todos', { method: 'GET' })
+    return fetch(appendTokenToRequest('/api/todos'), { method: 'GET' })
       .then(actionHelpers.checkStatus)
       .then(actionHelpers.parseJSON)
       .then(json => dispatch(receiveTodoItems(json)))
@@ -35,15 +36,18 @@ export function fetchTodoItems() {
 }
 
 export function addTodoItem(text) {
+  const config = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ text })
+  };
+
   return (dispatch) => {
-    return fetch('/api/todos', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ text })
-    }).then(actionHelpers.checkStatus)
+    return fetch(appendTokenToRequest('/api/todos'), config)
+    .then(actionHelpers.checkStatus)
     .then(actionHelpers.parseJSON)
     .then(todo => dispatch(addTodoToState(todo)))
     .catch(actionHelpers.logError);
@@ -51,27 +55,33 @@ export function addTodoItem(text) {
 }
 
 export function removeTodoItem(index, id) {
+  const config = {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    }
+  };
+
   return (dispatch) => {
-    return fetch('/api/todos/' + id, {
-      method: 'DELETE',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).then(() => dispatch(removeTodoFromState(index)))
+    return fetch(appendTokenToRequest('/api/todos/' + id), config)
+    .then(() => dispatch(removeTodoFromState(index)))
     .catch(actionHelpers.logError);
   };
 }
 
 export function toggleTodoStatus(index, id) {
+  const config = {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    }
+  };
+
   return (dispatch) => {
-    return fetch('/api/todos/' + id, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).then(actionHelpers.checkStatus)
+    return fetch(appendTokenToRequest('/api/todos/' + id), config)
+    .then(actionHelpers.checkStatus)
     .then(actionHelpers.parseJSON)
     .then(todo => dispatch(updateTodoInState(todo, index)))
     .catch(actionHelpers.logError);
@@ -79,15 +89,18 @@ export function toggleTodoStatus(index, id) {
 }
 
 export function editTodoItem(index, id, text) {
+  const config = {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ index, text })
+  };
+
   return (dispatch) => {
-    return fetch('/api/todos/' + id, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ index, text })
-    }).then(actionHelpers.checkStatus)
+    return fetch(appendTokenToRequest('/api/todos/' + id), config)
+    .then(actionHelpers.checkStatus)
     .then(actionHelpers.parseJSON)
     .then((todo) => dispatch(updateTodoInState(todo, index)))
     .catch(actionHelpers.logError);
