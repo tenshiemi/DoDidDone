@@ -14,7 +14,7 @@ export class NavMenuContainer extends Component {
     this.actions = {
       handleTouchTap: this.handleTouchTap.bind(this),
       handleRequestClose: this.handleRequestClose.bind(this),
-      logOutUser: logOutUser.bind(this)
+      logOutUser: this.logOutUser.bind(this)
     };
   }
   handleTouchTap(e) {
