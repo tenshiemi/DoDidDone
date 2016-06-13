@@ -46,7 +46,7 @@ export function addTodoItem(text) {
   };
 
   return (dispatch) => {
-    return fetch('/api/todos', config)
+    return fetch(appendTokenToRequest('/api/todos'), config)
     .then(actionHelpers.checkStatus)
     .then(actionHelpers.parseJSON)
     .then(todo => dispatch(addTodoToState(todo)))
@@ -55,27 +55,33 @@ export function addTodoItem(text) {
 }
 
 export function removeTodoItem(index, id) {
+  const config = {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    }
+  };
+
   return (dispatch) => {
-    return fetch('/api/todos/' + id, {
-      method: 'DELETE',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).then(() => dispatch(removeTodoFromState(index)))
+    return fetch(appendTokenToRequest('/api/todos/' + id), config)
+    .then(() => dispatch(removeTodoFromState(index)))
     .catch(actionHelpers.logError);
   };
 }
 
 export function toggleTodoStatus(index, id) {
+  const config = {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    }
+  };
+
   return (dispatch) => {
-    return fetch('/api/todos/' + id, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).then(actionHelpers.checkStatus)
+    return fetch(appendTokenToRequest('/api/todos/' + id), config)
+    .then(actionHelpers.checkStatus)
     .then(actionHelpers.parseJSON)
     .then(todo => dispatch(updateTodoInState(todo, index)))
     .catch(actionHelpers.logError);
@@ -83,15 +89,18 @@ export function toggleTodoStatus(index, id) {
 }
 
 export function editTodoItem(index, id, text) {
+  const config = {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ index, text })
+  };
+
   return (dispatch) => {
-    return fetch('/api/todos/' + id, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ index, text })
-    }).then(actionHelpers.checkStatus)
+    return fetch(appendTokenToRequest('/api/todos/' + id), config)
+    .then(actionHelpers.checkStatus)
     .then(actionHelpers.parseJSON)
     .then((todo) => dispatch(updateTodoInState(todo, index)))
     .catch(actionHelpers.logError);

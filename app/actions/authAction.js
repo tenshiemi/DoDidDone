@@ -19,15 +19,18 @@ export function logOutUser() {
 }
 
 export function signUpUser(newUser) {
+  const config = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newUser)
+  };
+
   return (dispatch) => {
-    fetch('/api/signup', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newUser)
-    }).then(actionHelpers.checkStatus)
+    fetch('/api/signup', config)
+    .then(actionHelpers.checkStatus)
     .then(actionHelpers.parseJSON)
     .then(actionHelpers.checkSuccess)
     .then((userInfo) => dispatch(setUserAndToken(userInfo)))
@@ -37,14 +40,17 @@ export function signUpUser(newUser) {
 
 export function logInUser(userCredentials) {
   return (dispatch) => {
-    fetch('/api/authenticate', {
+    const config = {
       method: 'POST',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(userCredentials)
-    }).then(actionHelpers.checkStatus)
+    };
+
+    fetch('/api/authenticate', config)
+    .then(actionHelpers.checkStatus)
     .then(actionHelpers.parseJSON)
     .then(actionHelpers.checkSuccess)
     .then((userInfo) => {

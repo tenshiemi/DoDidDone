@@ -1,5 +1,5 @@
-module.exports = function(apiRoutes){
-    /**
+module.exports = function(apiRoutes) {
+  /*
    * HTTP GET /tasks
    * Returns: the list of tasks in JSON format
    */
@@ -8,7 +8,8 @@ module.exports = function(apiRoutes){
       if (!err) {
         return response.send(todos);
       } else {
-        return response.status(500);
+        response.status(500);
+        return response;
       }
     });
   });
