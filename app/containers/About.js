@@ -1,5 +1,5 @@
 import React from 'react';
-import BioContainer from '../components/BioContainer.js';
+import BioContainer from '../components/About/BioContainer.js';
 import { List } from 'immutable';
 
 const userData = List([
