@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import AuthContainer from '../containers/AuthContainer';
-import DropDownMenu from './DropDownMenu';
+import NavMenuContainer from '../containers/NavMenuContainer';
 import { Toolbar, ToolbarTitle, ToolbarGroup } from 'material-ui/Toolbar';
 
 export const Nav = () => (
@@ -12,7 +12,7 @@ export const Nav = () => (
     <div className="navbar__container">
       <ToolbarGroup firstChild>
           <AuthContainer />
-          <DropDownMenu />
+          <NavMenuContainer />
       </ToolbarGroup>
     </div>
   </Toolbar>
