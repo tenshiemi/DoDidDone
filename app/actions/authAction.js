@@ -1,4 +1,5 @@
 import actionHelpers from './actionHelpers';
+import { appendTokenToRequest } from './authHelpers';
 
 export const SET_USER_AND_TOKEN = 'SET_USER_AND_TOKEN';
 export const CLEAR_USER_INFO = 'CLEAR_USER_INFO';
@@ -14,7 +15,32 @@ export function clearUserInfo() {
 export function logOutUser() {
   return (dispatch) => {
     localStorage.removeItem('id_token');
+    localStorage.removeItem('user_id');
     dispatch(clearUserInfo());
+  };
+}
+
+export function validateToken() {
+  const storedUser = {
+    id: localStorage.getItem('user_id')
+  };
+
+  const config = {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(storedUser)
+  };
+
+  return (dispatch) => {
+    fetch(appendTokenToRequest('/api/authenticate'), config)
+    .then(actionHelpers.checkStatus)
+    .then(actionHelpers.parseJSON)
+    .then(actionHelpers.checkSuccess)
+    .then((userInfo) => dispatch(setUserAndToken(userInfo)))
+    .catch(actionHelpers.logError);
   };
 }
 
@@ -49,11 +75,12 @@ export function logInUser(userCredentials) {
       body: JSON.stringify(userCredentials)
     };
 
-    fetch('/api/authenticate', config)
+    fetch('/api/login', config)
     .then(actionHelpers.checkStatus)
     .then(actionHelpers.parseJSON)
     .then(actionHelpers.checkSuccess)
     .then((userInfo) => {
+      localStorage.setItem('user_id', userInfo.id);
       localStorage.setItem('id_token', userInfo.token);
       dispatch(setUserAndToken(userInfo));
     })

@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const authTokenValidation = require('./authTokenValidation');
 
 module.exports = function(server, apiRoutes) {
   const secret = server.get('superSecret');
@@ -11,7 +10,7 @@ module.exports = function(server, apiRoutes) {
     });
   }
 
-  apiRoutes.post('/signup', (request, response) => {
+  apiRoutes.post('/signup', function(request, response) {
     const saltRounds = 10;
 
     bcrypt.genSalt(saltRounds, (saltingErr, salt) => {
@@ -36,16 +35,17 @@ module.exports = function(server, apiRoutes) {
 
           // Return the information including token as JSON
           response.json({
+            email: user.email,
+            id: user._id,
             success: true,
             token: token,
-            email: user.email
           });
         });
       });
     });
   });
 
-  apiRoutes.post('/authenticate', function (request, response) {
+  apiRoutes.post('/login', function(request, response) {
     User.findOne({
       email: request.body.email
     }, (findErr, user) => {
@@ -65,11 +65,12 @@ module.exports = function(server, apiRoutes) {
             // If user successfully authenticates, create a token
             const token = generateToken(user);
 
-            // Return the information including token as JSON
+              // Return the information including token as JSON
             response.json({
+              email: user.email,
+              id: user._id,
               success: true,
               token: token,
-              email: user.email
             });
           }
         });
@@ -101,5 +102,22 @@ module.exports = function(server, apiRoutes) {
           message: 'No token provided.'
       });
     }
+  });
+
+  apiRoutes.post('/authenticate', function(request, response) {
+    User.findById(request.body.id, (findErr, user) => {
+      if (findErr) throw findErr;
+
+      if (!user) {
+        console.error('Couldn\'t find user', request.body.email);
+        response.json({ success: false, message: 'Authentication failed. User not found.' });
+      } else if (user) {
+        // Return the information including token as JSON
+        response.json({
+          email: user.email,
+          success: true
+        });
+      }
+    })
   });
 }

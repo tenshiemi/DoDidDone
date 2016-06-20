@@ -12,8 +12,8 @@ import ContactTab from './components/ContactTab';
 export default (
   <Router history={browserHistory}>
     <Route component={App}>
-      <Route path="start" component={LandingPageContainer} />
-      <Route path="/" component={requireAuth(TodoListContainer)} />
+      <Route path="/" component={LandingPageContainer} />
+      <Route path="index" component={requireAuth(TodoListContainer)} />
       <Route path="about" component={About} />
       <Route path="help" component={Help}>
         <IndexRedirect to="faqs" />

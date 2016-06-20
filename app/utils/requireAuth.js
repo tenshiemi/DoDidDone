@@ -17,7 +17,7 @@ export default function requiresAuth(Component) {
     }
     checkAndRedirect() {
       if (!this.state.authToken) {
-        this.context.router.push('/start');
+        this.context.router.push('/');
       }
     }
     render() {

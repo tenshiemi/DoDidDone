@@ -5,27 +5,15 @@ import HorizontalContainer from '../components/LandingPage/HorizontalContainer';
 import VerticalContainer from '../components/LandingPage/VerticalContainer';
 
 const verticalContent = List([
-  { text: 'Vertical Text Content',
-   image: 'http://goo.gl/T3xaaI'
-  },
-  { text: 'Vertical Text Content',
-   image: 'http://goo.gl/T3xaaI'
-  },
-  { text: 'Vertical Text Content',
-   image: 'http://goo.gl/T3xaaI'
-  }
+  { text: 'Vertical Text Content', image: 'http://goo.gl/T3xaaI' },
+  { text: 'Vertical Text Content', image: 'http://goo.gl/T3xaaI' },
+  { text: 'Vertical Text Content', image: 'http://goo.gl/T3xaaI' }
 ]);
 
 const horizontalContent = List([
-  { text: 'Horizontal Text Content',
-   image: 'http://goo.gl/gpWQPB'
-  },
-  { text: 'Horizontal Text Content',
-   image: 'http://goo.gl/gpWQPB'
-  },
-  { text: 'Horizontal Text Content',
-   image: 'http://goo.gl/gpWQPB'
-  }
+  { text: 'Horizontal Text Content', image: 'http://goo.gl/gpWQPB' },
+  { text: 'Horizontal Text Content', image: 'http://goo.gl/gpWQPB' },
+  { text: 'Horizontal Text Content', image: 'http://goo.gl/gpWQPB' }
 ]);
 
 export const LandingPage = () => {
