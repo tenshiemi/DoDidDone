@@ -1,5 +1,6 @@
 import React from 'react';
 import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
+import redirectLoggedIn from './utils/redirectLoggedIn';
 import requireAuth from './utils/requireAuth';
 import App from './containers/App';
 import TodoListContainer from './containers/TodoListContainer';
@@ -12,7 +13,7 @@ import ContactTab from './components/ContactTab';
 export default (
   <Router history={browserHistory}>
     <Route component={App}>
-      <Route path="/" component={LandingPageContainer} />
+      <Route path="/" component={redirectLoggedIn(LandingPageContainer)} />
       <Route path="index" component={requireAuth(TodoListContainer)} />
       <Route path="about" component={About} />
       <Route path="help" component={Help}>
