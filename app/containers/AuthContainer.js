@@ -44,8 +44,6 @@ class AuthContainer extends React.Component {
     this.props.dispatch(signUpUser(newUser));
   }
   attemptUserLogin() {
-    console.log('attemptUserLogin');
-
     const userCredentials = {
       email: document.getElementById('userEmail').value,
       password: document.getElementById('userPassword').value
