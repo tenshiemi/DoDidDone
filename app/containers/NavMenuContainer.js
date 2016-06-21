@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { logOutUser } from '../actions/authAction';
 import NavMenu from '../components/NavMenu';
 
 export class NavMenuContainer extends Component {
@@ -13,8 +12,7 @@ export class NavMenuContainer extends Component {
 
     this.actions = {
       handleTouchTap: this.handleTouchTap.bind(this),
-      handleRequestClose: this.handleRequestClose.bind(this),
-      logOutUser: this.logOutUser.bind(this)
+      handleRequestClose: this.handleRequestClose.bind(this)
     };
   }
   handleTouchTap(e) {
@@ -29,12 +27,6 @@ export class NavMenuContainer extends Component {
     this.setState({
       open: false
     });
-  }
-  logOutUser(e) {
-    e.preventDefault();
-
-    this.handleRequestClose();
-    this.props.dispatch(logOutUser());
   }
   render() {
     return (

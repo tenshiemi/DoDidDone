@@ -23,9 +23,9 @@ const NavMenu = ({ actions, state }) => (
           onRequestClose={actions.handleRequestClose}
         >
           <Menu>
-            <MenuItem value={1}><Link to={'about'}>About us</Link></MenuItem>
+            <MenuItem value={1}><Link to={'/about'}>About us</Link></MenuItem>
             <MenuItem value={2}><Link to={'help'}>Help</Link></MenuItem>
-            <MenuItem value={3}><a href="#" onClick={actions.logOutUser}>Log out</a></MenuItem>
+            <MenuItem value={3}><Link to={'/logout'}>Log out</Link></MenuItem>
           </Menu>
         </Popover>
       </div>

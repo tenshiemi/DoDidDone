@@ -1,5 +1,6 @@
 import React from 'react';
 import { Router, Route, browserHistory, IndexRedirect } from 'react-router';
+import logout from './utils/logout';
 import redirectLoggedIn from './utils/redirectLoggedIn';
 import requireAuth from './utils/requireAuth';
 import App from './containers/App';
@@ -14,6 +15,7 @@ export default (
   <Router history={browserHistory}>
     <Route component={App}>
       <Route path="/" component={redirectLoggedIn(LandingPageContainer)} />
+      <Route path="logout" component={logout(LandingPageContainer)} />
       <Route path="index" component={requireAuth(TodoListContainer)} />
       <Route path="about" component={About} />
       <Route path="help" component={Help}>
