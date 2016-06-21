@@ -40,6 +40,7 @@ export function signUpUser(newUser) {
 
 export function logInUser(userCredentials) {
   return (dispatch) => {
+    console.log(userCredentials);
     const config = {
       method: 'POST',
       headers: {

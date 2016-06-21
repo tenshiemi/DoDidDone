@@ -1,10 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { signUpUser, logInUser } from '../actions/authAction';
-import Dialog from 'material-ui/Dialog';
-import LoginForm from '../components/LoginForm';
-import SignupForm from '../components/SignupForm';
-import FlatButton from 'material-ui/FlatButton';
+import AuthModals from '../components/AuthModals';
 
 class AuthContainer extends React.Component {
   constructor(props) {
@@ -16,8 +13,11 @@ class AuthContainer extends React.Component {
       userLoggedIn: false
     };
 
-    this.handleClose = this.handleClose.bind(this);
-    this.handleSubmission = this.handleSubmission.bind(this);
+    this.actions = {
+      handleClose: this.handleClose.bind(this),
+      handleSubmission: this.handleSubmission.bind(this),
+      handleOpen: this.handleOpen.bind(this)
+    };
   }
   handleOpen(modalState) {
     return this.setState({ open: true, modalState });
@@ -44,6 +44,8 @@ class AuthContainer extends React.Component {
     this.props.dispatch(signUpUser(newUser));
   }
   attemptUserLogin() {
+    console.log('attemptUserLogin');
+
     const userCredentials = {
       email: document.getElementById('userEmail').value,
       password: document.getElementById('userPassword').value
@@ -52,66 +54,17 @@ class AuthContainer extends React.Component {
     this.props.dispatch(logInUser(userCredentials));
   }
   render() {
-    const actions = [
-      <FlatButton
-        className="modal-button"
-        label="Cancel"
-        primary
-        onTouchTap={this.handleClose}
-      />,
-      <FlatButton
-        className="modal-button"
-        label="Submit"
-        primary
-        keyboardFocused
-        onTouchTap={this.handleSubmission}
-      />
-    ];
-
-    const modalTitle = {
-      signup: 'Create Account',
-      login: 'Log In'
-    };
-
     return (
-      <div>
-        {!localStorage.getItem('id_token') ? (
-          <div>
-            <FlatButton
-              label="Log in"
-              secondary
-              onTouchTap={
-                () => this.handleOpen('login')
-              }
-            />
-            <FlatButton
-              label="Sign up"
-              secondary
-              onTouchTap={
-                () => this.handleOpen('signup')
-              }
-            />
-          </div>
-        ) : (null)}
-        <Dialog
-          title={modalTitle[this.state.modalState]}
-          actions={actions}
-          modal
-          open={this.state.open}
-          onRequestClose={this.handleClose}
-        >
-          {this.state.modalState === 'login' ? (<LoginForm />) : (<SignupForm />)}
-        </Dialog>
-      </div>
+      <AuthModals
+        actions={this.actions}
+        state={this.state}
+      />
     );
   }
 }
 
 AuthContainer.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  token: PropTypes.string,
-  user: PropTypes.string
-
+  dispatch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
