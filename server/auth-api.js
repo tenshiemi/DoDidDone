@@ -1,5 +1,4 @@
 const bcrypt = require('bcrypt');
-const authTokenValidation = require('./authTokenValidation');
 
 module.exports = function(server, apiRoutes) {
   const secret = server.get('superSecret');
