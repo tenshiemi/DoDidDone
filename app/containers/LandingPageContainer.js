@@ -30,7 +30,7 @@ const horizontalContent = List([
 
 export const LandingPage = () => {
   return (
-    <div className="landing-page">
+    <div className="app-container">
       <Header />
       <HorizontalContainer horizontalContent={horizontalContent} />
       <VerticalContainer verticalContent={verticalContent} />
